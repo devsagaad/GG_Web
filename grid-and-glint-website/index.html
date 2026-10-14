@@ -1,0 +1,1034 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta name="theme-color" content="#1a1a1a">
+<link rel="manifest" href="site.webmanifest">
+<title>Grid and Glint | Brand, Web &amp; AI Studio</title>
+<meta name="description" content="Grid and Glint is a brand, web and AI studio. We design brand identities, build Webflow websites and integrate AI chatbots and workflows for growing companies.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://gridandglint.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Grid and Glint">
+<meta property="og:title" content="Grid and Glint | Brand, Web &amp; AI Studio">
+<meta property="og:description" content="Brand identities, Webflow websites and AI assistants for growing companies.">
+<meta property="og:url" content="https://gridandglint.com/">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://gridandglint.com/#org",
+      "name": "Grid and Glint",
+      "url": "https://gridandglint.com/",
+      "description": "Brand, web and AI studio. Brand identities, Webflow websites, 3D and motion, and AI chatbots and workflow automation.",
+      "email": "info@gridandglint.com",
+      "telephone": "+63 918 620 4713",
+      "foundingDate": "2025",
+      "address": {"@type": "PostalAddress", "addressLocality": "Quezon City", "addressRegion": "Metro Manila", "addressCountry": "PH"},
+      "areaServed": [{"@type": "Country", "name": "Philippines"}, "Worldwide"],
+      "slogan": "Brands, websites and AI that steal attention",
+      "knowsAbout": ["Brand identity design", "Webflow development", "Design systems", "WebGL and 3D for the web", "AI chatbots", "AI workflow automation", "Search engine optimisation"],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Services",
+        "itemListElement": [
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Brand identity", "description": "Logomark, wordmark, type and colour system, and brand guidelines."}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Webflow websites", "description": "Website design and Webflow development with a CMS your team can edit."}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "3D and motion", "description": "Interactive 3D, product visuals and motion for websites and launches."}},
+          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "AI integration", "description": "AI chatbots, lead and brief intake, CMS content workflows and internal knowledge assistants, with human review."}}
+        ]
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://gridandglint.com/#website",
+      "url": "https://gridandglint.com/",
+      "name": "Grid and Glint",
+      "publisher": {"@id": "https://gridandglint.com/#org"}
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {"@type": "Question", "name": "What does Grid and Glint do?", "acceptedAnswer": {"@type": "Answer", "text": "Grid and Glint is a brand, web and AI studio. We design brand identities, design and build Webflow websites, create 3D and motion for the web, and integrate AI chatbots and workflows into the tools companies already use."}},
+        {"@type": "Question", "name": "How long does a website project take?", "acceptedAnswer": {"@type": "Answer", "text": "Most marketing websites take 6 to 10 weeks from kickoff to launch. A brand identity takes 4 to 6 weeks. A combined identity and website project usually runs about 12 weeks."}},
+        {"@type": "Question", "name": "How much does a project cost?", "acceptedAnswer": {"@type": "Answer", "text": "Every project is priced on a fixed written scope. Send a short brief and we reply within two working days with a price range, a timeline and what is included."}},
+        {"@type": "Question", "name": "Why do you build websites in Webflow?", "acceptedAnswer": {"@type": "Answer", "text": "Webflow gives your team a visual CMS to update pages without a developer, produces fast, clean pages that search engines read well, and hosts securely. We also build custom code when a project needs it."}},
+        {"@type": "Question", "name": "Are your websites optimised for search and AI answers?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every site launches with a clear heading structure, page titles and descriptions, structured data, fast load times, accessible markup and content written to answer real customer questions directly."}},
+        {"@type": "Question", "name": "What kind of AI integration do you build?", "acceptedAnswer": {"@type": "Answer", "text": "We build website chatbots and assistants, lead and brief intake, content workflows that draft into your Webflow CMS for review, and internal knowledge assistants that answer from your own documents."}},
+        {"@type": "Question", "name": "Is an AI chatbot safe for my customers and my data?", "acceptedAnswer": {"@type": "Answer", "text": "We set up assistants to say they are assistants, to hand difficult questions to a person, and to answer only from content you approve. Your data stays in your own accounts, and a person reviews anything sent to customers or published."}},
+        {"@type": "Question", "name": "Do we own the work when the project ends?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You own the design files, the Webflow site, your domain, your AI accounts and all data from day one. We hand over everything with documentation and training."}}
+      ]
+    }
+  ]
+}
+</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400&family=Big+Shoulders+Display:wght@700;900&display=swap">
+<style>
+/* Layout: a visible four-track grid with + crosshairs; flat solid UI; depth only in the two WebGL moments (glass mark, glass lens). */
+:root {
+  --ink: #1a1a1a; --ink-deep: #121212; --ink-panel: #212121; --ink-raise: #2b2b2b; --ink-hover: #242424;
+  --graphite: #3f3f3f; --ash-400: #999999; --ash-300: #b8b8b8; --snow: #f7f7f7;
+  --mint: #a8ffd4; --mint-hi: #e3fff1; --seafoam: #76efb8; --forest: #0f3f33; --forest-hi: #1b5a49; --forest-lo: #0a2e25;
+  --lime: #d7ff57; --lime-dk: #4d6600; --coral: #ff6f61; --coral-dk: #b3261e;
+
+  --bg: var(--ink); --bg-panel: var(--ink-panel); --bg-sunken: var(--ink-deep); --bg-control: var(--ink-raise); --bg-hover: var(--ink-hover);
+  --fg: var(--snow); --fg-2: var(--ash-300); --fg-3: var(--ash-400);
+  --accent: var(--mint); --on-accent: var(--ink); --accent-hover: var(--seafoam); --accent-text: var(--mint);
+  --data: var(--lime); --rule-grid: #262626; --rule: var(--graphite); --rule-strong: var(--ash-400); --cross: #4a4a4a;
+  --feature: var(--forest); --on-feature: var(--mint);
+  --glass-shade: var(--forest-lo);
+  --overlay: 0 2px 2px #00000099, 0 6px 14px -4px #00000073, 0 16px 32px -14px #00000059, 0 1px 0 #000000b3;
+
+  --f-display: "Thunder", "Big Shoulders Display", "Arial Narrow", sans-serif;
+  --f-mono: "Anonymous Pro", ui-monospace, "SF Mono", Menlo, monospace;
+  --pitch: 32px; --cross-size: 10px; --r-xs: 3px; --r-sm: 6px; --r-md: 12px; --r-lg: 16px;
+  --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
+  color-scheme: dark;
+}
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) {
+  --bg: var(--snow); --bg-panel: #ffffff; --bg-sunken: #e9e9e9; --bg-control: #ffffff; --bg-hover: #e9e9e9;
+  --fg: var(--ink); --fg-2: var(--graphite); --fg-3: #636363;
+  --accent: var(--forest); --on-accent: var(--mint); --accent-hover: var(--forest-hi); --accent-text: var(--forest);
+  --data: var(--lime-dk); --rule-grid: #e6e6e6; --rule: #d6d6d6; --rule-strong: #636363; --cross: #c4c4c4;
+  --glass-shade: var(--forest);
+  --overlay: 0 2px 2px #1a1a1a17, 0 6px 14px -4px #1a1a1a1f, 0 16px 32px -14px #1a1a1a24, 0 1px 0 #1a1a1a1f;
+  color-scheme: light;
+} }
+:root[data-theme="light"] {
+  --bg: var(--snow); --bg-panel: #ffffff; --bg-sunken: #e9e9e9; --bg-control: #ffffff; --bg-hover: #e9e9e9;
+  --fg: var(--ink); --fg-2: var(--graphite); --fg-3: #636363;
+  --accent: var(--forest); --on-accent: var(--mint); --accent-hover: var(--forest-hi); --accent-text: var(--forest);
+  --data: var(--lime-dk); --rule-grid: #e6e6e6; --rule: #d6d6d6; --rule-strong: #636363; --cross: #c4c4c4;
+  --glass-shade: var(--forest);
+  --overlay: 0 2px 2px #1a1a1a17, 0 6px 14px -4px #1a1a1a1f, 0 16px 32px -14px #1a1a1a24, 0 1px 0 #1a1a1a1f;
+  color-scheme: light;
+}
+
+* , *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; overflow-x: clip; }
+body { background: var(--bg); color: var(--fg); font-family: var(--f-mono); font-size: 16px; line-height: 1.625; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+::selection { background: var(--mint); color: var(--ink); }
+h1, h2, h3, p { margin: 0; }
+h1, h2, h3 { text-wrap: balance; }
+
+.wrap { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.inner { max-width: 1440px; margin: 0 auto; padding-inline: clamp(0px, 3vw, 32px); }
+.lbl { font-size: 11px; line-height: 14px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-3); }
+.lbl.a { color: var(--accent-text); }
+.data { font-variant-numeric: tabular-nums; color: var(--data); }
+.disp { font-family: var(--f-display); font-weight: 900; text-transform: uppercase; line-height: 0.86; letter-spacing: 0; }
+
+/* ---------- the page grid: four tracks, drawn on load ---------- */
+.tracks { position: fixed; inset: 0; pointer-events: none; z-index: 0; }
+.tracks .wrap, .tracks .inner { height: 100%; }
+.tracks .inner { position: relative; }
+.tracks i { position: absolute; top: 0; bottom: 0; width: 1px; background: var(--rule-grid); transform-origin: top; animation: draw 1.2s var(--ease) both; }
+.tracks i:nth-child(1) { left: 25%; animation-delay: 0.05s; } .tracks i:nth-child(2) { left: 50%; animation-delay: 0.15s; } .tracks i:nth-child(3) { left: 75%; animation-delay: 0.25s; }
+@keyframes draw { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+main, header, footer { position: relative; z-index: 1; }
+
+.x { position: absolute; width: var(--cross-size); height: var(--cross-size); transform: translate(-50%, -50%); pointer-events: none; animation: pop 0.6s var(--ease) both; animation-delay: 0.6s; }
+.x::before, .x::after { content: ""; position: absolute; background: var(--cross); }
+.x::before { left: 50%; top: 0; width: 1px; height: 100%; }
+.x::after { top: 50%; left: 0; height: 1px; width: 100%; }
+@keyframes pop { from { transform: translate(-50%, -50%) scale(0) rotate(-90deg); } to { transform: translate(-50%, -50%) scale(1); } }
+.xs { position: absolute; left: 0; right: 0; top: 0; height: 0; }
+.xs .x:nth-child(1) { left: 25%; } .xs .x:nth-child(2) { left: 50%; } .xs .x:nth-child(3) { left: 75%; }
+
+/* ---------- top bar ---------- */
+.bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); border-bottom: 1px solid var(--rule-grid); }
+.bar .inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+.logo { display: flex; align-items: center; gap: 10px; color: var(--mint); }
+:root[data-theme="light"] .logo { color: var(--ink); }
+@media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .logo { color: var(--ink); } }
+.logo svg { display: block; height: 18px; width: auto; fill: currentColor; }
+.logo .mk { height: 22px; width: 22px; }
+.nav { display: flex; gap: clamp(14px, 2.4vw, 32px); align-items: center; font-size: 13px; letter-spacing: 0.06em; }
+.nav a, .nav button { background: none; border: 0; padding: 4px 0; cursor: pointer; }
+.nav a:hover, .nav button:hover { color: var(--accent-text); }
+.nav .k { color: var(--fg-3); }
+@media (max-width: 760px) { .nav .wide { display: none; } }
+
+/* ---------- hero ---------- */
+.hero { position: relative; padding-block: 28px 56px; border-bottom: 1px solid var(--rule-grid); }
+.hero .top { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; font-size: 14px; line-height: 22px; }
+.hero .top .role { font-size: 20px; line-height: 26px; font-weight: 700; }
+.hero .top p { color: var(--fg-2); }
+.hero .top .span2 { grid-column: span 2; }
+.stage { position: relative; height: clamp(300px, 46vw, 520px); margin-block: 24px 0; border: 1px solid var(--rule); border-radius: var(--r-lg); overflow: hidden; background: var(--bg); }
+.stage .hud { left: 16px !important; right: 16px !important; bottom: 12px !important; }
+.stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.stage .fallback { position: absolute; inset: 0; display: grid; place-items: center; }
+.stage .fallback svg { width: min(260px, 50%); height: auto; fill: var(--mint); }
+.stage .hud { position: absolute; left: 0; right: 0; bottom: 8px; display: flex; justify-content: space-between; pointer-events: none; }
+.headline { font-size: clamp(64px, 12.5vw, 196px); margin-top: 28px; position: relative; }
+.headline .ln { display: block; animation: slide 1s var(--ease) both; }
+.headline .ln:nth-child(1) { animation-delay: 0.1s; } .headline .ln:nth-child(2) { animation-delay: 0.2s; } .headline .ln:nth-child(3) { animation-delay: 0.3s; }
+.headline em { font-style: normal; color: var(--accent-text); }
+@keyframes slide { from { transform: translateX(-0.12em); letter-spacing: 0.02em; } to { transform: none; letter-spacing: 0; } }
+.hero .foot { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 40px; align-items: end; }
+.hero .foot p { grid-column: span 2; font-size: 18px; line-height: 28px; max-width: 44ch; }
+.actions { display: flex; gap: 12px; flex-wrap: wrap; grid-column: span 2; justify-content: flex-end; }
+@media (max-width: 760px) {
+  .hero .top, .hero .foot { grid-template-columns: 1fr 1fr; }
+  .hero .top .span2, .hero .foot p, .actions { grid-column: 1 / -1; }
+  .actions { justify-content: flex-start; }
+}
+
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 14px 22px; border-radius: var(--r-sm); border: 1px solid transparent; background: var(--accent); color: var(--on-accent); font-size: 12px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; cursor: pointer; transition: background-color 120ms var(--ease), transform 200ms var(--ease); will-change: transform; }
+.btn:hover { background: var(--accent-hover); }
+.btn.ghost { background: var(--bg-control); color: var(--fg); border-color: var(--rule); }
+.btn.ghost:hover { background: var(--bg-hover); border-color: var(--rule-strong); }
+.btn .arr { display: inline-block; transition: transform 200ms var(--ease); }
+.btn:hover .arr { transform: translateX(4px); }
+
+/* ---------- ticker ---------- */
+.ticker { border-bottom: 1px solid var(--rule-grid); overflow: hidden; background: var(--bg); }
+.ticker .row { display: flex; width: max-content; animation: tick 38s linear infinite; }
+.ticker:hover .row { animation-play-state: paused; }
+.ticker span { display: inline-flex; align-items: center; gap: 28px; padding: 18px 14px; font-family: var(--f-display); font-weight: 700; font-size: clamp(28px, 4vw, 48px); line-height: 1; text-transform: uppercase; white-space: nowrap; color: var(--fg); }
+.ticker span svg { width: 22px; height: 22px; fill: var(--accent-text); flex: none; }
+@keyframes tick { to { transform: translateX(-50%); } }
+
+/* ---------- sections ---------- */
+.sec { position: relative; padding-block: clamp(72px, 10vw, 128px); border-bottom: 1px solid var(--rule-grid); }
+.sec-head { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-bottom: clamp(40px, 6vw, 64px); align-items: end; }
+.sec-head .lbl { grid-column: 1 / 2; }
+.sec-head h2 { grid-column: 2 / 5; font-size: clamp(48px, 7vw, 104px); }
+@media (max-width: 760px) { .sec-head { grid-template-columns: 1fr; } .sec-head .lbl, .sec-head h2 { grid-column: 1 / -1; } }
+
+/* reveal: elements are visible at rest; entering the viewport replays a short settle */
+.rv.in { animation: settle 0.8s var(--ease) both; }
+@keyframes settle { from { transform: translateY(24px); } to { transform: none; } }
+
+/* manifesto: words light up as you read */
+.manifesto p { font-size: clamp(26px, 3.6vw, 48px); line-height: 1.28; max-width: 30ch; margin-left: 25%; font-weight: 700; }
+.manifesto .w { color: var(--fg-3); transition: color 300ms var(--ease); }
+.manifesto .w.on { color: var(--fg); }
+.manifesto .w.g.on { color: var(--accent-text); }
+@media (max-width: 760px) { .manifesto p { margin-left: 0; } }
+
+/* services */
+.svc { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.svc article { background: var(--bg-panel); border: 1px solid var(--rule); border-radius: var(--r-md); padding: 28px; display: flex; flex-direction: column; gap: 18px; min-width: 0; transition: background-color 160ms var(--ease), border-color 160ms var(--ease); }
+.svc article:hover { background: var(--bg-hover); border-color: var(--rule-strong); }
+.svc h3 { font-family: var(--f-display); font-weight: 900; font-size: 40px; line-height: 0.9; text-transform: uppercase; }
+.svc p { color: var(--fg-2); font-size: 15px; line-height: 24px; }
+.svc ul { list-style: none; padding: 0; margin: 0; border-top: 1px solid var(--rule); }
+.svc li { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--rule); font-size: 14px; }
+.svc li span:last-child { color: var(--fg-3); }
+.svc .t { margin-top: auto; display: flex; justify-content: space-between; align-items: baseline; }
+.svc .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); display: inline-block; margin-right: 8px; animation: blink 2.4s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0.25; } }
+@media (max-width: 1100px) { .svc { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 640px) { .svc { grid-template-columns: 1fr; } }
+
+/* ai */
+.ai-top { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-bottom: 56px; }
+.ai-top p { grid-column: 2 / 4; font-size: 20px; line-height: 31px; }
+.ai-top p + p { grid-column: 2 / 4; font-size: 15px; line-height: 24px; color: var(--fg-2); margin-top: -8px; }
+@media (max-width: 760px) { .ai-top { grid-template-columns: 1fr; } .ai-top p, .ai-top p + p { grid-column: 1 / -1; } }
+.flow { position: relative; background: var(--bg-panel); border: 1px solid var(--rule); border-radius: var(--r-lg); padding: 28px; margin-bottom: 56px; }
+.flow .head { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin-bottom: 28px; }
+.flow ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 16px; position: relative; }
+.flow ol::before { content: ""; position: absolute; left: 8px; right: 8px; top: 8px; height: 1px; background: var(--rule-strong); }
+.flow .steps { position: relative; }
+.flow .pulse { position: absolute; z-index: 1; top: 4px; left: 0; width: 9px; height: 9px; border-radius: 50%; background: var(--accent); animation: travel 6s linear infinite; }
+@keyframes travel { from { left: 0; } to { left: calc(100% - 9px); } }
+.flow li { position: relative; padding-top: 32px; min-width: 0; }
+.flow li::before { content: ""; position: absolute; left: 0; top: 0; width: 17px; height: 17px; border-radius: 50%; background: var(--bg-panel); border: 1px solid var(--rule-strong); animation: node 6s steps(1) infinite; }
+.flow li:nth-child(2)::before { animation-delay: 1.2s; } .flow li:nth-child(3)::before { animation-delay: 2.4s; } .flow li:nth-child(4)::before { animation-delay: 3.6s; } .flow li:nth-child(5)::before { animation-delay: 4.8s; }
+@keyframes node { 0% { background: var(--accent); border-color: var(--accent); } 20% { background: var(--bg-panel); border-color: var(--rule-strong); } }
+.flow li b { display: block; font-size: 15px; line-height: 22px; margin-bottom: 4px; }
+.flow li span { display: block; font-size: 13px; line-height: 20px; color: var(--fg-2); }
+.flow li.human b::after { content: "PERSON"; margin-left: 8px; font-size: 9px; letter-spacing: 0.12em; padding: 1px 6px; border-radius: var(--r-xs); background: var(--coral); color: var(--ink); vertical-align: 2px; }
+@media (max-width: 860px) { .flow ol { grid-template-columns: 1fr; gap: 20px; } .flow ol::before { left: 8px; right: auto; top: 8px; bottom: 8px; width: 1px; height: auto; } .flow .pulse { display: none; } .flow li { padding: 0 0 0 36px; } }
+.uses { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-bottom: 56px; }
+.uses article { border-top: 1px solid var(--rule); padding-top: 18px; min-width: 0; display: flex; flex-direction: column; gap: 10px; }
+.uses h3 { font-size: 20px; line-height: 28px; }
+.uses p { color: var(--fg-2); font-size: 14px; line-height: 22px; }
+.uses .ex { font-size: 13px; line-height: 20px; color: var(--data); }
+@media (max-width: 960px) { .uses { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .uses { grid-template-columns: 1fr; } }
+.ai-bottom { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; align-items: start; }
+.ai-steps { grid-column: 1 / 3; list-style: none; margin: 0; padding: 0; counter-reset: s; }
+.ai-steps li { display: grid; grid-template-columns: 56px 1fr auto; gap: 12px; padding: 16px 0; border-top: 1px solid var(--rule); align-items: baseline; }
+.ai-steps li:last-child { border-bottom: 1px solid var(--rule); }
+.ai-steps .n { font-family: var(--f-display); font-weight: 900; font-size: 32px; line-height: 1; color: var(--accent-text); }
+.ai-steps b { display: block; } .ai-steps span { color: var(--fg-2); font-size: 14px; line-height: 22px; }
+.guard { grid-column: 3 / 5; background: var(--feature); color: var(--on-feature); border-radius: var(--r-md); padding: 24px; display: flex; flex-direction: column; gap: 14px; }
+.guard ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.guard li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; color: var(--snow); font-size: 15px; line-height: 23px; }
+.guard li::before { content: "+"; color: var(--mint); font-weight: 700; }
+.guard .lbl { color: var(--mint); }
+.guard .btn { align-self: flex-start; background: var(--mint); color: var(--ink); }
+.guard .btn:hover { background: var(--seafoam); }
+@media (max-width: 860px) { .ai-bottom { grid-template-columns: 1fr; } .ai-steps, .guard { grid-column: 1 / -1; } }
+
+/* work */
+.work { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 24px; }
+.tile { position: relative; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.tile:nth-child(1) { grid-column: 1 / 8; } .tile:nth-child(2) { grid-column: 8 / 13; margin-top: 96px; }
+.tile:nth-child(3) { grid-column: 1 / 6; } .tile:nth-child(4) { grid-column: 6 / 13; margin-top: -48px; }
+.plate { position: relative; overflow: hidden; border-radius: var(--r-md); aspect-ratio: 4 / 3; max-width: 100%; display: grid; place-items: center; }
+.plate svg.art { width: 46%; height: auto; transition: transform 700ms var(--ease); }
+.tile:hover .plate svg.art { transform: rotate(45deg) scale(1.06); }
+.plate .scan { position: absolute; left: 0; right: 0; height: 1px; background: currentColor; opacity: 0.5; top: -2px; }
+.tile:hover .plate .scan { animation: scan 1.1s var(--ease); }
+@keyframes scan { from { top: -2px; } to { top: 100%; } }
+.plate .ratio { position: absolute; left: 12px; bottom: 10px; font-size: 10px; letter-spacing: 0.12em; font-weight: 700; opacity: 0.7; }
+.p-forest { background: var(--forest); color: var(--mint); } .p-forest svg { fill: var(--mint); }
+.p-coral { background: var(--coral); color: var(--ink); } .p-coral svg { fill: var(--ink); }
+.p-lime { background: var(--lime); color: var(--ink); } .p-lime svg { fill: var(--forest); }
+.p-ink { background: var(--ink-deep); color: var(--mint); border: 1px solid var(--rule); } .p-ink svg { fill: var(--mint); }
+.tile .meta { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: baseline; }
+.tile .name { margin: 0; font-family: var(--f-display); font-weight: 900; font-size: 36px; line-height: 1; text-transform: uppercase; transition: color 160ms var(--ease); }
+.tile:hover .name { color: var(--accent-text); }
+.tag { display: inline-block; font-size: 10px; line-height: 14px; font-weight: 700; letter-spacing: 0.12em; padding: 2px 8px; border-radius: var(--r-xs); background: var(--lime); color: var(--ink); }
+.tag.hot { background: var(--coral); }
+@media (max-width: 760px) { .work { grid-template-columns: 1fr; } .tile:nth-child(n) { grid-column: 1 / -1; margin-top: 0; } }
+
+/* process: a real sequence, so it is numbered */
+.proc { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.proc .line { position: absolute; left: 0; right: 0; top: 7px; height: 1px; background: var(--rule); }
+.proc .line b { position: absolute; left: 0; top: 0; height: 1px; width: 100%; background: var(--accent); transform-origin: left; transform: scaleX(var(--p, 0)); }
+.proc li { list-style: none; position: relative; padding-top: 36px; min-width: 0; }
+.proc li::before { content: ""; position: absolute; left: 0; top: 0; width: 15px; height: 15px; border-radius: 50%; background: var(--bg); border: 1px solid var(--rule-strong); transition: background-color 300ms var(--ease), border-color 300ms var(--ease); }
+.proc li.on::before { background: var(--accent); border-color: var(--accent); }
+.proc ol { display: contents; }
+.proc .n { font-family: var(--f-display); font-weight: 900; font-size: 64px; line-height: 0.9; color: var(--fg-3); transition: color 300ms var(--ease); }
+.proc li.on .n { color: var(--accent-text); }
+.proc h3 { font-size: 20px; line-height: 28px; margin: 12px 0 8px; }
+.proc p { color: var(--fg-2); font-size: 14px; line-height: 22px; }
+.proc .wk { margin-top: 12px; font-size: 13px; }
+@media (max-width: 860px) { .proc { grid-template-columns: 1fr 1fr; row-gap: 40px; } .proc .line { display: none; } }
+
+/* placeholders for real E-E-A-T details */
+.fill { display: inline-block; border: 1px dashed var(--rule-strong); border-radius: var(--r-xs); padding: 0 6px; font-size: 0.78em; font-weight: 700; letter-spacing: 0.08em; color: var(--fg-3); text-transform: uppercase; line-height: 1.6; }
+.proof { border-bottom: 1px solid var(--rule-grid); padding-block: 24px; }
+.proof .inner { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; justify-content: space-between; }
+.logos { list-style: none; margin: 0; padding: 0; display: flex; gap: 12px; flex-wrap: wrap; }
+.logos .fill { padding: 10px 18px; }
+.logos { align-items: center; }
+.clogo { display: block; line-height: 0; }
+.clogo img { height: 56px; width: auto; display: block; }
+.more { display: inline-flex; gap: 6px; font-size: 13px; font-weight: 700; color: var(--accent-text); text-decoration: underline; text-underline-offset: 4px; }
+.res { grid-column: 1 / -1; font-size: 13px; color: var(--fg-2); }
+.quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+.quotes figure { margin: 0; background: var(--bg-panel); border: 1px solid var(--rule); border-radius: var(--r-md); padding: 24px; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.quotes blockquote { margin: 0; font-size: 18px; line-height: 28px; }
+.quotes figcaption { font-size: 13px; color: var(--fg-2); }
+@media (max-width: 860px) { .quotes { grid-template-columns: 1fr; } }
+.team { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-bottom: 40px; }
+.person { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.person .photo { aspect-ratio: 4 / 5; max-width: 100%; background: var(--bg-sunken); border: 1px solid var(--rule); border-radius: var(--r-md); display: flex; align-items: flex-end; padding: 12px; }
+.person h3 { font-size: 22px; line-height: 30px; }
+.person .role2 { font-size: 14px; color: var(--accent-text); font-weight: 700; }
+.person p { font-size: 14px; line-height: 22px; color: var(--fg-2); }
+@media (max-width: 860px) { .team { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .team { grid-template-columns: 1fr; } }
+.facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; padding-block: 20px; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); margin-bottom: 48px; }
+.facts div { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; min-width: 0; font-size: 15px; }
+@media (max-width: 760px) { .facts { grid-template-columns: 1fr 1fr; } }
+.faq { border-top: 1px solid var(--rule); max-width: 1040px; margin-left: 25%; }
+.faq details { border-bottom: 1px solid var(--rule); }
+.faq summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 1fr 24px; gap: 16px; padding: 20px 0; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary h3 { font-size: clamp(18px, 2vw, 22px); line-height: 1.35; }
+.faq summary::after { content: "+"; font-size: 24px; line-height: 1; color: var(--accent-text); transition: transform 200ms var(--ease); }
+.faq details[open] summary::after { transform: rotate(45deg); }
+.faq summary:hover h3 { color: var(--accent-text); }
+.faq .ans { padding: 0 48px 24px 0; color: var(--fg-2); max-width: 68ch; }
+@media (max-width: 760px) { .faq { margin-left: 0; } .faq .ans { padding-right: 0; } }
+.nap a { text-decoration: underline; text-underline-offset: 3px; }
+.nap { font-style: normal; font-size: 14px; line-height: 24px; color: var(--fg-2); }
+.foot-links { border-top: 1px solid var(--rule-grid); padding-block: 48px; }
+.foot-links .inner { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.foot-links nav, .foot-links .inner > div { display: flex; flex-direction: column; gap: 10px; font-size: 14px; min-width: 0; }
+.foot-links a:hover { color: var(--accent-text); }
+@media (max-width: 760px) { .foot-links .inner { grid-template-columns: 1fr 1fr; } }
+
+/* principles */
+.prin { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.prin div { border-top: 1px solid var(--rule); padding-top: 18px; min-width: 0; }
+.prin h3 { font-size: 22px; line-height: 30px; margin-bottom: 10px; }
+.prin p { color: var(--fg-2); font-size: 14px; line-height: 22px; }
+@media (max-width: 860px) { .prin { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .prin { grid-template-columns: 1fr; } }
+
+/* journal */
+.posts a { display: grid; grid-template-columns: 1fr 2fr 1fr; gap: 24px; padding: 22px 0; border-top: 1px solid var(--rule); align-items: baseline; position: relative; }
+.posts a:last-child { border-bottom: 1px solid var(--rule); }
+.posts .tt { font-size: clamp(20px, 2.4vw, 28px); line-height: 1.25; font-weight: 700; transition: color 160ms var(--ease), transform 300ms var(--ease); }
+.posts a:hover .tt { color: var(--accent-text); transform: translateX(10px); }
+.posts .tth { font: inherit; }
+.posts .ex { display: block; font-size: 14px; line-height: 22px; color: var(--fg-2); font-weight: 400; margin-top: 6px; }
+.posts .r { text-align: right; }
+@media (max-width: 760px) { .posts a { grid-template-columns: 1fr; gap: 4px; } .posts .r { text-align: left; } }
+
+/* contact */
+.cta h2 { font-size: clamp(64px, 11vw, 176px); }
+.cta-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 56px; }
+.mailbox { grid-column: 1 / 3; display: flex; flex-direction: column; gap: 14px; }
+.mail { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.mail code { font-family: var(--f-mono); font-size: clamp(20px, 2.4vw, 28px); font-weight: 700; user-select: all; overflow-wrap: anywhere; }
+.copy { background: var(--bg-control); border: 1px solid var(--rule); border-radius: var(--r-sm); padding: 8px 12px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; cursor: pointer; }
+.copy:hover { background: var(--bg-hover); border-color: var(--rule-strong); }
+form.brief { grid-column: 3 / 5; background: var(--bg-panel); border: 1px solid var(--rule); border-radius: var(--r-md); padding: 24px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.field { display: flex; flex-direction: column; gap: 6px; }
+.field input { font: inherit; font-size: 15px; color: var(--fg); background: var(--bg-sunken); border: 1px solid var(--rule-strong); border-radius: var(--r-sm); padding: 12px; width: 100%; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips button { background: var(--bg-control); border: 1px solid var(--rule); border-radius: var(--r-sm); padding: 8px 12px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; }
+.chips button:hover { border-color: var(--rule-strong); }
+.chips button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); border-color: transparent; }
+.formnote { font-size: 13px; color: var(--fg-2); min-height: 22px; }
+@media (max-width: 860px) { .cta-grid { grid-template-columns: 1fr; } .mailbox, form.brief { grid-column: 1 / -1; } }
+
+/* foot rail */
+.rail { border-top: 1px solid var(--rule-grid); }
+.rail .inner { display: grid; grid-template-columns: repeat(3, 1fr); align-items: center; height: 56px; font-size: 13px; letter-spacing: 0.04em; }
+.rail .inner > :nth-child(2) { text-align: center; } .rail .inner > :nth-child(3) { justify-self: end; color: var(--fg-3); }
+.legal { padding-block: 0 24px; }
+.legal .inner { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--fg-3); }
+
+/* the crosshair cursor (fine pointers only) */
+.cur { position: fixed; left: 0; top: 0; z-index: 50; pointer-events: none; width: 28px; height: 28px; margin: -14px 0 0 -14px; opacity: 0; transition: opacity 200ms; }
+.cur::before, .cur::after { content: ""; position: absolute; background: var(--accent-text); }
+.cur::before { left: 13.5px; top: 0; width: 1px; height: 100%; } .cur::after { top: 13.5px; left: 0; height: 1px; width: 100%; }
+.cur span { position: absolute; left: 22px; top: 18px; font-size: 10px; letter-spacing: 0.06em; white-space: nowrap; color: var(--data); font-variant-numeric: tabular-nums; }
+.cur.big { transform: scale(1.8); }
+@media (hover: hover) and (pointer: fine) { .cur.live { opacity: 1; } }
+
+/* ask glint */
+.ask { position: fixed; right: max(20px, calc(env(safe-area-inset-right, 0px) + 20px)); bottom: calc(env(safe-area-inset-bottom, 0px) + 72px); z-index: 30; }
+.ask .launch { display: inline-flex; align-items: center; gap: 10px; padding: 12px 16px; border: 0; border-radius: var(--r-sm); background: var(--accent); color: var(--on-accent); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; cursor: pointer; box-shadow: var(--overlay); }
+.ask .launch:hover { background: var(--accent-hover); }
+.ask .launch svg { width: 16px; height: 16px; fill: currentColor; }
+.panel { position: absolute; right: 0; bottom: 56px; width: min(360px, calc(100vw - 40px)); background: var(--bg-panel); border: 1px solid var(--rule); border-radius: var(--r-lg); box-shadow: var(--overlay); display: flex; flex-direction: column; max-height: min(480px, 70vh); transform-origin: bottom right; animation: openp 260ms var(--ease); }
+@keyframes openp { from { transform: scale(0.96) translateY(8px); } to { transform: none; } }
+.panel header { display: flex; align-items: center; gap: 10px; padding: 14px; border-bottom: 1px solid var(--rule); }
+.panel header .av { width: 30px; height: 30px; border-radius: var(--r-sm); background: var(--ink); display: grid; place-items: center; }
+.panel header .av svg { width: 18px; height: 18px; fill: var(--mint); }
+.panel .x-close { margin-left: auto; width: 30px; height: 30px; border-radius: var(--r-sm); border: 1px solid var(--rule); background: var(--bg-control); cursor: pointer; }
+.log { flex: 1; min-height: 0; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 10px; font-size: 14px; line-height: 21px; }
+.msg { max-width: 88%; padding: 10px 12px; border-radius: var(--r-md); }
+.msg.bot { align-self: flex-start; background: var(--bg-control); border: 1px solid var(--rule); border-top-left-radius: var(--r-xs); }
+.msg.me { align-self: flex-end; background: var(--bg-hover); border: 1px solid var(--rule-strong); border-top-right-radius: var(--r-xs); }
+.panel .sug { display: flex; flex-wrap: wrap; gap: 6px; padding: 0 14px 12px; }
+.panel .sug button { background: var(--bg-control); border: 1px solid var(--rule); border-radius: var(--r-sm); padding: 6px 10px; font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; }
+.panel .sug button:hover { border-color: var(--rule-strong); }
+.panel .foot { padding: 0 14px 12px; font-size: 11px; color: var(--fg-3); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001s !important; animation-iteration-count: 1 !important; transition-duration: 0.001s !important; scroll-behavior: auto !important; }
+  .ticker .row { animation: none; }
+}
+</style>
+</head>
+<body>
+<div class="tracks" aria-hidden="true"><div class="wrap"><div class="inner"><i></i><i></i><i></i></div></div></div>
+
+<header class="bar wrap">
+  <div class="inner">
+    <a class="logo" href="#top" aria-label="Grid and Glint, home"><svg class="mk" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg><svg viewBox="0 0 662.061 80" aria-hidden="true"><path d="M606.676 1.53845H662.061V15.3846H641.621V78.4615H627.116V15.3846H606.676V1.53845Z"/><path d="M577.52 71.2088H579.498V1.53845H594.004V78.4615H565.652L556.641 8.79121H554.663V78.4615H540.158V1.53845H568.509L577.52 71.2088Z"/><path d="M474.08 1.53845H525.509V15.3846H507.048V64.6154H525.509V78.4615H474.08V64.6154H492.542V15.3846H474.08V1.53845Z"/><path d="M407.893 1.53845H422.398V64.6154H457.343V78.4615H407.893V1.53845Z"/><path d="M360.167 39.5604H393.134V78.4615H379.948V69.8901H377.97C377.09 72.7473 375.405 75.1648 372.915 77.1429C370.424 79.0476 366.688 80 361.706 80C358.189 80 354.893 79.3407 351.816 78.022C348.739 76.7033 346.065 74.7619 343.794 72.1978C341.523 69.5604 339.728 66.337 338.409 62.5275C337.09 58.6447 336.431 54.1392 336.431 49.011V30.989C336.431 26.0073 337.127 21.6117 338.519 17.8022C339.984 13.9194 341.962 10.6593 344.453 8.02198C347.017 5.38462 350.058 3.40659 353.574 2.08791C357.09 0.69597 360.973 0 365.222 0C369.618 0 373.537 0.732602 376.981 2.19781C380.424 3.58975 383.354 5.56777 385.772 8.13187C388.189 10.6227 390.021 13.5897 391.266 17.033C392.512 20.4029 393.134 24.0293 393.134 27.9121V29.2308H378.629V27.9121C378.629 23.2967 377.42 19.8169 375.003 17.4725C372.658 15.0549 369.325 13.8462 365.003 13.8462C360.9 13.8462 357.53 15.2381 354.893 18.022C352.255 20.7326 350.937 25.4212 350.937 32.0879V48.3516C350.937 60.2198 355.772 66.1539 365.442 66.1539C369.764 66.1539 373.025 65.0183 375.222 62.7473C377.493 60.4029 378.629 57.2894 378.629 53.4066H360.167V39.5604Z"/><path d="M305.299 46.1538H293.101C290.024 46.1538 287.533 46.9231 285.629 48.4615C283.724 50 282.771 52.3077 282.771 55.3846V56.044C282.771 59.1209 283.724 61.4286 285.629 62.967C287.533 64.5055 290.024 65.2747 293.101 65.2747H305.299V46.1538ZM319.145 23.956V32.967H329.255V46.8132H319.145V78.4615H291.672C288.009 78.4615 284.749 77.9487 281.892 76.9231C279.035 75.8974 276.654 74.5055 274.749 72.7473C272.845 70.9157 271.379 68.7912 270.354 66.3736C269.401 63.8828 268.925 61.2088 268.925 58.3516V57.033C268.925 52.6374 270.134 49.1209 272.552 46.4835C275.042 43.7729 278.156 41.9048 281.892 40.8791V38.9011C278.156 37.8755 275.042 36.044 272.552 33.4066C270.134 30.7692 268.925 27.2527 268.925 22.8571V21.5385C268.925 18.6813 269.401 16.0439 270.354 13.6264C271.379 11.1355 272.845 9.01099 274.749 7.25275C276.654 5.4945 279.035 4.10256 281.892 3.07692C284.749 2.05128 288.009 1.53845 291.672 1.53845H303.651V14.7253H293.101C290.024 14.7253 287.533 15.4579 285.629 16.9231C283.724 18.315 282.771 20.5128 282.771 23.5165V24.1758C282.771 27.2527 283.724 29.4872 285.629 30.8791C287.533 32.2711 290.024 32.967 293.101 32.967H305.299V23.956H319.145Z"/><path d="M202.078 1.53845H229.99C239.514 1.53845 246.584 3.77289 251.199 8.24175C255.815 12.6374 258.122 19.4872 258.122 28.7912V51.2088C258.122 60.5128 255.815 67.3993 251.199 71.8681C246.584 76.2637 239.514 78.4615 229.99 78.4615H202.078V64.5055H209.331V15.3846H202.078V1.53845ZM229.99 64.6154C235.045 64.6154 238.562 63.4432 240.54 61.0989C242.591 58.6813 243.617 54.9451 243.617 49.8901V28.7912C243.617 24.3956 242.591 21.0623 240.54 18.7912C238.562 16.5201 235.045 15.3846 229.99 15.3846H223.837V64.6154H229.99Z"/><path d="M137.649 1.53845H189.078V15.3846H170.616V64.6154H189.078V78.4615H137.649V64.6154H156.111V15.3846H137.649V1.53845Z"/><path d="M122.12 78.4615H107.615V55.3846C107.615 53.6264 107.139 52.1978 106.186 51.0989C105.307 50 103.805 49.4505 101.681 49.4505H84.9776V78.4615H70.4721V1.53845H99.9227C103.879 1.53845 107.359 2.0879 110.362 3.1868C113.366 4.28571 115.857 5.82417 117.835 7.8022C119.886 9.70695 121.425 11.9414 122.45 14.5055C123.549 17.0696 124.099 19.8168 124.099 22.7472V25.3846C124.099 28.5348 123.256 31.5018 121.571 34.2857C119.886 36.9963 117.285 39.0842 113.769 40.5494V42.5275C116.333 42.8205 118.348 43.8095 119.813 45.4945C121.351 47.1795 122.12 49.304 122.12 51.8681V78.4615ZM84.9776 35.6044H98.8238C102.34 35.6044 105.014 34.7985 106.846 33.1868C108.677 31.5018 109.593 29.1575 109.593 26.1538V24.8352C109.593 22.2711 108.677 20.0733 106.846 18.2418C105.014 16.337 102.34 15.3846 98.8238 15.3846H84.9776V35.6044Z"/><path d="M23.7363 39.5604H56.7033V78.4615H43.5165V69.8901H41.5385C40.6593 72.7473 38.9744 75.1648 36.4835 77.1429C33.9927 79.0476 30.2564 80 25.2747 80C21.7582 80 18.4615 79.3407 15.3846 78.022C12.3077 76.7033 9.6337 74.7619 7.36264 72.1978C5.09157 69.5604 3.2967 66.337 1.97802 62.5275C0.659341 58.6447 0 54.1392 0 49.011V30.989C0 26.0073 0.695971 21.6117 2.08791 17.8022C3.55311 13.9194 5.53113 10.6593 8.02198 8.02198C10.5861 5.38462 13.6264 3.40659 17.1429 2.08791C20.6593 0.69597 24.5421 0 28.7912 0C33.1868 0 37.1062 0.732602 40.5494 2.19781C43.9927 3.58975 46.9231 5.56777 49.3407 8.13187C51.7582 10.6227 53.5897 13.5897 54.8352 17.033C56.0806 20.4029 56.7033 24.0293 56.7033 27.9121V29.2308H42.1978V27.9121C42.1978 23.2967 40.989 19.8169 38.5714 17.4725C36.2271 15.0549 32.8938 13.8462 28.5714 13.8462C24.4689 13.8462 21.0989 15.2381 18.4615 18.022C15.8242 20.7326 14.5055 25.4212 14.5055 32.0879V48.3516C14.5055 60.2198 19.3407 66.1539 29.011 66.1539C33.3333 66.1539 36.5934 65.0183 38.7912 62.7473C41.0623 60.4029 42.1978 57.2894 42.1978 53.4066H23.7363V39.5604Z"/></svg></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#services" class="scr wide">SERVICES</a>
+      <a href="#ai" class="scr">AI</a>
+      <a href="#work" class="scr">WORK</a>
+      <a href="#about" class="scr wide">ABOUT</a>
+      <a href="#faq" class="scr wide">FAQ</a>
+      <a href="#contact" class="scr">CONTACT</a>
+      <button type="button" id="theme" class="scr wide" aria-label="Switch between dark and light theme">THEME<span class="k">[A]</span></button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero wrap" aria-labelledby="h1">
+    <div class="xs"><span class="x"></span><span class="x"></span><span class="x"></span></div>
+    <div class="inner">
+      <div class="top">
+        <p class="role">Brand, Web &amp;<br>AI Studio</p>
+        <p>Structure you can see.<br>One point of light.</p>
+        <p class="span2"><strong>Grid and Glint is a brand, web and AI studio.</strong> We design brand identities, build Webflow websites and integrate AI chatbots and workflows for growing companies that need to stand out and move faster.</p>
+      </div>
+      <div class="stage" id="stage" aria-hidden="true">
+        <div class="fallback" id="stage-fallback"><svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></div>
+        <canvas id="mark-canvas"></canvas>
+        
+      </div>
+      <h1 class="disp headline" id="h1"><span class="ln">Brands, websites</span> <span class="ln">&amp; AI that</span> <span class="ln"><em>steal attention</em></span></h1>
+      <div class="foot">
+        <p>One studio for the identity, the website and the AI behind it. You get a brand people remember, a site your team can update, and an assistant that answers customers in your voice.</p>
+        <div class="actions">
+          <a class="btn mag" href="#contact">Start a project <span class="arr">→</span></a>
+          <a class="btn ghost" href="#work">See the work</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ticker" aria-label="What we make">
+    <div class="row" id="ticker"><span>Brand identity<svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></span><span>Webflow websites<svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></span><span>AI assistants<svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></span><span>AI workflows<svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></span><span>Design systems<svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></span><span>3D &amp; shaders<svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></span><span>Glass &amp; refraction<svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></span><span>Art direction<svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></span><span>Motion<svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></span><span aria-hidden="true">Brand identity<svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></span><span aria-hidden="true">Webflow websites<svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></span><span aria-hidden="true">AI assistants<svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></span><span aria-hidden="true">AI workflows<svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></span><span aria-hidden="true">Design systems<svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></span><span aria-hidden="true">3D &amp; shaders<svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></span><span aria-hidden="true">Glass &amp; refraction<svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></span><span aria-hidden="true">Art direction<svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></span><span aria-hidden="true">Motion<svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></span></div>
+  </div>
+
+  <section class="proof wrap" aria-label="Clients and credentials">
+    <div class="inner">
+      <span class="lbl">TRUSTED BY</span>
+      <ul class="logos">
+        <li><a href="https://www.umbrelladentalclinic.com/" rel="noopener" class="clogo"><img src="assets/umbrella-dental-clinic.svg" width="62" height="56" alt="Umbrella Dental Clinic"></a></li>
+        <li><span class="fill">MORE CLIENT LOGOS</span></li>
+      </ul>
+      <span class="lbl r">EST. 2025 · QUEZON CITY, PHILIPPINES · CLIENTS WORLDWIDE</span>
+    </div>
+  </section>
+
+  <section class="sec manifesto wrap" aria-label="Why Grid and Glint">
+    <div class="xs"><span class="x"></span><span class="x"></span><span class="x"></span></div>
+    <div class="inner">
+      <div class="lbl a" style="margin-bottom:28px">WHY GRID AND GLINT</div>
+      <p id="manifesto">Most companies hire one agency for the brand, another for the website and a third for AI. Then they spend a year making the three agree. We do all three as one system, so your brand, your site and your assistant say the same thing, and customers remember <span class="gw">you</span>.</p>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="services" aria-labelledby="h-svc">
+    <div class="xs"><span class="x"></span><span class="x"></span><span class="x"></span></div>
+    <div class="inner">
+      <div class="sec-head"><span class="lbl a">SERVICES</span><h2 class="disp" id="h-svc">Brand, web and AI services</h2></div>
+      <div class="svc">
+        <article class="rv">
+          <h3>Brand identity</h3>
+          <p>A logo, type and colour system your team can use without asking us, with guidelines in Figma.</p>
+          <ul><li><span>Logomark &amp; wordmark</span><span>✓</span></li><li><span>Type &amp; colour system</span><span>✓</span></li><li><span>Guidelines in Figma</span><span>✓</span></li></ul>
+          <div class="t"><span class="lbl"><span class="dot"></span>TAKING PROJECTS</span><span class="data">4–6 WEEKS</span></div>
+          <a class="more" href="/services/brand-identity">Brand identity service <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="rv">
+          <h3>Webflow websites</h3>
+          <p>Websites designed and built in Webflow, fast, accessible and set up for search, with a CMS your team updates themselves.</p>
+          <ul><li><span>Design &amp; Webflow build</span><span>✓</span></li><li><span>SEO &amp; schema setup</span><span>✓</span></li><li><span>CMS &amp; team training</span><span>✓</span></li></ul>
+          <div class="t"><span class="lbl"><span class="dot"></span>TAKING PROJECTS</span><span class="data">6–10 WEEKS</span></div>
+          <a class="more" href="/services/webflow-websites">Webflow websites service <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="rv">
+          <h3>3D &amp; motion</h3>
+          <p>Interactive 3D, product visuals and motion that make a launch memorable and still load fast on a phone.</p>
+          <ul><li><span>3D hero visuals</span><span>✓</span></li><li><span>Product &amp; logo animation</span><span>✓</span></li><li><span>Launch campaigns</span><span>✓</span></li></ul>
+          <div class="t"><span class="lbl"><span class="dot"></span>TAKING PROJECTS</span><span class="data">2–4 WEEKS</span></div>
+          <a class="more" href="/services/3d-motion">3D and motion service <span aria-hidden="true">→</span></a>
+        </article>
+        <article class="rv">
+          <h3>AI integration</h3>
+          <p>Assistants and automations wired into your site and your tools, written in your brand's voice, with a person in the loop.</p>
+          <ul><li><span>Website chatbots &amp; assistants</span><span>✓</span></li><li><span>Lead &amp; brief intake</span><span>✓</span></li><li><span>Workflow automation</span><span>✓</span></li></ul>
+          <div class="t"><span class="lbl"><span class="dot"></span>TAKING PROJECTS</span><span class="data">3–8 WEEKS</span></div>
+          <a class="more" href="/services/ai-integration">AI integration service <span aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="sec wrap" id="ai" aria-labelledby="h-ai">
+    <div class="xs"><span class="x"></span><span class="x"></span><span class="x"></span></div>
+    <div class="inner">
+      <div class="sec-head"><span class="lbl a">AI INTEGRATION</span><h2 class="disp" id="h-ai">AI integration that sounds like you</h2></div>
+      <div class="ai-top">
+        <span class="lbl">WHAT WE BUILD</span>
+        <p>We design and build chatbots, assistants and automated workflows that live inside your website and the tools your team already uses.</p>
+        <p>They answer in your brand's voice, hand the hard questions to a person, and turn conversations into work your team can act on.</p>
+      </div>
+
+      <div class="flow rv" aria-label="Example workflow: from a visitor's question to a reply">
+        <div class="head"><span class="lbl a">EXAMPLE WORKFLOW · LEAD INTAKE</span><span class="lbl">FROM QUESTION TO REPLY</span></div>
+        <div class="steps"><span class="pulse" aria-hidden="true"></span><ol>
+          <li><b>A visitor asks</b><span>On your site, in the chat, at 11pm on a Sunday.</span></li>
+          <li><b>The assistant answers</b><span>From your own pages, services and pricing rules, in your voice.</span></li>
+          <li><b>A brief is drafted</b><span>Scope, timeline and budget, pulled from the conversation.</span></li>
+          <li><b>Your tools are updated</b><span>The lead lands in your CRM, inbox or Notion with the brief attached.</span></li>
+          <li class="human"><b>Your team replies</b><span>A person reviews the brief and sends the answer that matters.</span></li>
+        </ol></div>
+      </div>
+
+      <div class="uses">
+        <article class="rv"><span class="lbl a">CHATBOTS</span><h3>Website assistants</h3><p>An on-brand chat that answers questions about your services, work and process, and knows when to hand over.</p><span class="ex">“Do you work with clinics?”</span></article>
+        <article class="rv"><span class="lbl a">INTAKE</span><h3>Lead &amp; brief qualification</h3><p>Conversations become structured briefs, scored against your criteria and routed to the right person.</p><span class="ex">brief → CRM → owner</span></article>
+        <article class="rv"><span class="lbl a">CONTENT</span><h3>CMS workflows</h3><p>Draft case studies, journal posts and translations straight into your Webflow CMS, held for review before anything publishes.</p><span class="ex">draft → review → publish</span></article>
+        <article class="rv"><span class="lbl a">INTERNAL</span><h3>Team knowledge assistants</h3><p>One place your team can ask about your guidelines, past projects and processes, answered from your own documents.</p><span class="ex">“What’s our logo clear space?”</span></article>
+      </div>
+
+      <div class="ai-bottom">
+        <ol class="ai-steps" aria-label="How an AI project runs">
+          <li><span class="n">01</span><span><b>Map</b><span>We sit with your team and find the questions and handoffs that eat the most time.</span></span><span class="data">WEEK 1</span></li>
+          <li><span class="n">02</span><span><b>Prototype</b><span>A working assistant or workflow on your real content, tested with your team, not a slide.</span></span><span class="data">WEEKS 2–3</span></li>
+          <li><span class="n">03</span><span><b>Integrate</b><span>Connected to your site, CRM and CMS, designed to match your brand down to the chat bubble.</span></span><span class="data">WEEKS 3–6</span></li>
+          <li><span class="n">04</span><span><b>Measure</b><span>We track what it answers, what it hands over and what it gets wrong, and tune it monthly.</span></span><span class="data">ONGOING</span></li>
+        </ol>
+        <div class="guard">
+          <span class="lbl">HOW WE KEEP IT SAFE</span>
+          <ul>
+            <li>A person approves anything that goes to a customer or gets published.</li>
+            <li>Your data stays in your accounts. We set up the integrations; you own them.</li>
+            <li>Every assistant says it is an assistant and shows how to reach a person.</li>
+            <li>We test answers against your real questions before launch, and keep testing after.</li>
+          </ul>
+          <a class="btn mag" href="#contact">Plan an AI project <span class="arr">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="work" aria-labelledby="h-work">
+    <div class="xs"><span class="x"></span><span class="x"></span><span class="x"></span></div>
+    <div class="inner">
+      <div class="sec-head"><span class="lbl a">CASE STUDIES</span><h2 class="disp" id="h-work">Selected work</h2></div>
+      <div class="work">
+        <a class="tile rv" href="/work/northbank">
+          <div class="plate p-forest"><svg class="art" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg><i class="scan"></i><span class="ratio">4:3</span></div>
+          <div class="meta"><h3 class="name">Northbank</h3><span class="data">2026</span><span class="lbl">Identity for a river-cleanup charity</span><span class="tag hot">NEW</span><span class="res">Result: <span class="fill">ADD A MEASURED OUTCOME</span></span></div>
+        </a>
+        <a class="tile rv" href="/work/field-notes">
+          <div class="plate p-coral"><svg class="art" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg><i class="scan"></i><span class="ratio">4:3</span></div>
+          <div class="meta"><h3 class="name">Field Notes</h3><span class="data">2026</span><span class="lbl">Webflow site for a field-research lab</span><span class="tag">WEB</span><span class="res">Result: <span class="fill">ADD A MEASURED OUTCOME</span></span></div>
+        </a>
+        <a class="tile rv" href="/work/umbrella-dental-clinic">
+          <div class="plate p-lime"><svg class="art" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg><i class="scan"></i><span class="ratio">4:3</span></div>
+          <div class="meta"><h3 class="name">Umbrella Dental Clinic</h3><span class="data">2025</span><span class="lbl">Webflow website for a dental clinic in Quezon City</span><span class="tag">WEB</span><span class="res">Result: <span class="fill">ADD A MEASURED OUTCOME</span></span></div>
+        </a>
+        <a class="tile rv" href="/work/harbour-desk">
+          <div class="plate p-ink"><svg class="art" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg><i class="scan"></i><span class="ratio">4:3</span></div>
+          <div class="meta"><h3 class="name">Harbour Desk</h3><span class="data">2025</span><span class="lbl">AI assistant and lead intake for a services firm</span><span class="tag">AI</span><span class="res">Result: <span class="fill">ADD A MEASURED OUTCOME</span></span></div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="clients" aria-labelledby="h-quotes">
+    <div class="xs"><span class="x"></span><span class="x"></span><span class="x"></span></div>
+    <div class="inner">
+      <div class="sec-head"><span class="lbl a">CLIENTS</span><h2 class="disp" id="h-quotes">What clients say</h2></div>
+      <div class="quotes">
+        <figure class="rv"><blockquote><span class="fill">ADD A REAL CLIENT QUOTE, WITH PERMISSION</span></blockquote><figcaption><span class="fill">NAME</span> · <span class="fill">ROLE, COMPANY</span></figcaption></figure>
+        <figure class="rv"><blockquote><span class="fill">ADD A REAL CLIENT QUOTE, WITH PERMISSION</span></blockquote><figcaption><span class="fill">NAME</span> · <span class="fill">ROLE, COMPANY</span></figcaption></figure>
+        <figure class="rv"><blockquote><span class="fill">ADD A REAL CLIENT QUOTE, WITH PERMISSION</span></blockquote><figcaption><span class="fill">NAME</span> · <span class="fill">ROLE, COMPANY</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="process" aria-labelledby="h-proc">
+    <div class="xs"><span class="x"></span><span class="x"></span><span class="x"></span></div>
+    <div class="inner">
+      <div class="sec-head"><span class="lbl a">PROCESS</span><h2 class="disp" id="h-proc">How a project runs</h2></div>
+      <div class="proc" id="proc">
+        <span class="line"><b></b></span>
+        <ol>
+          <li><div class="n">01</div><h3>Audit</h3><p>We read your market, your competitors and your current site, and agree what the brand has to do.</p><div class="wk data">WEEK 1</div></li>
+          <li><div class="n">02</div><h3>Strategy &amp; system</h3><p>Positioning, messaging and the visual system, agreed with you in writing before we design pages.</p><div class="wk data">WEEKS 2–3</div></li>
+          <li><div class="n">03</div><h3>Design</h3><p>Identity, website pages and, where it fits, the AI assistant, reviewed with you every week.</p><div class="wk data">WEEKS 4–5</div></li>
+          <li><div class="n">04</div><h3>Build &amp; launch</h3><p>Webflow build, SEO setup, speed and accessibility checks, launch, and training so your team can run it.</p><div class="wk data">WEEKS 6–10</div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="sec wrap" id="about" aria-labelledby="h-about">
+    <div class="xs"><span class="x"></span><span class="x"></span><span class="x"></span></div>
+    <div class="inner">
+      <div class="sec-head"><span class="lbl a">ABOUT</span><h2 class="disp" id="h-about">Who you will work with</h2></div>
+      <div class="team">
+        <article class="person rv"><div class="photo"><span class="lbl">PHOTO</span></div><h3><span class="fill">FOUNDER NAME</span></h3><p class="role2">Founder, brand &amp; creative direction</p><p><span class="fill">YEARS OF EXPERIENCE, PAST STUDIOS OR CLIENTS, ONE CREDENTIAL</span></p><a class="more" href="#"><span class="fill">LINKEDIN URL</span></a></article>
+        <article class="person rv"><div class="photo"><span class="lbl">PHOTO</span></div><h3><span class="fill">NAME</span></h3><p class="role2">Lead developer, Webflow &amp; WebGL</p><p><span class="fill">YEARS OF EXPERIENCE, CERTIFICATIONS, ONE CREDENTIAL</span></p><a class="more" href="#"><span class="fill">LINKEDIN URL</span></a></article>
+        <article class="person rv"><div class="photo"><span class="lbl">PHOTO</span></div><h3><span class="fill">NAME</span></h3><p class="role2">AI integration lead</p><p><span class="fill">YEARS OF EXPERIENCE, PLATFORMS SHIPPED ON, ONE CREDENTIAL</span></p><a class="more" href="#"><span class="fill">LINKEDIN URL</span></a></article>
+      </div>
+      <div class="facts">
+        <div><span class="lbl">FOUNDED</span><span>2025</span></div>
+        <div><span class="lbl">BASED IN</span><span>Quezon City, Philippines</span></div>
+        <div><span class="lbl">WORKS WITH</span><span>Clients worldwide, remotely</span></div>
+        <div><span class="lbl">REPLIES WITHIN</span><span>Two working days</span></div>
+      </div>
+      <div class="prin">
+        <div class="rv"><h3>One team, start to finish.</h3><p>The people on the first call are the people who design and build your project.</p></div>
+        <div class="rv"><h3>Scope in writing.</h3><p>A fixed scope, price and timeline before we start, and a change note for anything new.</p></div>
+        <div class="rv"><h3>You own everything.</h3><p>Files, Webflow site, domains, AI accounts and data are yours from day one.</p></div>
+        <div class="rv"><h3>People review AI.</h3><p>Anything an assistant sends to your customers or publishes is approved by a person.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="faq" aria-labelledby="h-faq">
+    <div class="xs"><span class="x"></span><span class="x"></span><span class="x"></span></div>
+    <div class="inner">
+      <div class="sec-head"><span class="lbl a">FAQ</span><h2 class="disp" id="h-faq">Questions clients ask</h2></div>
+      <div class="faq"><details open><summary><h3>What does Grid and Glint do?</h3></summary><p class="ans">Grid and Glint is a brand, web and AI studio. We design brand identities, design and build Webflow websites, create 3D and motion for the web, and integrate AI chatbots and workflows into the tools companies already use.</p></details><details open><summary><h3>How long does a website project take?</h3></summary><p class="ans">Most marketing websites take 6 to 10 weeks from kickoff to launch. A brand identity takes 4 to 6 weeks. A combined identity and website project usually runs about 12 weeks.</p></details><details open><summary><h3>How much does a project cost?</h3></summary><p class="ans">Every project is priced on a fixed written scope. Send a short brief and we reply within two working days with a price range, a timeline and what is included.</p></details><details open><summary><h3>Why do you build websites in Webflow?</h3></summary><p class="ans">Webflow gives your team a visual CMS to update pages without a developer, produces fast, clean pages that search engines read well, and hosts securely. We also build custom code when a project needs it.</p></details><details open><summary><h3>Are your websites optimised for search and AI answers?</h3></summary><p class="ans">Yes. Every site launches with a clear heading structure, page titles and descriptions, structured data, fast load times, accessible markup and content written to answer real customer questions directly.</p></details><details open><summary><h3>What kind of AI integration do you build?</h3></summary><p class="ans">We build website chatbots and assistants, lead and brief intake, content workflows that draft into your Webflow CMS for review, and internal knowledge assistants that answer from your own documents.</p></details><details open><summary><h3>Is an AI chatbot safe for my customers and my data?</h3></summary><p class="ans">We set up assistants to say they are assistants, to hand difficult questions to a person, and to answer only from content you approve. Your data stays in your own accounts, and a person reviews anything sent to customers or published.</p></details><details open><summary><h3>Do we own the work when the project ends?</h3></summary><p class="ans">Yes. You own the design files, the Webflow site, your domain, your AI accounts and all data from day one. We hand over everything with documentation and training.</p></details></div>
+    </div>
+  </section>
+
+  <section class="sec wrap" id="journal" aria-labelledby="h-jr">
+    <div class="xs"><span class="x"></span><span class="x"></span><span class="x"></span></div>
+    <div class="inner">
+      <div class="sec-head"><span class="lbl a">JOURNAL</span><h2 class="disp" id="h-jr">From the journal</h2></div>
+      <div class="posts">
+        <a href="/journal/ai-chatbot-brief"><span class="data">2026-10-02</span><span class="tt"><h3 class="tth">How to brief an AI chatbot for your website</h3><span class="ex">The five documents your assistant needs before it can answer customers well.</span></span><span class="lbl r">BY <span class="fill">AUTHOR</span> · 6 MIN</span></a>
+        <a href="/journal/webflow-vs-custom-code"><span class="data">2026-09-18</span><span class="tt"><h3 class="tth">Webflow or custom code: which fits your company</h3><span class="ex">A plain comparison of cost, speed, editing and SEO for marketing websites.</span></span><span class="lbl r">BY <span class="fill">AUTHOR</span> · 4 MIN</span></a>
+        <a href="/journal/brand-identity-project"><span class="data">2026-09-03</span><span class="tt"><h3 class="tth">What a brand identity project includes</h3><span class="ex">Logo, type, colour, guidelines: what you get, what it costs to skip each one.</span></span><span class="lbl r">BY <span class="fill">AUTHOR</span> · 8 MIN</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec cta wrap" id="contact" aria-labelledby="h-cta">
+    <div class="xs"><span class="x"></span><span class="x"></span><span class="x"></span></div>
+    <div class="inner">
+      <span class="lbl a">CONTACT</span>
+      <h2 class="disp" id="h-cta" style="margin-top:20px">Let&#39;s build something that <em style="font-style:normal;color:var(--accent-text)">steals attention</em></h2>
+      <div class="cta-grid">
+        <div class="mailbox">
+          <span class="lbl">WRITE TO US</span>
+          <div class="mail"><code id="mail">info@gridandglint.com</code><button class="copy" type="button" id="copy">COPY</button></div>
+          <p style="color:var(--fg-2);max-width:40ch">We reply within two working days. Tell us what you are launching and when, and we will tell you plainly whether we are the right studio.</p>
+          <address class="nap"><strong>Grid and Glint</strong><br>Quezon City, Metro Manila, Philippines<br>Phone: <a href="tel:+639186204713" class="u-tel">+63 918 620 4713</a><br>Email: info@gridandglint.com</address>
+        </div>
+        <form class="brief" id="brief" novalidate>
+          <span class="lbl a">QUICK BRIEF</span>
+          <div class="field"><label class="lbl" for="b-name">YOUR NAME</label><input id="b-name" name="name" autocomplete="name" placeholder="Ada Lovelace"></div>
+          <div class="field"><label class="lbl" for="b-mail">EMAIL</label><input id="b-mail" name="email" type="email" autocomplete="email" placeholder="ada@company.com"></div>
+          <div class="field"><span class="lbl" id="b-need">WHAT DO YOU NEED?</span>
+            <div class="chips" role="group" aria-labelledby="b-need"><button type="button" aria-pressed="true">Identity</button><button type="button" aria-pressed="true">Website</button><button type="button" aria-pressed="false">3D &amp; motion</button><button type="button" aria-pressed="false">AI integration</button><button type="button" aria-pressed="false">Not sure yet</button></div>
+          </div>
+          <button class="btn mag" type="submit" style="align-self:flex-start">Send brief <span class="arr">→</span></button>
+          <p class="formnote" id="formnote" role="status"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="foot-links wrap"><div class="inner">
+    <nav aria-label="Services"><span class="lbl">SERVICES</span><a href="/services/brand-identity">Brand identity</a><a href="/services/webflow-websites">Webflow websites</a><a href="/services/3d-motion">3D &amp; motion</a><a href="/services/ai-integration">AI integration</a></nav>
+    <nav aria-label="Studio"><span class="lbl">STUDIO</span><a href="/work">Work</a><a href="/about">About</a><a href="/journal">Journal</a><a href="/contact">Contact</a></nav>
+    <nav aria-label="Legal"><span class="lbl">LEGAL</span><a href="/privacy">Privacy policy</a><a href="/terms">Terms</a><a href="/ai-policy">How we use AI</a><a href="/imprint">Imprint</a></nav>
+    <div><span class="lbl">CONTACT</span><span>info@gridandglint.com</span><span>+63 918 620 4713</span><span>Quezon City, Philippines</span></div>
+  </div></div>
+  <div class="rail wrap"><div class="inner"><span class="data" id="clock">GMT+0 00:00</span><span class="data" id="xy">0000 X 0000 Y</span><span class="lbl">BRAND, WEB &amp; AI STUDIO</span></div></div>
+  <div class="legal wrap"><div class="inner"><span>© 2026 Grid and Glint</span><span>Some project names, quotes and team details on this page are placeholders</span></div></div>
+</footer>
+
+<div class="cur" id="cur" aria-hidden="true"><span id="cur-xy">0000 · 0000</span></div>
+
+<div class="ask" id="ask">
+  <div class="panel" id="panel" role="dialog" aria-label="Ask Glint" hidden>
+    <header><span class="av"><svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></span><span><strong>Ask Glint</strong><br><span class="lbl">DEMO · SCRIPTED REPLIES</span></span><button class="x-close" id="close" type="button" aria-label="Close">×</button></header>
+    <div class="log" id="log" aria-live="polite"><div class="msg bot">Hi. I can tell you about our services, timelines and AI work. Pick a question below.</div></div>
+    <div class="sug" id="sug"><button type="button">Can you build us a chatbot?</button><button type="button">How long does a website take?</button><button type="button">Do you build in Webflow?</button><button type="button">What does it cost?</button></div>
+    <div class="foot">A demo with pre-written answers. A person reads every brief.</div>
+  </div>
+  <button class="launch" id="launch" type="button" aria-expanded="false" aria-controls="panel"><svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg>ASK GLINT</button>
+</div>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var reduce = false; try { reduce = matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+  function pad(v, n) { v = Math.max(0, Math.round(v)); return ('0000' + v).slice(-(n || 4)); }
+  function css(n, d) { var v = getComputedStyle(root).getPropertyValue(n).trim(); return v || d; }
+  function hex(s, d) { var m = /^#([0-9a-f]{6})/i.exec(s || ''); if (!m) return d; var h = m[1]; return [parseInt(h.slice(0, 2), 16) / 255, parseInt(h.slice(2, 4), 16) / 255, parseInt(h.slice(4, 6), 16) / 255]; }
+  function isDark() { return dot3(hex(css('--bg', '#1a1a1a'), [0.1, 0.1, 0.1])) < 0.5; }
+  function dot3(c) { return (c[0] + c[1] + c[2]) / 3; }
+
+  /* ---- theme toggle, also on the A key ---- */
+  var themeListeners = [];
+  function flipTheme() { root.setAttribute('data-theme', isDark() ? 'light' : 'dark'); themeListeners.forEach(function (f) { f(); }); }
+  document.getElementById('theme').addEventListener('click', flipTheme);
+  addEventListener('keydown', function (e) { if ((e.key === 'a' || e.key === 'A') && !/INPUT|TEXTAREA/.test(document.activeElement.tagName) && !e.metaKey && !e.ctrlKey) flipTheme(); });
+
+  /* ---- clock and coordinates: measured, never typed in ---- */
+  var clock = document.getElementById('clock'), xy = document.getElementById('xy');
+  function tick() { var d = new Date(), off = -d.getTimezoneOffset() / 60; clock.textContent = 'GMT' + (off < 0 ? '-' : '+') + Math.abs(off).toString().replace('.5', ':30') + ' ' + pad(d.getHours(), 2) + ':' + pad(d.getMinutes(), 2) + ':' + pad(d.getSeconds(), 2); }
+  tick(); setInterval(tick, 1000);
+
+  /* ---- crosshair cursor ---- */
+  var cur = document.getElementById('cur'), curxy = document.getElementById('cur-xy');
+  var fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+  addEventListener('pointermove', function (e) {
+    xy.textContent = pad(e.clientX) + ' X ' + pad(e.clientY) + ' Y';
+    if (!fine) return;
+    cur.classList.add('live');
+    cur.style.transform = 'translate(' + e.clientX + 'px,' + e.clientY + 'px)' + (e.target.closest && e.target.closest('a,button,input') ? ' scale(1.6)' : '');
+    curxy.textContent = pad(e.clientX) + ' · ' + pad(e.clientY);
+  }, { passive: true });
+  document.addEventListener('pointerleave', function () { cur.classList.remove('live'); });
+
+  /* ---- text scramble on hover, mono-decoder style ---- */
+  var GL = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+×#';
+  document.querySelectorAll('.scr').forEach(function (el) {
+    var node = el.firstChild; if (!node || node.nodeType !== 3) return;
+    var orig = node.textContent, busy = false;
+    el.addEventListener('mouseenter', function () {
+      if (reduce || busy) return; busy = true; var f = 0;
+      (function step() {
+        node.textContent = orig.split('').map(function (c, i) { return i < f / 2 ? c : GL[(Math.random() * GL.length) | 0]; }).join('');
+        if (f++ < orig.length * 2) requestAnimationFrame(step); else { node.textContent = orig; busy = false; }
+      })();
+    });
+  });
+
+  /* ---- magnetic buttons ---- */
+  if (fine && !reduce) document.querySelectorAll('.mag').forEach(function (b) {
+    b.addEventListener('pointermove', function (e) { var r = b.getBoundingClientRect(); b.style.transform = 'translate(' + ((e.clientX - r.left - r.width / 2) * 0.18) + 'px,' + ((e.clientY - r.top - r.height / 2) * 0.28) + 'px)'; });
+    b.addEventListener('pointerleave', function () { b.style.transform = ''; });
+  });
+
+  /* ---- reveal: visible at rest, a short settle when it enters ---- */
+  if ('IntersectionObserver' in window && !reduce) {
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { rootMargin: '0px 0px -10% 0px' });
+    document.querySelectorAll('.rv').forEach(function (el, i) { el.style.animationDelay = (i % 4) * 80 + 'ms'; if (el.getBoundingClientRect().top > innerHeight) io.observe(el); });
+  }
+
+  /* ---- manifesto: words light as you read; process fills as you scroll ---- */
+  var man = document.getElementById('manifesto');
+  (function split() {
+    var out = [];
+    man.childNodes.forEach(function (n) {
+      if (n.nodeType === 3) n.textContent.split(/(\s+)/).forEach(function (w) { out.push(/^\s+$/.test(w) || !w ? document.createTextNode(w) : mk(w, false)); });
+      else out.push(mk(n.textContent, true));
+    });
+    function mk(t, g) { var s = document.createElement('span'); s.className = 'w' + (g ? ' g' : ''); s.textContent = t; return s; }
+    man.textContent = ''; out.forEach(function (n) { man.appendChild(n); });
+  })();
+  var words = man.querySelectorAll('.w');
+  var proc = document.getElementById('proc'), steps = proc.querySelectorAll('li'), bar = proc.querySelector('.line b');
+  function onScroll() {
+    var r = man.getBoundingClientRect(), p = (innerHeight * 0.85 - r.top) / (r.height + innerHeight * 0.35);
+    p = reduce ? 1 : Math.max(0, Math.min(1, p));
+    var n = Math.round(p * words.length);
+    words.forEach(function (w, i) { w.classList.toggle('on', i < n); });
+    var q = proc.getBoundingClientRect(), pp = reduce ? 1 : Math.max(0, Math.min(1, (innerHeight * 0.8 - q.top) / (q.height + innerHeight * 0.2)));
+    bar.style.setProperty('--p', pp.toFixed(3));
+    steps.forEach(function (s, i) { s.classList.toggle('on', pp >= i / steps.length + 0.02); });
+  }
+  addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); onScroll();
+
+  /* ---- copy the email ---- */
+  var copy = document.getElementById('copy'), mail = document.getElementById('mail');
+  copy.addEventListener('click', function () {
+    function sel() { var r = document.createRange(); r.selectNodeContents(mail); var s = getSelection(); s.removeAllRanges(); s.addRange(r); copy.textContent = 'SELECTED'; }
+    try { navigator.clipboard.writeText(mail.textContent).then(function () { copy.textContent = 'COPIED'; }, sel); } catch (e) { sel(); }
+    setTimeout(function () { copy.textContent = 'COPY'; }, 1800);
+  });
+
+  /* ---- quick brief: a demo form, nothing leaves the page ---- */
+  var form = document.getElementById('brief'), note = document.getElementById('formnote');
+  form.querySelectorAll('.chips button').forEach(function (b) { b.addEventListener('click', function () { b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')); }); });
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var em = document.getElementById('b-mail').value.trim();
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { note.textContent = 'Add an email address so we can reply, for example ada@company.com.'; document.getElementById('b-mail').focus(); return; }
+    var need = [].map.call(form.querySelectorAll('.chips [aria-pressed="true"]'), function (b) { return b.textContent; }).join(', ') || 'not chosen';
+    note.textContent = 'Brief ready: ' + need + '. This page is a demo, so nothing was sent. Email the address on the left to reach the studio.';
+  });
+
+  /* ---- Ask Glint: scripted demo ---- */
+  var panel = document.getElementById('panel'), launch = document.getElementById('launch'), log = document.getElementById('log');
+  var A = {
+    'Can you build us a chatbot?': 'Yes. We build assistants like this one, connected to your content and your CRM, in your brand voice, with a person reviewing what matters. Most take 3 to 8 weeks.',
+    'How long does a website take?': 'Most sites take 6 to 10 weeks: two for the system, the rest for design and build. Identity plus website runs about 12.',
+    'Do you build in Webflow?': 'Yes. We set up your design tokens as Webflow variables and build a CMS your team can edit without us.',
+    'What does it cost?': 'It depends on scope. Send a quick brief from the contact section and we will reply with a range within two working days.'
+  };
+  function setOpen(o) { panel.hidden = !o; launch.setAttribute('aria-expanded', String(o)); if (!o) launch.focus(); }
+  launch.addEventListener('click', function () { setOpen(panel.hidden); });
+  document.getElementById('close').addEventListener('click', function () { setOpen(false); });
+  document.getElementById('sug').addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    var q = b.textContent, m = document.createElement('div'); m.className = 'msg me'; m.textContent = q; log.appendChild(m);
+    setTimeout(function () { var r = document.createElement('div'); r.className = 'msg bot'; r.textContent = A[q]; log.appendChild(r); log.scrollTop = log.scrollHeight; }, reduce ? 0 : 450);
+    log.scrollTop = log.scrollHeight;
+  });
+
+  /* ======================================================================
+     WebGL shared bits. Every number in the shaders comes from the design
+     system's material tokens: ior 1.45, thickness 0.42, dispersion 0.035,
+     roughness 0.08, fresnel 3.0, dither 2px / 32 levels, grain 0.04.
+     ====================================================================== */
+  var M = { ior: 1.45, thick: 0.42, disp: 0.035, rough: 0.08, fres: 3.0, dither: 2, levels: 32, grain: 0.04 };
+  var MARK = ["M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z", "M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z", "M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z", "M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"];
+  function compile(gl, type, src) { var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s)); return s; }
+  function link(gl, vs, fs) { var p = gl.createProgram(); gl.attachShader(p, compile(gl, gl.VERTEX_SHADER, vs)); gl.attachShader(p, compile(gl, gl.FRAGMENT_SHADER, fs)); gl.linkProgram(p); if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error('link'); return p; }
+  function newTex(gl) { var t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, t); [gl.TEXTURE_MIN_FILTER, gl.TEXTURE_MAG_FILTER].forEach(function (k) { gl.texParameteri(gl.TEXTURE_2D, k, gl.LINEAR); }); [gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_T].forEach(function (k) { gl.texParameteri(gl.TEXTURE_2D, k, gl.CLAMP_TO_EDGE); }); return t; }
+  var DITHER = 'float B2(vec2 a){ a = floor(a); return fract(a.x * 0.5 + a.y * a.y * 0.75); } float B4(vec2 a){ return B2(a * 0.5) * 0.25 + B2(a); }';
+  function paintGrid(g, W, H, cx, cy) {
+    g.fillStyle = css('--bg', '#1a1a1a'); g.fillRect(0, 0, W, H);
+    g.fillStyle = css('--rule-grid', '#262626');
+    for (var x = cx % 32; x < W; x += 32) g.fillRect(Math.round(x), 0, 1, H);
+    for (var y = cy % 32; y < H; y += 32) g.fillRect(0, Math.round(y), W, 1);
+  }
+  function block(g, col, x, y, w, h) { g.fillStyle = col; g.beginPath(); if (g.roundRect) g.roundRect(x, y, w, h, 12); else g.rect(x, y, w, h); g.fill(); }
+  function visible(el, cb) { if (!('IntersectionObserver' in window)) return cb(true); new IntersectionObserver(function (es) { cb(es[0].isIntersecting); }).observe(el); }
+
+  /* ---- 1. the hero: the logomark in mint glass ---- */
+  (function hero() {
+    var stage = document.getElementById('stage'), canvas = document.getElementById('mark-canvas'), fb = document.getElementById('stage-fallback'), yawEl = null;
+    var gl; try { gl = canvas.getContext('webgl', { antialias: true, alpha: false }); } catch (e) {}
+    if (!gl) { canvas.remove(); return; }
+    var VS = 'attribute vec3 aP; attribute vec3 aN; uniform mat4 uMVP, uM; varying vec3 vN, vW, vMP, vMN; void main(){ vMP = aP; vMN = aN; vN = normalize(mat3(uM) * aN); vW = (uM * vec4(aP, 1.0)).xyz; gl_Position = uMVP * vec4(aP, 1.0); }';
+    var FS = [
+      "precision highp float;",
+      "varying vec3 vN, vW, vMP, vMN;",
+      "uniform sampler2D uS, uD; uniform vec2 uR; uniform mat4 uM;",
+      "uniform vec3 uE, uL, uBody, uShade, uSpec, uWarm, uCool;",
+      "uniform float uIor, uTh, uDp, uRo, uFr, uDi, uLv, uGr, uDpr, uDark;",
+      "float B2(vec2 a){ a = floor(a); return fract(a.x * 0.5 + a.y * a.y * 0.75); } float B4(vec2 a){ return B2(a * 0.5) * 0.25 + B2(a); }",
+      "vec3 sc(vec2 f){ return texture2D(uS, clamp(vec2(f.x, uR.y - f.y) / uR, 0.0, 1.0)).rgb; }",
+      "vec3 fr(vec2 p, float r){ return sc(p) * 0.28 + (sc(p + vec2(r, 0.0)) + sc(p - vec2(r, 0.0)) + sc(p + vec2(0.0, r)) + sc(p - vec2(0.0, r))) * 0.18; }",
+      "float dt(vec2 m){ return texture2D(uD, vec2(m.x * 0.5 + 0.5, 0.5 - m.y * 0.5)).r; }",
+      "void main(){",
+      "  float DARKV = uDark;",
+      "  vec3 V = normalize(uE - vW), L = normalize(uL), n = normalize(vN);",
+      "  float t = 0.0, cap = step(0.9, abs(vMN.z));",
+      "  if (cap > 0.5) {",
+      "    t = dt(vMP.xy); float e = 0.012;",
+      "    vec2 g = vec2(dt(vMP.xy + vec2(e, 0.0)) - dt(vMP.xy - vec2(e, 0.0)), dt(vMP.xy + vec2(0.0, e)) - dt(vMP.xy - vec2(0.0, e)));",
+      "    float k = 1.0 - t;",
+      "    vec3 nm = normalize(vec3(-normalize(g + 1e-6) * k * k * 1.6, 0.35 + t));",
+      "    nm.z *= sign(vMN.z); n = normalize(mat3(uM) * nm);",
+      "  }",
+      "  float fa = clamp(dot(n, V), 0.0, 1.0), lam = max(dot(n, L), 0.0);",
+      "  vec2 f = gl_FragCoord.xy;",
+      "  vec2 off = -n.xy * (uIor - 1.0) * uTh * 0.16 * uR.y;",
+      "  float r = mix(0.6, 7.0, uRo) * uDpr;",
+      "  vec3 c = vec3(fr(f + off * (1.0 + uDp * 9.0), r).r, fr(f + off, r).g, fr(f + off * (1.0 - uDp * 9.0), r).b);",
+      "  vec3 tint = mix(uCool * 0.86, uBody, DARKV);",
+      "  c = c * mix(vec3(1.0), tint, mix(0.62, 0.38, DARKV)) + uBody * (0.05 + 0.16 * DARKV);",
+      "  c = mix(c, c * 0.6 + uShade * 0.3, (1.0 - lam) * mix(0.6, 0.3, DARKV) * (1.0 - cap * 0.6));",
+      "  float fres = pow(1.0 - fa, uFr * 0.6);",
+      "  c = mix(mix(c, uShade, fres * 0.65), c + uCool * fres * 0.3, DARKV);",
+      "  float hh = fract(dot(n.xy, vec2(0.62, 0.78)) * 1.3 + fres * 0.8);",
+      "  vec3 band = hh < 0.5 ? mix(uWarm, vec3(0.843, 1.0, 0.341), hh * 2.0) : mix(vec3(0.843, 1.0, 0.341), uCool, hh * 2.0 - 1.0);",
+      "  c += band * fres * uDp * 14.0;",
+      "  c += uSpec * pow(max(dot(n, normalize(L + V)), 0.0), mix(380.0, 22.0, uRo)) * 1.4;",
+      "  c = mix(c, mix(uShade, uSpec, DARKV), cap * (1.0 - smoothstep(0.0, 0.07, t)) * mix(0.7, 0.4, DARKV));",
+      "  c += (fract(sin(dot(f, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) * uGr;",
+      "  gl_FragColor = vec4(clamp(floor(c * uLv + B4(f / max(uDi * uDpr, 1.0))) / uLv, 0.0, 1.0), 1.0);",
+      "}"
+    ].join('\n');
+    var QF = ['precision highp float; uniform sampler2D uS; uniform vec2 uR; uniform float uDi, uLv, uGr, uDpr;', DITHER,
+      'void main(){ vec2 f = gl_FragCoord.xy; vec3 c = texture2D(uS, vec2(f.x, uR.y - f.y) / uR).rgb; c += (fract(sin(dot(f, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) * uGr; gl_FragColor = vec4(floor(c * uLv + B4(f / max(uDi * uDpr, 1.0))) / uLv, 1.0); }'].join('\n');
+    var prog, qprog;
+    try { prog = link(gl, VS, FS); qprog = link(gl, 'attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }', QF); } catch (e) { canvas.remove(); return; }
+
+    var scene = document.createElement('canvas'), tex = newTex(gl), dpr = 1;
+    function paint() {
+      var W = canvas.width / dpr, H = canvas.height / dpr, g = scene.getContext('2d');
+      scene.width = canvas.width; scene.height = canvas.height; g.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var cx = W / 2, cy = H / 2, u = 32;
+      paintGrid(g, W, H, cx, cy);
+      block(g, '#0f3f33', cx - u * 8, cy + u * 0.5, u * 6, u * 3);
+      block(g, '#ff6f61', cx + u * 0.5, cy - u * 4.6, u * 6, u * 2);
+      block(g, '#d7ff57', cx + u * 2.2, cy - u * 0.4, u * 2, u * 2);
+      gl.bindTexture(gl.TEXTURE_2D, tex); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, scene);
+    }
+    function size() {
+      dpr = Math.min(devicePixelRatio || 1, 2);
+      var w = Math.max(1, Math.round(stage.clientWidth * dpr)), h = Math.max(1, Math.round(stage.clientHeight * dpr));
+      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; paint(); }
+      gl.viewport(0, 0, w, h);
+    }
+    themeListeners.push(function () { paint(); setColours(); });
+
+    var qb = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, qb); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+    function U(p, n) { return gl.getUniformLocation(p, n); }
+    gl.useProgram(qprog); gl.uniform1f(U(qprog, 'uDi'), M.dither); gl.uniform1f(U(qprog, 'uLv'), M.levels); gl.uniform1f(U(qprog, 'uGr'), M.grain);
+    gl.useProgram(prog);
+    [['uIor', M.ior], ['uTh', M.thick], ['uDp', M.disp], ['uRo', M.rough], ['uFr', M.fres], ['uDi', M.dither], ['uLv', M.levels], ['uGr', M.grain]].forEach(function (a) { gl.uniform1f(U(prog, a[0]), a[1]); });
+    gl.uniform3fv(U(prog, 'uBody'), [0.659, 1, 0.831]); gl.uniform3fv(U(prog, 'uSpec'), [0.89, 1, 0.945]);
+    gl.uniform3fv(U(prog, 'uWarm'), [1, 0.435, 0.38]); gl.uniform3fv(U(prog, 'uCool'), [0.463, 0.937, 0.722]);
+    gl.uniform3fv(U(prog, 'uL'), [-0.56, 0.78, 0.62]);
+    var EYE = [0, 0, 4.6]; gl.uniform3fv(U(prog, 'uE'), EYE);
+    // The outline's distance field, in model space: what gives each petal the lens's rounded slab.
+    (function () {
+      var N = 256, c = document.createElement('canvas'); c.width = c.height = N;
+      var g = c.getContext('2d'), s = N / 158.22;
+      g.setTransform(s, 0, 0, s, -49.192 * s, -49.192 * s); g.fillStyle = '#fff';
+      MARK.forEach(function (d) { g.fill(new Path2D(d), 'evenodd'); });
+      var px = g.getImageData(0, 0, N, N).data, D = new Float32Array(N * N), BIG = 1e9, i, x, y;
+      for (i = 0; i < N * N; i++) D[i] = px[i * 4 + 3] > 127 ? BIG : 0;
+      function at(x, y) { return x < 0 || y < 0 || x >= N || y >= N ? 0 : D[y * N + x]; }
+      for (y = 0; y < N; y++) for (x = 0; x < N; x++) { i = y * N + x; if (D[i]) D[i] = Math.min(D[i], at(x - 1, y) + 1, at(x, y - 1) + 1, at(x - 1, y - 1) + 1.414, at(x + 1, y - 1) + 1.414); }
+      for (y = N - 1; y >= 0; y--) for (x = N - 1; x >= 0; x--) { i = y * N + x; if (D[i]) D[i] = Math.min(D[i], at(x + 1, y) + 1, at(x, y + 1) + 1, at(x + 1, y + 1) + 1.414, at(x - 1, y + 1) + 1.414); }
+      var out = new Uint8Array(N * N), BEV = 22;
+      for (i = 0; i < N * N; i++) out[i] = Math.round(Math.min(1, D[i] / BEV) * 255);
+      var dtex = gl.createTexture(); gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, dtex);
+      gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.LUMINANCE, N, N, 0, gl.LUMINANCE, gl.UNSIGNED_BYTE, out);
+      [gl.TEXTURE_MIN_FILTER, gl.TEXTURE_MAG_FILTER].forEach(function (k) { gl.texParameteri(gl.TEXTURE_2D, k, gl.LINEAR); });
+      [gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_T].forEach(function (k) { gl.texParameteri(gl.TEXTURE_2D, k, gl.CLAMP_TO_EDGE); });
+      gl.activeTexture(gl.TEXTURE0);
+      gl.uniform1i(U(prog, 'uD'), 1);
+    })();
+
+    function setColours() { gl.useProgram(prog); gl.uniform3fv(U(prog, 'uShade'), isDark() ? [0.039, 0.18, 0.145] : [0.059, 0.247, 0.2]); gl.uniform1f(U(prog, 'uDark'), isDark() ? 1 : 0); }
+    setColours();
+
+    fetch('assets/glint-mark.json').then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(build).catch(function () { canvas.remove(); });
+
+    function build(m) {
+      var pos = m.positions, idx = m.indices, vp = [], vn = [];
+      for (var i = 0; i < idx.length; i += 3) {
+        var a = idx[i] * 3, b = idx[i + 1] * 3, c = idx[i + 2] * 3;
+        var e1 = [pos[b] - pos[a], pos[b + 1] - pos[a + 1], pos[b + 2] - pos[a + 2]], e2 = [pos[c] - pos[a], pos[c + 1] - pos[a + 1], pos[c + 2] - pos[a + 2]];
+        var nx = e1[1] * e2[2] - e1[2] * e2[1], ny = e1[2] * e2[0] - e1[0] * e2[2], nz = e1[0] * e2[1] - e1[1] * e2[0], l = Math.hypot(nx, ny, nz) || 1;
+        for (var k = 0; k < 3; k++) { var o = idx[i + k] * 3; vp.push(pos[o], pos[o + 1], pos[o + 2]); vn.push(nx / l, ny / l, nz / l); }
+      }
+      function buf(d) { var b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(d), gl.STATIC_DRAW); return b; }
+      var bP = buf(vp), bN = buf(vn), lP = gl.getAttribLocation(prog, 'aP'), lN = gl.getAttribLocation(prog, 'aN'), lQ = gl.getAttribLocation(qprog, 'p');
+      fb.style.display = 'none';
+      var target = 0, yaw = reduce ? 0.42 : 0, pitch = -0.2, t0 = performance.now(), on = true, raf = 0;
+      stage.closest('.hero').addEventListener('pointermove', function (e) { var r = stage.getBoundingClientRect(); target = ((e.clientX - r.left) / r.width - 0.5) * 1.2; });
+      function mul(a, b) { var o = []; for (var i = 0; i < 4; i++) for (var j = 0; j < 4; j++) o[i * 4 + j] = a[j] * b[i * 4] + a[4 + j] * b[i * 4 + 1] + a[8 + j] * b[i * 4 + 2] + a[12 + j] * b[i * 4 + 3]; return o; }
+      function ry(t) { var c = Math.cos(t), s = Math.sin(t); return [c, 0, -s, 0, 0, 1, 0, 0, s, 0, c, 0, 0, 0, 0, 1]; }
+      function rx(t) { var c = Math.cos(t), s = Math.sin(t); return [1, 0, 0, 0, 0, c, s, 0, 0, -s, c, 0, 0, 0, 0, 1]; }
+      function sc(s) { return [s, 0, 0, 0, 0, s, 0, 0, 0, 0, s, 0, 0, 0, 0, 1]; }
+      function persp(f, a) { var t = 1 / Math.tan(f / 2), n = 0.1, fa = 60, nf = 1 / (n - fa); return [t / a, 0, 0, 0, 0, t, 0, 0, 0, 0, (fa + n) * nf, -1, 0, 0, 2 * fa * n * nf, 0]; }
+      function draw(now) {
+        size();
+        var s = (now - t0) / 1000;
+        // intro: the mark turns in from edge-on over the first 1.4s, then sways and follows the pointer
+        var intro = reduce ? 1 : Math.min(1, s / 1.4), ease = 1 - Math.pow(1 - intro, 3);
+        if (!reduce) { yaw += ((target + Math.sin(s * 0.45) * 0.35) - yaw) * 0.05; pitch = -0.2 + Math.sin(s * 0.31) * 0.1; }
+        var y = yaw + (1 - ease) * 1.5, model = mul(mul(ry(y), rx(pitch)), sc(0.55 + 0.45 * ease));
+        var view = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, -EYE[2], 1];
+        var proj = persp(32 * Math.PI / 180, canvas.width / Math.max(1, canvas.height));
+        gl.disable(gl.DEPTH_TEST); gl.disable(gl.CULL_FACE);
+        gl.useProgram(qprog); gl.uniform2f(U(qprog, 'uR'), canvas.width, canvas.height); gl.uniform1f(U(qprog, 'uDpr'), dpr);
+        gl.bindBuffer(gl.ARRAY_BUFFER, qb); gl.enableVertexAttribArray(lQ); gl.vertexAttribPointer(lQ, 2, gl.FLOAT, false, 0, 0);
+        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT); gl.drawArrays(gl.TRIANGLES, 0, 3); gl.disableVertexAttribArray(lQ);
+        gl.enable(gl.DEPTH_TEST); gl.enable(gl.CULL_FACE);
+        gl.useProgram(prog); gl.uniform2f(U(prog, 'uR'), canvas.width, canvas.height); gl.uniform1f(U(prog, 'uDpr'), dpr);
+        gl.uniformMatrix4fv(U(prog, 'uM'), false, new Float32Array(model)); gl.uniformMatrix4fv(U(prog, 'uMVP'), false, new Float32Array(mul(proj, mul(view, model))));
+        gl.bindBuffer(gl.ARRAY_BUFFER, bP); gl.enableVertexAttribArray(lP); gl.vertexAttribPointer(lP, 3, gl.FLOAT, false, 0, 0);
+        gl.bindBuffer(gl.ARRAY_BUFFER, bN); gl.enableVertexAttribArray(lN); gl.vertexAttribPointer(lN, 3, gl.FLOAT, false, 0, 0);
+        gl.drawArrays(gl.TRIANGLES, 0, vp.length / 3);
+        gl.disableVertexAttribArray(lP); gl.disableVertexAttribArray(lN);
+        
+        if (!reduce && on) raf = requestAnimationFrame(draw);
+      }
+      visible(stage, function (v) { on = v; if (v && !reduce) { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); } });
+      raf = requestAnimationFrame(draw);
+      themeListeners.push(function () { if (reduce || !on) requestAnimationFrame(draw); });
+      if (window.ResizeObserver) new ResizeObserver(function () { if (reduce) requestAnimationFrame(draw); }).observe(stage);
+    }
+  })();
+
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+{
+  "name": "Grid and Glint",
+  "short_name": "Grid and Glint",
+  "icons": [{"src": "assets/favicon.svg", "sizes": "any", "type": "image/svg+xml"}],
+  "theme_color": "#1a1a1a",
+  "background_color": "#1a1a1a",
+  "display": "standalone"
+}
