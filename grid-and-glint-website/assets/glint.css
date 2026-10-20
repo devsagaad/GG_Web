@@ -194,7 +194,7 @@ main, header, footer { position: relative; z-index: 1; }
 @media (max-width: 760px) { .manifesto p { margin-left: 0; } }
 
 /* services */
-.svc { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.svc { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .svc article { background: var(--bg-panel); border: 1px solid var(--rule); border-radius: var(--r-md); padding: 28px; display: flex; flex-direction: column; gap: 18px; min-width: 0; transition: background-color 160ms var(--ease), border-color 160ms var(--ease); }
 .svc article:hover { background: var(--bg-hover); border-color: var(--rule-strong); }
 .svc h3 { font-family: var(--f-display); font-weight: 900; font-size: 40px; line-height: 0.9; text-transform: uppercase; }
