@@ -83,10 +83,25 @@
       <a href="#about" class="scr wide">ABOUT</a>
       <a href="#faq" class="scr wide">FAQ</a>
       <a href="#contact" class="scr">CONTACT</a>
-      <button type="button" id="theme" class="scr wide" aria-label="Switch between dark and light theme">THEME<span class="k">[A]</span></button>
+      <button type="button" id="theme" class="scr wide theme-btn" aria-label="Switch between dark and light theme">THEME<span class="k">[A]</span></button>
     </nav>
+    <button type="button" class="burger" id="burger" aria-expanded="false" aria-controls="menu" aria-label="Menu"><i></i><i></i></button>
   </div>
 </header>
+
+<nav class="menu" id="menu" aria-label="Main">
+  <div class="tracks" aria-hidden="true"><div class="wrap"><div class="inner"><i></i><i></i><i></i></div></div></div>
+  <a href="#services"><span>Services</span></a>
+  <a href="#ai"><span>AI</span></a>
+  <a href="#work"><span>Work</span></a>
+  <a href="#about"><span>About</span></a>
+  <a href="#faq"><span>FAQ</span></a>
+  <a href="#contact"><span>Contact</span></a>
+  <div class="menu-foot">
+    <a href="mailto:info@gridandglint.com">info@gridandglint.com</a>
+    <button type="button" class="theme-btn" aria-label="Switch between dark and light theme">THEME</button>
+  </div>
+</nav>
 
 <main id="top">
   <section class="hero wrap" aria-labelledby="h1">
@@ -393,8 +408,30 @@
   /* ---- theme toggle, also on the A key ---- */
   var themeListeners = [];
   function flipTheme() { root.setAttribute('data-theme', isDark() ? 'light' : 'dark'); themeListeners.forEach(function (f) { f(); }); }
-  document.getElementById('theme').addEventListener('click', flipTheme);
+  document.querySelectorAll('.theme-btn').forEach(function (b) { b.addEventListener('click', flipTheme); });
   addEventListener('keydown', function (e) { if ((e.key === 'a' || e.key === 'A') && !/INPUT|TEXTAREA/.test(document.activeElement.tagName) && !e.metaKey && !e.ctrlKey) flipTheme(); });
+
+  /* ---- menu for mobile and tablet ----
+     A button, not :target or a checkbox, because the close has to play the
+     open in reverse; both of those snap shut. The page is held still while it
+     is open so the view does not jump back to the top on close. */
+  var burger = document.getElementById('burger'), menu = document.getElementById('menu'), held = 0;
+  function setMenu(open, refocus) {
+    if (open === (burger.getAttribute('aria-expanded') === 'true')) return;
+    burger.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menu.classList.toggle('open', open);
+    root.classList.toggle('menu-open', open);
+    if (open) { held = scrollY; document.body.style.cssText = 'position:fixed;top:' + -held + 'px;left:0;right:0'; }
+    /* the read forces a reflow: until the document is tall again the browser
+       clamps the restore to the collapsed height and lands short */
+    else { document.body.style.cssText = ''; void document.body.offsetHeight; scrollTo({ top: held, behavior: 'instant' }); if (refocus) burger.focus(); }
+  }
+  burger.addEventListener('click', function () { setMenu(burger.getAttribute('aria-expanded') !== 'true', true); });
+  menu.addEventListener('click', function (e) { if (e.target.closest('a')) setMenu(false); });
+  addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false, true); });
+  var wide = matchMedia('(min-width: 1025px)');
+  function onWide(e) { if (e.matches) setMenu(false); }
+  if (wide.addEventListener) wide.addEventListener('change', onWide); else wide.addListener(onWide);
 
   /* ---- clock and coordinates: measured, never typed in ---- */
   var clock = document.getElementById('clock'), xy = document.getElementById('xy');

@@ -97,7 +97,53 @@ main, header, footer { position: relative; z-index: 1; }
 .nav a, .nav button { background: none; border: 0; padding: 4px 0; cursor: pointer; }
 .nav a:hover, .nav button:hover { color: var(--accent-text); }
 .nav .k { color: var(--fg-3); }
-@media (max-width: 760px) { .nav .wide { display: none; } }
+/* ---------- menu for mobile and tablet ----------
+   Two hairlines rather than three bars, because the whole page is drawn in 1px
+   rules. They cross into an X on open. Each item rises from behind its own
+   clip, staggered, the same move the headline makes — and it plays in reverse
+   on close, which is why this needs a button and script rather than :target. */
+.burger { display: none; position: relative; width: 44px; height: 44px; margin-right: -10px; background: none; border: 0; padding: 0; cursor: pointer; z-index: 40; }
+.burger i { position: absolute; left: 11px; right: 11px; height: 1px; background: var(--fg); transition: transform 340ms var(--ease), background-color 200ms var(--ease); }
+.burger i:nth-child(1) { top: 20px; }
+.burger i:nth-child(2) { top: 26px; }
+.burger[aria-expanded="true"] i:nth-child(1) { transform: translateY(3px) rotate(45deg); }
+.burger[aria-expanded="true"] i:nth-child(2) { transform: translateY(-3px) rotate(-45deg); }
+
+/* Under the bar, not over it: the bar is a sticky stacking context at z-index
+   20, so an overlay above it would bury its own close button. Sitting at 15
+   leaves the logo and the X in place and the panel reads as the page opening
+   downwards rather than a sheet thrown over it. */
+.menu { position: fixed; inset: 0; z-index: 15; background: var(--bg); display: flex; flex-direction: column; justify-content: center; padding: calc(var(--bar-h) + 24px) max(16px, env(safe-area-inset-left, 0px)) 40px; visibility: hidden; opacity: 0; transition: opacity 300ms var(--ease), visibility 0s linear 300ms; }
+.menu.open { visibility: visible; opacity: 1; transition: opacity 240ms var(--ease), visibility 0s; }
+.menu .tracks { z-index: 0; }
+.menu > a { position: relative; display: block; overflow: hidden; padding-block: 2px; }
+.menu > a > span { display: block; font-family: var(--f-display); font-weight: 900; font-size: clamp(38px, 10vw, 76px); line-height: 1.04; text-transform: uppercase; transform: translateY(110%); transition: transform 460ms var(--ease), color 160ms var(--ease); }
+.menu.open > a > span { transform: none; }
+.menu > a:nth-of-type(1) > span { transition-delay: 40ms; }
+.menu > a:nth-of-type(2) > span { transition-delay: 80ms; }
+.menu > a:nth-of-type(3) > span { transition-delay: 120ms; }
+.menu > a:nth-of-type(4) > span { transition-delay: 160ms; }
+.menu > a:nth-of-type(5) > span { transition-delay: 200ms; }
+.menu > a:nth-of-type(6) > span { transition-delay: 240ms; }
+.menu > a:active > span, .menu > a:hover > span { color: var(--accent-text); }
+.menu .menu-foot { position: relative; margin-top: 32px; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 20px; font-size: 14px; color: var(--fg-2); opacity: 0; transition: opacity 260ms var(--ease) 60ms; }
+.menu.open .menu-foot { opacity: 1; transition-delay: 300ms; }
+.menu .menu-foot a { text-decoration: underline; text-underline-offset: 4px; }
+.menu .menu-foot button { background: none; border: 0; padding: 0; font: inherit; color: inherit; letter-spacing: 0.06em; cursor: pointer; }
+.menu .menu-foot button:hover, .menu .menu-foot a:hover { color: var(--accent-text); }
+
+/* the chat launcher floats above the panel; it is not part of the menu */
+.menu-open .ask { opacity: 0; pointer-events: none; transition: opacity 160ms var(--ease); }
+
+@media (max-width: 1024px) {
+  .nav { display: none; }
+  .burger { display: block; }
+}
+@media (min-width: 1025px) { .menu { display: none; } }
+@media (prefers-reduced-motion: reduce) {
+  .menu, .menu.open { transition: none; }
+  .menu > a > span, .menu .menu-foot { transition: none; transform: none; opacity: 1; }
+}
 
 /* ---------- hero: one full screen, the mark behind, the headline over it ----------
    The mark used to sit in a bordered box between the intro copy and the
