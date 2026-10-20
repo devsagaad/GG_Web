@@ -39,6 +39,17 @@ build time by `tools/build-hero.py`; it is not fetched at runtime.
 `.hero` ancestor and no `.stage` rule — i.e. Webflow's conditions. Check changes
 to the hero against it.
 
+## Page contract
+
+The footer is a Webflow Component ("Site footer") and the same markup in
+`index.html`. It goes last on every page, and nothing in it is page-specific:
+every link is an absolute path, never a homepage anchor.
+
+It does rely on one thing from each page: **the top of the page must carry
+`id="top"`**, because the footer's back-to-top link targets `#top`. On the
+reference page that is `<main id="top">`; in Webflow it is the hero section.
+Any new page needs it or the link silently does nothing.
+
 ## Webflow API gotchas
 
 Learned the hard way; each one cost a failed call.
