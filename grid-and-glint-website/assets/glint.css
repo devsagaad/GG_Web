@@ -121,7 +121,11 @@ main, header, footer { position: relative; z-index: 1; }
 .hero .xs { z-index: 2; }
 
 /* the mark fills the hero rather than sitting in a box */
-.stage { position: absolute; inset: 0; z-index: 0; overflow: hidden; background: var(--bg); }
+/* No background: the canvas is transparent, so the page's grid reads through
+   the hero and the mark occludes it. The colour blocks the glass refracts live
+   only in the scene texture, which means they appear nowhere on the page
+   except seen through the glass. */
+.stage { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
 .stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .stage .fallback { position: absolute; inset: 0; display: grid; place-items: center; }
 .stage .fallback svg { width: min(300px, 40vw); height: auto; fill: var(--mint); }

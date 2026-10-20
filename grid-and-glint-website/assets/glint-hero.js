@@ -51,11 +51,12 @@
   function link(gl, vs, fs) { var p = gl.createProgram(); gl.attachShader(p, compile(gl, gl.VERTEX_SHADER, vs)); gl.attachShader(p, compile(gl, gl.FRAGMENT_SHADER, fs)); gl.linkProgram(p); if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error('link'); return p; }
   function newTex(gl) { var t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, t); [gl.TEXTURE_MIN_FILTER, gl.TEXTURE_MAG_FILTER].forEach(function (k) { gl.texParameteri(gl.TEXTURE_2D, k, gl.LINEAR); }); [gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_T].forEach(function (k) { gl.texParameteri(gl.TEXTURE_2D, k, gl.CLAMP_TO_EDGE); }); return t; }
   var DITHER = 'float B2(vec2 a){ a = floor(a); return fract(a.x * 0.5 + a.y * a.y * 0.75); } float B4(vec2 a){ return B2(a * 0.5) * 0.25 + B2(a); }';
+  // The scene the glass refracts. It is never drawn to screen — only sampled
+  // through the mark — so whatever goes here is visible nowhere else on the
+  // page. It used to carry a 32px mesh, which read as a second grid that did
+  // not line up with the page's own; the page draws the grid now.
   function paintGrid(g, W, H, cx, cy, bg, grid) {
     g.fillStyle = bg; g.fillRect(0, 0, W, H);
-    g.fillStyle = grid;
-    for (var x = cx % 32; x < W; x += 32) g.fillRect(Math.round(x), 0, 1, H);
-    for (var y = cy % 32; y < H; y += 32) g.fillRect(0, Math.round(y), W, 1);
   }
   function block(g, col, x, y, w, h) { g.fillStyle = col; g.beginPath(); if (g.roundRect) g.roundRect(x, y, w, h, 12); else g.rect(x, y, w, h); g.fill(); }
   function visible(el, cb) { if (!('IntersectionObserver' in window)) { cb(true); return null; } var o = new IntersectionObserver(function (es) { cb(es[0].isIntersecting); }); o.observe(el); return o; }
@@ -102,7 +103,9 @@
         return p ? p === PALETTE.dark : dot3(hex(css('--bg', '#1a1a1a'), [0.1, 0.1, 0.1])) < 0.5;
     }
     function emitThemeChange() { themeListeners.forEach(function (f) { f(); }); }
-    var gl; try { gl = canvas.getContext('webgl', { antialias: true, alpha: false }); } catch (e) {}
+    // Transparent, so the page's own grid and background show through and the
+    // mark occludes them, rather than the canvas painting its own backdrop.
+    var gl; try { gl = canvas.getContext('webgl', { antialias: true, alpha: true, premultipliedAlpha: false }); } catch (e) {}
     if (!gl) { canvas.remove(); return null; }
     var VS = 'attribute vec3 aP; attribute vec3 aN; uniform mat4 uMVP, uM; varying vec3 vN, vW, vMP, vMN; void main(){ vMP = aP; vMN = aN; vN = normalize(mat3(uM) * aN); vW = (uM * vec4(aP, 1.0)).xyz; gl_Position = uMVP * vec4(aP, 1.0); }';
     var FS = [
@@ -238,12 +241,24 @@
         var y = yaw + (1 - ease) * 1.5, model = mul(mul(ry(y), rx(pitch)), sc((0.55 + 0.45 * ease) * fit));
         var view = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, -EYE[2], 1];
         var proj = persp(32 * Math.PI / 180, aspect);
-        gl.disable(gl.DEPTH_TEST); gl.disable(gl.CULL_FACE);
-        gl.useProgram(qprog); gl.uniform2f(U(qprog, 'uR'), canvas.width, canvas.height); gl.uniform1f(U(qprog, 'uDpr'), dpr);
-        gl.bindBuffer(gl.ARRAY_BUFFER, qb); gl.enableVertexAttribArray(lQ); gl.vertexAttribPointer(lQ, 2, gl.FLOAT, false, 0, 0);
-        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT); gl.drawArrays(gl.TRIANGLES, 0, 3); gl.disableVertexAttribArray(lQ);
+        // No background pass: clear to transparent and draw only the mark, so
+        // the page's grid reads straight through and the mark sits on it.
+        gl.clearColor(0, 0, 0, 0);
+        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
         gl.enable(gl.DEPTH_TEST); gl.enable(gl.CULL_FACE);
         gl.useProgram(prog); gl.uniform2f(U(prog, 'uR'), canvas.width, canvas.height); gl.uniform1f(U(prog, 'uDpr'), dpr);
+
+        // Dissolve on scroll: rather than fading opacity, the material itself
+        // gives way — the dither coarsens and the colour posterises down to a
+        // handful of levels, so the mark breaks up as it leaves.
+        if (!reduce) {
+          var box = stage.getBoundingClientRect();
+          var goneBy = Math.min(1, Math.max(0, -box.top / Math.max(1, box.height * 0.75)));
+          var diss = goneBy * goneBy;
+          gl.uniform1f(U(prog, 'uDi'), M.dither + diss * 16);
+          gl.uniform1f(U(prog, 'uLv'), Math.max(2, M.levels - diss * 29));
+          canvas.style.opacity = String(1 - diss);
+        }
         gl.uniformMatrix4fv(U(prog, 'uM'), false, new Float32Array(model)); gl.uniformMatrix4fv(U(prog, 'uMVP'), false, new Float32Array(mul(proj, mul(view, model))));
         gl.bindBuffer(gl.ARRAY_BUFFER, bP); gl.enableVertexAttribArray(lP); gl.vertexAttribPointer(lP, 3, gl.FLOAT, false, 0, 0);
         gl.bindBuffer(gl.ARRAY_BUFFER, bN); gl.enableVertexAttribArray(lN); gl.vertexAttribPointer(lN, 3, gl.FLOAT, false, 0, 0);
