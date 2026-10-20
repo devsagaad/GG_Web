@@ -45,10 +45,11 @@ Learned the hard way; each one cost a failed call.
 
 - **A list of class names is a combo chain, not independent classes.**
   `["hero","wrap"]` means `.hero.wrap`, and fails unless that combo exists.
-  Create combos with `create_style(name, parent_style_names=[...])`.
-- **Classes attach at creation time.** `data_element_tool > set_style` fails on
-  an existing element; the builder's `set_style` works. Build elements with
-  their classes rather than restyling afterwards.
+  Create combos with `create_style(name, parent_style_names=[...])`. Every
+  multi-class element in the reference markup needs its combo created first —
+  `.sec.wrap`, `.lbl.a`, `.btn.mag`, `.flow.rv` and so on. This is the single
+  cause of nearly every "styles not found" error; `set_style` works fine on an
+  existing element once the combo exists.
 - **A style with no properties is registered but not materialised** — it lists
   in `get_styles` yet cannot be applied. Give every class one real declaration.
 - `set_text` takes `{"text": "..."}`, not a bare string.
