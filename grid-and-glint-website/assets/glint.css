@@ -106,8 +106,12 @@ main, header, footer { position: relative; z-index: 1; }
 .burger i { position: absolute; left: 11px; right: 11px; height: 1px; background: var(--fg); transition: transform 340ms var(--ease), background-color 200ms var(--ease); }
 .burger i:nth-child(1) { top: 20px; }
 .burger i:nth-child(2) { top: 26px; }
-.burger[aria-expanded="true"] i:nth-child(1) { transform: translateY(3px) rotate(45deg); }
-.burger[aria-expanded="true"] i:nth-child(2) { transform: translateY(-3px) rotate(-45deg); }
+/* keyed on the class, not on aria-expanded alone: Webflow's interactions can
+   toggle a class but cannot write an attribute, and the look has to come from
+   this one stylesheet in both builds. The attribute still carries the state to
+   a screen reader. */
+.burger.open i:nth-child(1) { transform: translateY(3px) rotate(45deg); }
+.burger.open i:nth-child(2) { transform: translateY(-3px) rotate(-45deg); }
 
 /* Under the bar, not over it: the bar is a sticky stacking context at z-index
    20, so an overlay above it would bury its own close button. Sitting at 15

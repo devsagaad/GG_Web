@@ -420,6 +420,7 @@
     if (open === (burger.getAttribute('aria-expanded') === 'true')) return;
     burger.setAttribute('aria-expanded', open ? 'true' : 'false');
     menu.classList.toggle('open', open);
+    burger.classList.toggle('open', open);
     root.classList.toggle('menu-open', open);
     if (open) { held = scrollY; document.body.style.cssText = 'position:fixed;top:' + -held + 'px;left:0;right:0'; }
     /* the read forces a reflow: until the document is tall again the browser
