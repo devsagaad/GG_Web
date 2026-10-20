@@ -231,9 +231,13 @@
         // intro: the mark turns in from edge-on over the first 1.4s, then sways and follows the pointer
         var intro = reduce ? 1 : Math.min(1, s / 1.4), ease = 1 - Math.pow(1 - intro, 3);
         if (!reduce) { yaw += ((target + Math.sin(s * 0.45) * 0.35) - yaw) * 0.05; pitch = -0.2 + Math.sin(s * 0.31) * 0.1; }
-        var y = yaw + (1 - ease) * 1.5, model = mul(mul(ry(y), rx(pitch)), sc(0.55 + 0.45 * ease));
+        // The projection divides x by the aspect ratio, so on a portrait stage the
+        // mark grows past both edges. Clamping by the aspect keeps it a constant
+        // fraction of the shorter side; landscape is unaffected (multiplier is 1).
+        var aspect = canvas.width / Math.max(1, canvas.height), fit = Math.min(1, aspect);
+        var y = yaw + (1 - ease) * 1.5, model = mul(mul(ry(y), rx(pitch)), sc((0.55 + 0.45 * ease) * fit));
         var view = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, -EYE[2], 1];
-        var proj = persp(32 * Math.PI / 180, canvas.width / Math.max(1, canvas.height));
+        var proj = persp(32 * Math.PI / 180, aspect);
         gl.disable(gl.DEPTH_TEST); gl.disable(gl.CULL_FACE);
         gl.useProgram(qprog); gl.uniform2f(U(qprog, 'uR'), canvas.width, canvas.height); gl.uniform1f(U(qprog, 'uDpr'), dpr);
         gl.bindBuffer(gl.ARRAY_BUFFER, qb); gl.enableVertexAttribArray(lQ); gl.vertexAttribPointer(lQ, 2, gl.FLOAT, false, 0, 0);
