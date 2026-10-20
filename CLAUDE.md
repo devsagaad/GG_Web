@@ -72,6 +72,26 @@ Learned the hard way; each one cost a failed call.
   correctly. Symptom: the mark looks cropped at small sizes.
 - Embeds do not execute in the Designer canvas, so the canvas shows unstyled
   structure. Preview on the staging URL.
+- **Interactions are how shared CSS drives Webflow.** An IX3 click trigger with
+  a `toggleClass` action flips a class; `glint.css` then draws every frame, so
+  the motion is authored once and both builds play it identically. Reach for
+  this before an embed whenever the behaviour is "a class goes on and comes
+  off". A `wf:class` target takes a bare class slug — no style-block id lookup
+  — but `selectors` on the class property needs the id.
+- **An interaction cannot write an attribute.** So key any CSS a Webflow
+  interaction must drive off a class, never off `[aria-*]`, and leave the
+  attribute to a script that *watches* the class. The watcher must not also
+  handle the click, or it fights the interaction for the open state.
+- **`data_whtml_builder` turns `<button>` into a Link**, i.e. an `<a>` with no
+  href. For a real button, build a `DOM` element and `set_tag` it to `button`.
+  Everything else it produces — nested tags, classes, attributes — is faithful.
+- **`data_element_builder` ignores `tag`, `styles` and `attributes` in
+  `element_schema`.** It creates the right shape of `div`s and nothing else;
+  set the tag, style and attributes afterwards in their own calls.
+- **`set_dom_id` fails on a whtml-inserted element** — "could not be applied to
+  the component map", permanently, while `set_attributes` on the same element
+  succeeds and `id` is refused there as reserved. Have the page script assign
+  the id at runtime if something needs to point at it.
 
 ## Repository
 
