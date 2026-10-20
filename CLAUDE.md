@@ -53,6 +53,12 @@ Learned the hard way; each one cost a failed call.
 - **A style with no properties is registered but not materialised** — it lists
   in `get_styles` yet cannot be applied. Give every class one real declaration.
 - `set_text` takes `{"text": "..."}`, not a bare string.
+- **Share the logomark as a `<g>` in `<defs>`, never a `<symbol>`.** A `<use>`
+  on a symbol creates a new viewport at 0,0 sized to the `<use>`, which shifts
+  this artwork by 48.3 units and clips it — its paths are authored in the
+  space `48.3 48.3 160 160` that each referencing `<svg>` declares as its
+  viewBox. A `<use>` on a group clones into the current user space and lands
+  correctly. Symptom: the mark looks cropped at small sizes.
 - Embeds do not execute in the Designer canvas, so the canvas shows unstyled
   structure. Preview on the staging URL.
 
