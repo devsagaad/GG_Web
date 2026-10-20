@@ -348,11 +348,34 @@ main, header, footer { position: relative; z-index: 1; }
 @media (max-width: 760px) { .faq { margin-left: 0; } .faq .ans { padding-right: 0; } }
 .nap a { text-decoration: underline; text-underline-offset: 3px; }
 .nap { font-style: normal; font-size: 14px; line-height: 24px; color: var(--fg-2); }
+/* ---------- footer: the same block on every page ----------
+   A last chance to convert, then the map. Nothing here is page-specific: every
+   link is an absolute path rather than a homepage anchor, so it works on
+   /work and /journal as it does on /. */
+.foot-cta { border-top: 1px solid var(--rule-grid); padding-block: clamp(44px, 6vw, 80px); }
+.foot-cta .inner { display: flex; align-items: center; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+.foot-cta p { font-size: clamp(30px, 4.6vw, 64px); max-width: 15ch; }
+.foot-cta .actions { grid-column: auto; justify-content: flex-start; }
+
 .foot-links { border-top: 1px solid var(--rule-grid); padding-block: 48px; }
-.foot-links .inner { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
+.foot-links .inner { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 24px; }
 .foot-links nav, .foot-links .inner > div { display: flex; flex-direction: column; gap: 10px; font-size: 14px; min-width: 0; }
 .foot-links a:hover { color: var(--accent-text); }
-@media (max-width: 760px) { .foot-links .inner { grid-template-columns: 1fr 1fr; } }
+.foot-links .lbl { margin-bottom: 2px; }
+
+.foot-brand .marks { display: flex; align-items: center; gap: 10px; color: var(--accent-text); }
+.foot-brand .marks svg { display: block; fill: currentColor; }
+.foot-brand .marks .mk { width: 22px; height: 22px; }
+.foot-brand .marks .wm { height: 16px; width: auto; }
+.foot-brand p { color: var(--fg-2); line-height: 22px; max-width: 36ch; }
+.foot-brand .nap { line-height: 22px; }
+.rail .top-link:hover { color: var(--accent-text); }
+
+@media (max-width: 760px) {
+  .foot-links .inner { grid-template-columns: 1fr 1fr; }
+  .foot-brand { grid-column: 1 / -1; }
+  .foot-cta .inner { flex-direction: column; align-items: flex-start; gap: 24px; }
+}
 
 /* principles */
 .prin { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
