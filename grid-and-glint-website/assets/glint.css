@@ -26,6 +26,8 @@
 
   --f-display: "Thunder", "Big Shoulders Display", "Arial Narrow", sans-serif;
   --f-mono: "Anonymous Pro", ui-monospace, "SF Mono", Menlo, monospace;
+  /* 64px of bar content plus its 1px bottom rule; the hero subtracts the total */
+  --bar-h: 65px;
   --pitch: 32px; --cross-size: 10px; --r-xs: 3px; --r-sm: 6px; --r-md: 12px; --r-lg: 16px;
   --ease: cubic-bezier(0.2, 0.6, 0.2, 1);
   color-scheme: dark;
@@ -51,7 +53,7 @@
 
 * , *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; overflow-x: clip; }
-body { background: var(--bg); color: var(--fg); font-family: var(--f-mono); font-size: 16px; line-height: 1.625; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--f-mono); font-size: 16px; line-height: 1.625; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
@@ -85,7 +87,7 @@ main, header, footer { position: relative; z-index: 1; }
 
 /* ---------- top bar ---------- */
 .bar { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); border-bottom: 1px solid var(--rule-grid); }
-.bar .inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: 64px; }
+.bar .inner { display: flex; align-items: center; justify-content: space-between; gap: 16px; height: calc(var(--bar-h) - 1px); }
 .logo { display: flex; align-items: center; gap: 10px; color: var(--mint); }
 :root[data-theme="light"] .logo { color: var(--ink); }
 @media (prefers-color-scheme: light) { :root:not([data-theme="dark"]) .logo { color: var(--ink); } }
@@ -111,7 +113,7 @@ main, header, footer { position: relative; z-index: 1; }
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  min-height: calc(100dvh - 64px);
+  min-height: calc(100dvh - var(--bar-h));
   padding-block: 24px 28px;
   border-bottom: 1px solid var(--rule-grid);
 }
@@ -133,7 +135,11 @@ main, header, footer { position: relative; z-index: 1; }
 .hero .top .span2 { grid-column: span 2; }
 
 .hero .bottom { display: flex; flex-direction: column; gap: 26px; }
-.headline { font-size: clamp(44px, 11vw, 150px); position: relative; }
+/* Sized against both axes: width alone overflows a short viewport, because three
+   lines of display type at 11vw do not fit a landscape phone. Whichever axis is
+   the tighter constraint wins, so the hero and its intro stay inside one screen
+   at any shape. */
+.headline { font-size: clamp(38px, min(11vw, 14vh), 150px); position: relative; }
 .headline .ln { display: block; animation: slide 1s var(--ease) both; }
 .headline .ln:nth-child(1) { animation-delay: 0.1s; } .headline .ln:nth-child(2) { animation-delay: 0.2s; } .headline .ln:nth-child(3) { animation-delay: 0.3s; }
 .headline em { font-style: normal; color: var(--accent-text); }
@@ -157,6 +163,21 @@ main, header, footer { position: relative; z-index: 1; }
   .hero .foot p, .actions { grid-column: 1 / -1; }
   .actions { justify-content: flex-start; }
   .hero::after { height: 70%; }
+  .cue { display: none; }
+}
+
+/* Short viewports — a landscape phone, or a desktop window dragged flat. The
+   headline, the intro line and the buttons are the hero's job; the role and
+   tagline above it are the first thing that can go, since the headline already
+   says it. Keeps hero + intro inside one screen rather than spilling past it. */
+@media (max-height: 700px) {
+  .hero { padding-block: 16px 18px; }
+  .hero > .inner { gap: 16px; }
+  .hero .top { display: none; }
+  .hero .bottom { gap: 16px; }
+  .hero .foot { gap: 16px; }
+  .hero .foot p { font-size: 15px; line-height: 23px; }
+  .hero::after { height: 80%; }
   .cue { display: none; }
 }
 
