@@ -462,7 +462,6 @@ form.brief { grid-column: 3 / 5; background: var(--bg-panel); border: 1px solid 
       </div>
       <div class="stage" id="stage" aria-hidden="true">
         <div class="fallback" id="stage-fallback"><svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg></div>
-        <canvas id="mark-canvas"></canvas>
         
       </div>
       <h1 class="disp headline" id="h1"><span class="ln">Brands, websites</span> <span class="ln">&amp; AI that</span> <span class="ln"><em>steal attention</em></span></h1>
@@ -734,6 +733,7 @@ form.brief { grid-column: 3 / 5; background: var(--bg-panel); border: 1px solid 
   <button class="launch" id="launch" type="button" aria-expanded="false" aria-controls="panel"><svg class="" viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/><path fill-rule="evenodd" d="M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z"/><path fill-rule="evenodd" d="M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z"/><path fill-rule="evenodd" d="M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"/></svg>ASK GLINT</button>
 </div>
 
+<script src="assets/glint-hero.js"></script>
 <script>
 (function () {
   var root = document.documentElement;
@@ -854,179 +854,8 @@ form.brief { grid-column: 3 / 5; background: var(--bg-panel); border: 1px solid 
     log.scrollTop = log.scrollHeight;
   });
 
-  /* ======================================================================
-     WebGL shared bits. Every number in the shaders comes from the design
-     system's material tokens: ior 1.45, thickness 0.42, dispersion 0.035,
-     roughness 0.08, fresnel 3.0, dither 2px / 32 levels, grain 0.04.
-     ====================================================================== */
-  var M = { ior: 1.45, thick: 0.42, disp: 0.035, rough: 0.08, fres: 3.0, dither: 2, levels: 32, grain: 0.04 };
-  var MARK = ["M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z", "M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z", "M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z", "M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"];
-  function compile(gl, type, src) { var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s)); return s; }
-  function link(gl, vs, fs) { var p = gl.createProgram(); gl.attachShader(p, compile(gl, gl.VERTEX_SHADER, vs)); gl.attachShader(p, compile(gl, gl.FRAGMENT_SHADER, fs)); gl.linkProgram(p); if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error('link'); return p; }
-  function newTex(gl) { var t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, t); [gl.TEXTURE_MIN_FILTER, gl.TEXTURE_MAG_FILTER].forEach(function (k) { gl.texParameteri(gl.TEXTURE_2D, k, gl.LINEAR); }); [gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_T].forEach(function (k) { gl.texParameteri(gl.TEXTURE_2D, k, gl.CLAMP_TO_EDGE); }); return t; }
-  var DITHER = 'float B2(vec2 a){ a = floor(a); return fract(a.x * 0.5 + a.y * a.y * 0.75); } float B4(vec2 a){ return B2(a * 0.5) * 0.25 + B2(a); }';
-  function paintGrid(g, W, H, cx, cy) {
-    g.fillStyle = css('--bg', '#1a1a1a'); g.fillRect(0, 0, W, H);
-    g.fillStyle = css('--rule-grid', '#262626');
-    for (var x = cx % 32; x < W; x += 32) g.fillRect(Math.round(x), 0, 1, H);
-    for (var y = cy % 32; y < H; y += 32) g.fillRect(0, Math.round(y), W, 1);
-  }
-  function block(g, col, x, y, w, h) { g.fillStyle = col; g.beginPath(); if (g.roundRect) g.roundRect(x, y, w, h, 12); else g.rect(x, y, w, h); g.fill(); }
-  function visible(el, cb) { if (!('IntersectionObserver' in window)) return cb(true); new IntersectionObserver(function (es) { cb(es[0].isIntersecting); }).observe(el); }
-
-  /* ---- 1. the hero: the logomark in mint glass ---- */
-  (function hero() {
-    var stage = document.getElementById('stage'), canvas = document.getElementById('mark-canvas'), fb = document.getElementById('stage-fallback'), yawEl = null;
-    var gl; try { gl = canvas.getContext('webgl', { antialias: true, alpha: false }); } catch (e) {}
-    if (!gl) { canvas.remove(); return; }
-    var VS = 'attribute vec3 aP; attribute vec3 aN; uniform mat4 uMVP, uM; varying vec3 vN, vW, vMP, vMN; void main(){ vMP = aP; vMN = aN; vN = normalize(mat3(uM) * aN); vW = (uM * vec4(aP, 1.0)).xyz; gl_Position = uMVP * vec4(aP, 1.0); }';
-    var FS = [
-      "precision highp float;",
-      "varying vec3 vN, vW, vMP, vMN;",
-      "uniform sampler2D uS, uD; uniform vec2 uR; uniform mat4 uM;",
-      "uniform vec3 uE, uL, uBody, uShade, uSpec, uWarm, uCool;",
-      "uniform float uIor, uTh, uDp, uRo, uFr, uDi, uLv, uGr, uDpr, uDark;",
-      "float B2(vec2 a){ a = floor(a); return fract(a.x * 0.5 + a.y * a.y * 0.75); } float B4(vec2 a){ return B2(a * 0.5) * 0.25 + B2(a); }",
-      "vec3 sc(vec2 f){ return texture2D(uS, clamp(vec2(f.x, uR.y - f.y) / uR, 0.0, 1.0)).rgb; }",
-      "vec3 fr(vec2 p, float r){ return sc(p) * 0.28 + (sc(p + vec2(r, 0.0)) + sc(p - vec2(r, 0.0)) + sc(p + vec2(0.0, r)) + sc(p - vec2(0.0, r))) * 0.18; }",
-      "float dt(vec2 m){ return texture2D(uD, vec2(m.x * 0.5 + 0.5, 0.5 - m.y * 0.5)).r; }",
-      "void main(){",
-      "  float DARKV = uDark;",
-      "  vec3 V = normalize(uE - vW), L = normalize(uL), n = normalize(vN);",
-      "  float t = 0.0, cap = step(0.9, abs(vMN.z));",
-      "  if (cap > 0.5) {",
-      "    t = dt(vMP.xy); float e = 0.012;",
-      "    vec2 g = vec2(dt(vMP.xy + vec2(e, 0.0)) - dt(vMP.xy - vec2(e, 0.0)), dt(vMP.xy + vec2(0.0, e)) - dt(vMP.xy - vec2(0.0, e)));",
-      "    float k = 1.0 - t;",
-      "    vec3 nm = normalize(vec3(-normalize(g + 1e-6) * k * k * 1.6, 0.35 + t));",
-      "    nm.z *= sign(vMN.z); n = normalize(mat3(uM) * nm);",
-      "  }",
-      "  float fa = clamp(dot(n, V), 0.0, 1.0), lam = max(dot(n, L), 0.0);",
-      "  vec2 f = gl_FragCoord.xy;",
-      "  vec2 off = -n.xy * (uIor - 1.0) * uTh * 0.16 * uR.y;",
-      "  float r = mix(0.6, 7.0, uRo) * uDpr;",
-      "  vec3 c = vec3(fr(f + off * (1.0 + uDp * 9.0), r).r, fr(f + off, r).g, fr(f + off * (1.0 - uDp * 9.0), r).b);",
-      "  vec3 tint = mix(uCool * 0.86, uBody, DARKV);",
-      "  c = c * mix(vec3(1.0), tint, mix(0.62, 0.38, DARKV)) + uBody * (0.05 + 0.16 * DARKV);",
-      "  c = mix(c, c * 0.6 + uShade * 0.3, (1.0 - lam) * mix(0.6, 0.3, DARKV) * (1.0 - cap * 0.6));",
-      "  float fres = pow(1.0 - fa, uFr * 0.6);",
-      "  c = mix(mix(c, uShade, fres * 0.65), c + uCool * fres * 0.3, DARKV);",
-      "  float hh = fract(dot(n.xy, vec2(0.62, 0.78)) * 1.3 + fres * 0.8);",
-      "  vec3 band = hh < 0.5 ? mix(uWarm, vec3(0.843, 1.0, 0.341), hh * 2.0) : mix(vec3(0.843, 1.0, 0.341), uCool, hh * 2.0 - 1.0);",
-      "  c += band * fres * uDp * 14.0;",
-      "  c += uSpec * pow(max(dot(n, normalize(L + V)), 0.0), mix(380.0, 22.0, uRo)) * 1.4;",
-      "  c = mix(c, mix(uShade, uSpec, DARKV), cap * (1.0 - smoothstep(0.0, 0.07, t)) * mix(0.7, 0.4, DARKV));",
-      "  c += (fract(sin(dot(f, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) * uGr;",
-      "  gl_FragColor = vec4(clamp(floor(c * uLv + B4(f / max(uDi * uDpr, 1.0))) / uLv, 0.0, 1.0), 1.0);",
-      "}"
-    ].join('\n');
-    var QF = ['precision highp float; uniform sampler2D uS; uniform vec2 uR; uniform float uDi, uLv, uGr, uDpr;', DITHER,
-      'void main(){ vec2 f = gl_FragCoord.xy; vec3 c = texture2D(uS, vec2(f.x, uR.y - f.y) / uR).rgb; c += (fract(sin(dot(f, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) * uGr; gl_FragColor = vec4(floor(c * uLv + B4(f / max(uDi * uDpr, 1.0))) / uLv, 1.0); }'].join('\n');
-    var prog, qprog;
-    try { prog = link(gl, VS, FS); qprog = link(gl, 'attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }', QF); } catch (e) { canvas.remove(); return; }
-
-    var scene = document.createElement('canvas'), tex = newTex(gl), dpr = 1;
-    function paint() {
-      var W = canvas.width / dpr, H = canvas.height / dpr, g = scene.getContext('2d');
-      scene.width = canvas.width; scene.height = canvas.height; g.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var cx = W / 2, cy = H / 2, u = 32;
-      paintGrid(g, W, H, cx, cy);
-      block(g, '#0f3f33', cx - u * 8, cy + u * 0.5, u * 6, u * 3);
-      block(g, '#ff6f61', cx + u * 0.5, cy - u * 4.6, u * 6, u * 2);
-      block(g, '#d7ff57', cx + u * 2.2, cy - u * 0.4, u * 2, u * 2);
-      gl.bindTexture(gl.TEXTURE_2D, tex); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, scene);
-    }
-    function size() {
-      dpr = Math.min(devicePixelRatio || 1, 2);
-      var w = Math.max(1, Math.round(stage.clientWidth * dpr)), h = Math.max(1, Math.round(stage.clientHeight * dpr));
-      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; paint(); }
-      gl.viewport(0, 0, w, h);
-    }
-    themeListeners.push(function () { paint(); setColours(); });
-
-    var qb = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, qb); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-    function U(p, n) { return gl.getUniformLocation(p, n); }
-    gl.useProgram(qprog); gl.uniform1f(U(qprog, 'uDi'), M.dither); gl.uniform1f(U(qprog, 'uLv'), M.levels); gl.uniform1f(U(qprog, 'uGr'), M.grain);
-    gl.useProgram(prog);
-    [['uIor', M.ior], ['uTh', M.thick], ['uDp', M.disp], ['uRo', M.rough], ['uFr', M.fres], ['uDi', M.dither], ['uLv', M.levels], ['uGr', M.grain]].forEach(function (a) { gl.uniform1f(U(prog, a[0]), a[1]); });
-    gl.uniform3fv(U(prog, 'uBody'), [0.659, 1, 0.831]); gl.uniform3fv(U(prog, 'uSpec'), [0.89, 1, 0.945]);
-    gl.uniform3fv(U(prog, 'uWarm'), [1, 0.435, 0.38]); gl.uniform3fv(U(prog, 'uCool'), [0.463, 0.937, 0.722]);
-    gl.uniform3fv(U(prog, 'uL'), [-0.56, 0.78, 0.62]);
-    var EYE = [0, 0, 4.6]; gl.uniform3fv(U(prog, 'uE'), EYE);
-    // The outline's distance field, in model space: what gives each petal the lens's rounded slab.
-    (function () {
-      var N = 256, c = document.createElement('canvas'); c.width = c.height = N;
-      var g = c.getContext('2d'), s = N / 158.22;
-      g.setTransform(s, 0, 0, s, -49.192 * s, -49.192 * s); g.fillStyle = '#fff';
-      MARK.forEach(function (d) { g.fill(new Path2D(d), 'evenodd'); });
-      var px = g.getImageData(0, 0, N, N).data, D = new Float32Array(N * N), BIG = 1e9, i, x, y;
-      for (i = 0; i < N * N; i++) D[i] = px[i * 4 + 3] > 127 ? BIG : 0;
-      function at(x, y) { return x < 0 || y < 0 || x >= N || y >= N ? 0 : D[y * N + x]; }
-      for (y = 0; y < N; y++) for (x = 0; x < N; x++) { i = y * N + x; if (D[i]) D[i] = Math.min(D[i], at(x - 1, y) + 1, at(x, y - 1) + 1, at(x - 1, y - 1) + 1.414, at(x + 1, y - 1) + 1.414); }
-      for (y = N - 1; y >= 0; y--) for (x = N - 1; x >= 0; x--) { i = y * N + x; if (D[i]) D[i] = Math.min(D[i], at(x + 1, y) + 1, at(x, y + 1) + 1, at(x + 1, y + 1) + 1.414, at(x - 1, y + 1) + 1.414); }
-      var out = new Uint8Array(N * N), BEV = 22;
-      for (i = 0; i < N * N; i++) out[i] = Math.round(Math.min(1, D[i] / BEV) * 255);
-      var dtex = gl.createTexture(); gl.activeTexture(gl.TEXTURE1); gl.bindTexture(gl.TEXTURE_2D, dtex);
-      gl.pixelStorei(gl.UNPACK_ALIGNMENT, 1);
-      gl.texImage2D(gl.TEXTURE_2D, 0, gl.LUMINANCE, N, N, 0, gl.LUMINANCE, gl.UNSIGNED_BYTE, out);
-      [gl.TEXTURE_MIN_FILTER, gl.TEXTURE_MAG_FILTER].forEach(function (k) { gl.texParameteri(gl.TEXTURE_2D, k, gl.LINEAR); });
-      [gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_T].forEach(function (k) { gl.texParameteri(gl.TEXTURE_2D, k, gl.CLAMP_TO_EDGE); });
-      gl.activeTexture(gl.TEXTURE0);
-      gl.uniform1i(U(prog, 'uD'), 1);
-    })();
-
-    function setColours() { gl.useProgram(prog); gl.uniform3fv(U(prog, 'uShade'), isDark() ? [0.039, 0.18, 0.145] : [0.059, 0.247, 0.2]); gl.uniform1f(U(prog, 'uDark'), isDark() ? 1 : 0); }
-    setColours();
-
-    fetch('assets/glint-mark.json').then(function (r) { if (!r.ok) throw 0; return r.json(); }).then(build).catch(function () { canvas.remove(); });
-
-    function build(m) {
-      var pos = m.positions, idx = m.indices, vp = [], vn = [];
-      for (var i = 0; i < idx.length; i += 3) {
-        var a = idx[i] * 3, b = idx[i + 1] * 3, c = idx[i + 2] * 3;
-        var e1 = [pos[b] - pos[a], pos[b + 1] - pos[a + 1], pos[b + 2] - pos[a + 2]], e2 = [pos[c] - pos[a], pos[c + 1] - pos[a + 1], pos[c + 2] - pos[a + 2]];
-        var nx = e1[1] * e2[2] - e1[2] * e2[1], ny = e1[2] * e2[0] - e1[0] * e2[2], nz = e1[0] * e2[1] - e1[1] * e2[0], l = Math.hypot(nx, ny, nz) || 1;
-        for (var k = 0; k < 3; k++) { var o = idx[i + k] * 3; vp.push(pos[o], pos[o + 1], pos[o + 2]); vn.push(nx / l, ny / l, nz / l); }
-      }
-      function buf(d) { var b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(d), gl.STATIC_DRAW); return b; }
-      var bP = buf(vp), bN = buf(vn), lP = gl.getAttribLocation(prog, 'aP'), lN = gl.getAttribLocation(prog, 'aN'), lQ = gl.getAttribLocation(qprog, 'p');
-      fb.style.display = 'none';
-      var target = 0, yaw = reduce ? 0.42 : 0, pitch = -0.2, t0 = performance.now(), on = true, raf = 0;
-      stage.closest('.hero').addEventListener('pointermove', function (e) { var r = stage.getBoundingClientRect(); target = ((e.clientX - r.left) / r.width - 0.5) * 1.2; });
-      function mul(a, b) { var o = []; for (var i = 0; i < 4; i++) for (var j = 0; j < 4; j++) o[i * 4 + j] = a[j] * b[i * 4] + a[4 + j] * b[i * 4 + 1] + a[8 + j] * b[i * 4 + 2] + a[12 + j] * b[i * 4 + 3]; return o; }
-      function ry(t) { var c = Math.cos(t), s = Math.sin(t); return [c, 0, -s, 0, 0, 1, 0, 0, s, 0, c, 0, 0, 0, 0, 1]; }
-      function rx(t) { var c = Math.cos(t), s = Math.sin(t); return [1, 0, 0, 0, 0, c, s, 0, 0, -s, c, 0, 0, 0, 0, 1]; }
-      function sc(s) { return [s, 0, 0, 0, 0, s, 0, 0, 0, 0, s, 0, 0, 0, 0, 1]; }
-      function persp(f, a) { var t = 1 / Math.tan(f / 2), n = 0.1, fa = 60, nf = 1 / (n - fa); return [t / a, 0, 0, 0, 0, t, 0, 0, 0, 0, (fa + n) * nf, -1, 0, 0, 2 * fa * n * nf, 0]; }
-      function draw(now) {
-        size();
-        var s = (now - t0) / 1000;
-        // intro: the mark turns in from edge-on over the first 1.4s, then sways and follows the pointer
-        var intro = reduce ? 1 : Math.min(1, s / 1.4), ease = 1 - Math.pow(1 - intro, 3);
-        if (!reduce) { yaw += ((target + Math.sin(s * 0.45) * 0.35) - yaw) * 0.05; pitch = -0.2 + Math.sin(s * 0.31) * 0.1; }
-        var y = yaw + (1 - ease) * 1.5, model = mul(mul(ry(y), rx(pitch)), sc(0.55 + 0.45 * ease));
-        var view = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, -EYE[2], 1];
-        var proj = persp(32 * Math.PI / 180, canvas.width / Math.max(1, canvas.height));
-        gl.disable(gl.DEPTH_TEST); gl.disable(gl.CULL_FACE);
-        gl.useProgram(qprog); gl.uniform2f(U(qprog, 'uR'), canvas.width, canvas.height); gl.uniform1f(U(qprog, 'uDpr'), dpr);
-        gl.bindBuffer(gl.ARRAY_BUFFER, qb); gl.enableVertexAttribArray(lQ); gl.vertexAttribPointer(lQ, 2, gl.FLOAT, false, 0, 0);
-        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT); gl.drawArrays(gl.TRIANGLES, 0, 3); gl.disableVertexAttribArray(lQ);
-        gl.enable(gl.DEPTH_TEST); gl.enable(gl.CULL_FACE);
-        gl.useProgram(prog); gl.uniform2f(U(prog, 'uR'), canvas.width, canvas.height); gl.uniform1f(U(prog, 'uDpr'), dpr);
-        gl.uniformMatrix4fv(U(prog, 'uM'), false, new Float32Array(model)); gl.uniformMatrix4fv(U(prog, 'uMVP'), false, new Float32Array(mul(proj, mul(view, model))));
-        gl.bindBuffer(gl.ARRAY_BUFFER, bP); gl.enableVertexAttribArray(lP); gl.vertexAttribPointer(lP, 3, gl.FLOAT, false, 0, 0);
-        gl.bindBuffer(gl.ARRAY_BUFFER, bN); gl.enableVertexAttribArray(lN); gl.vertexAttribPointer(lN, 3, gl.FLOAT, false, 0, 0);
-        gl.drawArrays(gl.TRIANGLES, 0, vp.length / 3);
-        gl.disableVertexAttribArray(lP); gl.disableVertexAttribArray(lN);
-        
-        if (!reduce && on) raf = requestAnimationFrame(draw);
-      }
-      visible(stage, function (v) { on = v; if (v && !reduce) { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); } });
-      raf = requestAnimationFrame(draw);
-      themeListeners.push(function () { if (reduce || !on) requestAnimationFrame(draw); });
-      if (window.ResizeObserver) new ResizeObserver(function () { if (reduce) requestAnimationFrame(draw); }).observe(stage);
-    }
-  })();
+  /* ---- the hero: the logomark in mint glass, now in assets/glint-hero.js ---- */
+  if (window.GlintHero) GlintHero.mount({ stage: '#stage', fallback: '#stage-fallback', pointerTarget: '.hero' });
 
 })();
 </script>

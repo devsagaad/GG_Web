@@ -7,7 +7,8 @@ The studio's landing page as a static website. No build step: upload this folder
 | File | What |
 | --- | --- |
 | `index.html` | The landing page, with page title, search description, structured data (business, website, FAQ) and all styles and scripts inline |
-| `assets/glint-mark.json` | The 3D logomark the hero renders in glass |
+| `assets/glint-hero.js` | The hero logomark in mint glass (WebGL), with the mesh compiled in. The Webflow build loads this same file |
+| `assets/glint-mark.json` | Source mesh for the logomark. Compiled into `glint-hero.js`; not loaded at runtime |
 | `assets/umbrella-dental-clinic.svg` | Client logo (Umbrella Dental Clinic) |
 | `assets/favicon.svg` | Browser-tab icon |
 | `404.html` | Page-not-found page |
@@ -16,7 +17,7 @@ The studio's landing page as a static website. No build step: upload this folder
 
 ## Preview on your computer
 
-Opening `index.html` by double-click shows the page, but browsers block the 3D logo from loading its model file over `file://`. To see everything, run a small local server in this folder:
+Opening `index.html` by double-click shows the whole page, 3D logo included — the mesh is compiled into `assets/glint-hero.js`, so nothing is fetched at runtime. To serve it over HTTP instead:
 
 ```
 python3 -m http.server 8000

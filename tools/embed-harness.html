@@ -1,0 +1,49 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Glint Hero — embed harness</title>
+<!--
+  Stands in for a Webflow HTML Embed: none of the reference page's CSS variables,
+  no .hero ancestor for the pointer-follow, no .stage rule to size the canvas.
+  If the hero renders here, it renders in Webflow.
+
+  The stage is sized to match #stage in index.html at a 1440px viewport
+  (1328x520 border-box, so a 1326x518 content box) so the output can be diffed
+  straight against the reference capture.
+
+  Serve from the repository root:  python3 -m http.server 8778
+-->
+<style>
+  /* The stage is rounded and clips the canvas, so its own background and border
+     show at the corners. The host has to theme those two properties alongside
+     the hero or the corners stay the wrong colour — the same applies in Webflow. */
+  html, body { margin: 0; background: #1a1a1a; }
+  html[data-theme="light"], html[data-theme="light"] body { background: #f7f7f7; }
+  #glint-stage {
+    position: relative;
+    box-sizing: border-box;
+    width: 1328px;
+    height: 520px;
+    border: 1px solid #3f3f3f;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #1a1a1a;
+  }
+  html[data-theme="light"] #glint-stage { border-color: #d6d6d6; background: #f7f7f7; }
+  #glint-fallback { position: absolute; inset: 0; display: grid; place-items: center; }
+  #glint-fallback svg { width: 26%; height: auto; fill: #a8ffd4; }
+</style>
+
+<div id="glint-stage">
+  <div id="glint-fallback" data-glint-fallback>
+    <svg viewBox="48.3 48.3 160 160" aria-hidden="true"><path fill-rule="evenodd" d="M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z"/></svg>
+  </div>
+</div>
+
+<script src="../grid-and-glint-website/assets/glint-hero.js"></script>
+<script>
+  window.hero = GlintHero.mount({
+    stage: '#glint-stage',
+    fallback: '#glint-fallback',
+    theme: 'dark'
+  });
+</script>
