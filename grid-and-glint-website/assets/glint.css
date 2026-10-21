@@ -455,30 +455,7 @@ main, header, footer { position: relative; z-index: 1; }
 .mail-note { color: var(--fg-2); max-width: 40ch; }
 .copy { background: var(--bg-control); border: 1px solid var(--rule); border-radius: var(--r-sm); padding: 8px 12px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; cursor: pointer; }
 .copy:hover { background: var(--bg-hover); border-color: var(--rule-strong); }
-form.brief { grid-column: 3 / 5; background: var(--bg-panel); border: 1px solid var(--rule); border-radius: var(--r-md); padding: 24px; display: flex; flex-direction: column; gap: 16px; min-width: 0; }
-.field { display: flex; flex-direction: column; gap: 6px; }
-.field input { font: inherit; font-size: 15px; color: var(--fg); background: var(--bg-sunken); border: 1px solid var(--rule-strong); border-radius: var(--r-sm); padding: 12px; width: 100%; }
-.chips { display: flex; flex-wrap: wrap; gap: 8px; }
-.chips button { background: var(--bg-control); border: 1px solid var(--rule); border-radius: var(--r-sm); padding: 8px 12px; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; }
-.chips button:hover { border-color: var(--rule-strong); }
-.chips button[aria-pressed="true"] { background: var(--accent); color: var(--on-accent); border-color: transparent; }
-.formnote { font-size: 13px; color: var(--fg-2); min-height: 22px; }
-/* Webflow's brief is a native form: a .brief-wrap (w-form) around the form,
-   its done/fail messages, and native checkboxes for the chips. Kept here
-   because Webflow's style panel cannot select a label whose checkbox is
-   :checked, and these must follow the theme tokens in both modes. */
-.brief-wrap { grid-column: 3 / 5; min-width: 0; }
-.brief-wrap form.brief { margin: 0; }
-.field label { margin: 0; }
-.field input { height: auto; margin: 0; }
-.chips .chip { position: relative; margin: 0; padding: 8px 12px; background: var(--bg-control); border: 1px solid var(--rule); border-radius: var(--r-sm); font-size: 11px; line-height: normal; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; }
-.chips .chip:hover { border-color: var(--rule-strong); }
-.chips .chip input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
-.chips .chip .w-form-label { margin: 0; font-weight: inherit; cursor: pointer; }
-.chips .chip:has(input:checked) { background: var(--accent); color: var(--on-accent); border-color: transparent; }
-.chips .chip:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
-.brief-wrap .w-form-done, .brief-wrap .w-form-fail { margin: 16px 0 0; padding: 16px; border-radius: var(--r-sm); text-align: left; font-size: 14px; background: var(--bg-control); color: var(--fg); border: 1px solid var(--rule); }
-@media (max-width: 860px) { .cta-grid { grid-template-columns: 1fr; } .mailbox, form.brief, .brief-wrap { grid-column: 1 / -1; } }
+@media (max-width: 860px) { .cta-grid { grid-template-columns: 1fr; } .mailbox { grid-column: 1 / -1; } }
 
 /* foot rail */
 .rail { border-top: 1px solid var(--rule-grid); }

@@ -65,10 +65,9 @@ def chrome():
         "cursor": between(t, '<div class="cur" id="cur"', "</div>", "cursor"),
         "ask": between(t, '<div class="ask" id="ask">', '\n\n<script src="assets/glint-hero.js">', "ask", include_end=False).rstrip(),
         "fonts": between(t, '<link rel="preconnect" href="https://fonts.googleapis.com">', 'display=swap">', "fonts"),
-        # Pulled into a page body with <!--@mailbox--> / <!--@brief-->, so the
-        # contact page and the homepage share one form instead of two that drift.
+        # Pulled into a page body with <!--@mailbox-->, so the contact page and
+        # the homepage share one set of contact details instead of two that drift.
         "mailbox": between(t, '<div class="mailbox">', '</address>', "mailbox") + "\n        </div>",
-        "brief": between(t, '<form class="brief" id="brief"', "</form>", "brief"),
     }
     # The header and menu point at homepage sections. Off the homepage, those
     # anchors must go home first; the logo goes home; contact has its own page.
@@ -131,7 +130,7 @@ def schema(meta, main):
 
 
 def render(meta, main, c):
-    for name in ("mailbox", "brief"):
+    for name in ("mailbox",):
         main = main.replace(f"<!--@{name}-->", c[name])
     if "<!--@" in main:
         fail(f"{meta['_src']}: unknown include {re.search(r'<!--@[^>]*-->', main).group(0)}")

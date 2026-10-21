@@ -1,7 +1,7 @@
 /* Grid and Glint — page behaviour shared by every page.
 
    Loaded by the static reference pages. Anything that exists on only one page
-   (the manifesto, the process line, the brief form, the WebGL hero) is guarded
+   (the manifesto, the process line, the WebGL hero) is guarded
    on its element, so a page without it simply skips that block instead of
    throwing and taking every later feature down with it.
 
@@ -130,30 +130,13 @@
     setTimeout(function () { copy.textContent = 'COPY'; }, 1800);
   });
 
-  /* ---- quick brief: a demo form, nothing leaves the page ---- */
-  var form = document.getElementById('brief'), note = document.getElementById('formnote');
-  if (form && note) {
-  /* ?service=… comes from a service page's "Get a quote": start the brief with
-     that service already chosen, so an ad click lands one tap from sending. */
-  var want = { 'brand-identity': 'Identity', 'webflow-websites': 'Website', 'ai-integration': 'AI integration' }[new URLSearchParams(location.search).get('service')];
-  if (want) form.querySelectorAll('.chips button').forEach(function (b) { b.setAttribute('aria-pressed', String(b.textContent === want)); });
-  form.querySelectorAll('.chips button').forEach(function (b) { b.addEventListener('click', function () { b.setAttribute('aria-pressed', String(b.getAttribute('aria-pressed') !== 'true')); }); });
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-    var em = document.getElementById('b-mail').value.trim();
-    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(em)) { note.textContent = 'Add an email address so we can reply, for example ada@company.com.'; document.getElementById('b-mail').focus(); return; }
-    var need = [].map.call(form.querySelectorAll('.chips [aria-pressed="true"]'), function (b) { return b.textContent; }).join(', ') || 'not chosen';
-    note.textContent = 'Brief ready: ' + need + '. This page is a demo, so nothing was sent. Email the address on the left to reach the studio.';
-  });
-  }
-
   /* ---- Ask Glint: scripted demo ---- */
   var panel = document.getElementById('panel'), launch = document.getElementById('launch'), log = document.getElementById('log');
   var A = {
     'Can you build us a chatbot?': 'Yes. We build assistants like this one, connected to your content and your CRM, in your brand voice, with a person reviewing what matters. Most take 3 to 8 weeks.',
     'How long does a website take?': 'Most sites take 6 to 10 weeks: two for the system, the rest for design and build. Identity plus website runs about 12.',
     'Do you build in Webflow?': 'Yes. We set up your design tokens as Webflow variables and build a CMS your team can edit without us.',
-    'What does it cost?': 'It depends on scope. Send a quick brief from the contact section and we will reply with a range within two working days.'
+    'What does it cost?': 'It depends on scope. Email info@gridandglint.com with what you need and we will reply with a range within two working days.'
   };
   function setOpen(o) { panel.hidden = !o; launch.setAttribute('aria-expanded', String(o)); if (!o) launch.focus(); }
   launch.addEventListener('click', function () { setOpen(panel.hidden); });
