@@ -54,7 +54,8 @@ Any new page needs it or the link silently does nothing.
 
 `index.html` is hand-edited and is the **one source for everything shared**: the
 head's fonts and stylesheet, the logo `<defs>`, header, menu, footer, cursor,
-Ask Glint panel, and the brief form. Every other page is generated:
+Ask Glint panel, and the contact details (`<!--@mailbox-->`). Every other page
+is generated:
 
 ```
 grid-and-glint-website/src/pages/<name>.html   ->  <path>/index.html
@@ -74,6 +75,16 @@ python3 tools/build-pages.py --check             # exit 1 if anything is stale
 `assets/glint-ui.js` holds the page behaviour for the static pages. Each
 page-specific block is guarded on its element, so one missing element cannot
 throw and take every later feature down. The Webflow build does not load it.
+
+## No forms: contact is the chatbot's job
+
+The site is for marketing, search and answer engines. Enquiries are taken by a
+separate AI chatbot the user is building (requirements, a booked time, name and
+number), integrated later. So **build no contact or brief forms**, in either
+build. "Get a quote" links go to `/contact?service=<slug>`; the parameter is
+kept for the chatbot to read. The contact page carries the studio's details and
+ContactPage schema. When the chatbot launches, the privacy policy must cover
+what it collects and that AI processes it.
 
 ## Proof and claims
 
@@ -125,6 +136,16 @@ Learned the hard way; each one cost a failed call.
   the component map", permanently, while `set_attributes` on the same element
   succeeds and `id` is refused there as reserved. Have the page script assign
   the id at runtime if something needs to point at it.
+- **whtml's `css` must not redeclare an existing class.** If `.n` already
+  exists with different properties, the import makes a second class `n-1` and
+  puts the new elements on it. Query the classes first and declare only new
+  ones, each with a property that matches `glint.css`.
+- **A bare boolean attribute is dropped on publish.** `<details open>` shows
+  `open: ""` in the Designer but publishes without it; write `open="open"`.
+- Page folders (`/services/...`) need the Designer bridge: `create_page_folder`
+  only works while the Webflow MCP app is open in the Designer. Until then the
+  service pages sit at the root (`/ai-integration`); their schema already uses
+  the `/services/...` URLs they will move to.
 
 ## Repository
 
