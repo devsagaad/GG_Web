@@ -12,7 +12,8 @@ Two systems, built in this order:
 
 **Clean room.** The user has built a comparable system at their day job. That
 system, its code, prompts, names, configuration and data belong to that
-employer. Nothing from it comes into this repository. This spec is written from
+employer. Nothing from it comes into this repository. That includes its API
+design and its links: endpoints, hosts and URLs here are our own. This spec is written from
 the Grid and Glint site's own needs and from general practice, and the build
 starts from an empty repo.
 
@@ -127,8 +128,10 @@ and offers the email, the phone number and booking.
 
 ### How it plugs into the site
 
-- **One script tag** loads the widget from the assistant's own host:
-  `<script src="https://<assistant-host>/widget.js" defer></script>`.
+- **Where it runs (planned, not yet decided in detail):** DigitalOcean, at
+  `websitechatbot.gridandglint.com`. Nothing is set up there yet.
+- **One script tag** loads the widget from that host:
+  `<script src="https://websitechatbot.gridandglint.com/widget.js" defer></script>`.
 - **Webflow.** Inside the Site bar embed, which every page carries, until the
   site has a paid plan. Then it moves to Site settings → Custom code. Its
   comment says why, as the build rule requires.
@@ -251,7 +254,8 @@ In both cases the client gets:
 
 ## 4. Decisions needed from the user
 
-- **Stack and hosting**, for both services.
+- **Stack**, for both services. Hosting is pencilled in as DigitalOcean on
+  `websitechatbot.gridandglint.com`.
 - **Booking:** which calendar to book into, the working hours, and the call
   length.
 - **Notifications:** where a handoff lands (email, Viber, Messenger, a CRM).
