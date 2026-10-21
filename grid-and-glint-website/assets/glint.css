@@ -374,8 +374,8 @@ main, header, footer { position: relative; z-index: 1; }
 .res { grid-column: 1 / -1; font-size: 13px; color: var(--fg-2); }
 .quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 .quotes figure { margin: 0; background: var(--bg-panel); border: 1px solid var(--rule); border-radius: var(--r-md); padding: 24px; display: flex; flex-direction: column; gap: 18px; min-width: 0; }
-.quotes blockquote { margin: 0; font-size: 18px; line-height: 28px; }
-.quotes figcaption { font-size: 13px; color: var(--fg-2); }
+.quotes blockquote { margin: 0; padding: 0; border: 0; font-size: 18px; line-height: 28px; }
+.quotes figcaption { margin: 0; text-align: left; font-size: 13px; color: var(--fg-2); }
 @media (max-width: 860px) { .quotes { grid-template-columns: 1fr; } }
 .team { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; margin-bottom: 40px; }
 .person { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
