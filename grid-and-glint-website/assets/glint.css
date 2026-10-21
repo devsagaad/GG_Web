@@ -186,7 +186,6 @@ main, header, footer { position: relative; z-index: 1; }
 .hero .top { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; font-size: 14px; line-height: 22px; }
 .hero .top .role { font-size: 20px; line-height: 26px; font-weight: 700; }
 .hero .top p { color: var(--fg-2); }
-.hero .top .span2 { grid-column: span 2; }
 
 .hero .bottom { display: flex; flex-direction: column; gap: 26px; }
 /* Sized against both axes: width alone overflows a short viewport, because three
@@ -211,8 +210,6 @@ main, header, footer { position: relative; z-index: 1; }
   .hero { padding-block: 20px 24px; }
   .hero > .inner { gap: 20px; }
   .hero .top { grid-template-columns: 1fr; gap: 10px; }
-  /* the long standfirst leaves the first screen; the manifesto says it properly */
-  .hero .top .span2 { display: none; }
   .hero .foot { grid-template-columns: 1fr; gap: 18px; }
   .hero .foot p, .actions { grid-column: 1 / -1; }
   .actions { justify-content: flex-start; }
