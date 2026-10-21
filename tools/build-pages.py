@@ -126,7 +126,10 @@ def post_list(posts):
     """The journal index's list: the homepage's .posts markup, newest first."""
     esc = lambda s: html.escape(s, quote=False)
     rows = []
-    for m in sorted(posts, key=lambda m: m["article"]["date"], reverse=True):
+    # Newest first, then by title: the same order as the Webflow Collection List
+    # (sort: published descending, name ascending), so both builds list alike.
+    by_title = sorted(posts, key=lambda m: m["article"]["headline"])
+    for m in sorted(by_title, key=lambda m: m["article"]["date"], reverse=True):
         a = m["article"]
         rows.append(f'        <a href="/{m["path"]}"><span class="data">{a["date"]}</span>'
                     f'<span class="tt"><h2 class="tth">{esc(a["headline"])}</h2><span class="ex">{esc(a["summary"])}</span></span>'

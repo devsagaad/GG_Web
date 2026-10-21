@@ -443,8 +443,13 @@ main, header, footer { position: relative; z-index: 1; }
 .posts a:hover .tt { color: var(--accent-text); transform: translateX(10px); }
 .posts .tth { font: inherit; }
 .posts .ex { display: block; font-size: 14px; line-height: 22px; color: var(--fg-2); font-weight: 400; margin-top: 6px; }
-.posts .r { text-align: right; }
-@media (max-width: 760px) { .posts a { grid-template-columns: 1fr; gap: 4px; } .posts .r { text-align: left; } }
+.posts .r { text-align: right; display: flex; flex-wrap: wrap; justify-content: flex-end; column-gap: 0.5ch; }
+/* Webflow's journal list is a CMS Collection List, so each row sits alone in
+   its own .w-dyn-item: :last-child would rule every row. Key the closing rule
+   off the item instead. */
+.posts .w-dyn-item a:last-child { border-bottom: 0; }
+.posts .w-dyn-item:last-child a { border-bottom: 1px solid var(--rule); }
+@media (max-width: 760px) { .posts a { grid-template-columns: 1fr; gap: 4px; } .posts .r { text-align: left; justify-content: flex-start; } }
 
 /* contact */
 .cta h2 { font-size: clamp(64px, 11vw, 176px); }
