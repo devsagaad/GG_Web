@@ -146,8 +146,17 @@ Learned the hard way; each one cost a failed call.
   href. For a real button, build a `DOM` element and `set_tag` it to `button`.
   Everything else it produces — nested tags, classes, attributes — is faithful.
 - **`data_element_builder` ignores `tag`, `styles` and `attributes` in
-  `element_schema`.** It creates the right shape of `div`s and nothing else;
-  set the tag, style and attributes afterwards in their own calls.
+  `element_schema`.** Its own `set_style` key does work on children, but
+  `set_text` on child Text Blocks does not; set text and attributes afterwards
+  in their own calls.
+- **Webflow's base stylesheet styles some tags.** `blockquote` gets padding
+  and a 5px left border, `figcaption` a top margin and centring, headings
+  margins. When a Webflow section comes out taller than the reference, look
+  for a tag default and reset it in `glint.css`, never in a Webflow class.
+- **Images need a managed asset.** whtml inserts an `<img>` with an outside
+  `src` as an unmanaged image. Create the asset with `data_assets_tool
+  create_asset`, POST the bytes to the returned S3 form, then
+  `set_image_asset` on the element.
 - **`set_dom_id` fails on a whtml-inserted element** — "could not be applied to
   the component map", permanently, while `set_attributes` on the same element
   succeeds and `id` is refused there as reserved. Have the page script assign
