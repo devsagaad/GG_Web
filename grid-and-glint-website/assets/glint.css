@@ -52,7 +52,10 @@
 }
 
 * , *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; overflow-x: clip; }
+/* No scroll-behavior: smooth. In-page links ease in script (glint-ui.js here,
+   webflow.js with data-scroll-time on Webflow); the CSS one stacked on
+   webflow.js's animation and made every nav jump take over three seconds. */
+html { overflow-x: clip; }
 body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--f-mono); font-size: 16px; line-height: 1.625; -webkit-font-smoothing: antialiased; overflow-x: clip; }
 a { color: inherit; text-decoration: none; }
 button { font: inherit; color: inherit; }

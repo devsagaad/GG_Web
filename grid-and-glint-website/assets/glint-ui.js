@@ -23,6 +23,32 @@
   document.querySelectorAll('.theme-btn').forEach(function (b) { b.addEventListener('click', flipTheme); });
   addEventListener('keydown', function (e) { if ((e.key === 'a' || e.key === 'A') && !/INPUT|TEXTAREA/.test(document.activeElement.tagName) && !e.metaKey && !e.ctrlKey) flipTheme(); });
 
+  /* ---- in-page links: a short eased scroll ----
+     The same curve webflow.js uses for its anchor links, at the 0.3 multiplier
+     the Webflow pages set with data-scroll-time="0.3" on <body>, so a click on
+     "AI" moves the same way in both builds: about 0.4 s for a short hop, 0.7 s
+     for the length of the homepage. CSS scroll-behavior: smooth stays off: in
+     Webflow it stacks on webflow.js's own animation and doubled the wait. */
+  var SCROLL_TIME = 0.3;
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="#"]');
+    if (!a || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    if (a.host !== location.host || a.pathname !== location.pathname || !/^#[a-zA-Z][\w:.-]*$/.test(a.hash)) return;
+    var el = document.getElementById(a.hash.slice(1));
+    if (!el) return;
+    e.preventDefault();
+    if (location.hash !== a.hash) history.pushState(null, '', a.hash);
+    var from = scrollY, to = Math.round(el.getBoundingClientRect().top + scrollY), d = to - from;
+    var ms = reduce ? 0 : Math.max(0, (472.143 * Math.log(Math.abs(d) + 125) - 2000) * SCROLL_TIME), t0 = performance.now();
+    function done() { el.setAttribute('tabindex', el.getAttribute('tabindex') || '-1'); el.focus({ preventScroll: true }); }
+    if (!ms) { scrollTo(0, to); done(); return; }
+    (function step(now) {
+      var k = Math.min(1, (now - t0) / ms);
+      scrollTo(0, from + d * (k < 0.5 ? 4 * k * k * k : (k - 1) * (2 * k - 2) * (2 * k - 2) + 1));
+      if (k < 1) requestAnimationFrame(step); else done();
+    })(t0);
+  });
+
   /* ---- menu for mobile and tablet ----
      A button, not :target or a checkbox, because the close has to play the
      open in reverse; both of those snap shut. The page is held still while it
