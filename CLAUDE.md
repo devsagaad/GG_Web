@@ -72,6 +72,14 @@ python3 tools/build-pages.py --check             # exit 1 if anything is stale
 - A source with `"draft": true` is rendered `noindex` with a DRAFT comment. The
   privacy and terms pages are drafts until a lawyer has read them.
 
+**The journal lives in two places.** Static: one `src/pages/journal-<slug>.html`
+per post with an `"article"` block; the build counts the read time, writes
+BlogPosting schema, lists posts on `/journal` and fails if the homepage's
+journal list disagrees. Webflow: the **Journal** CMS collection (fields mirror
+the front matter), a template page bound to it, and a Collection List on
+`/journal` sorted published-descending then name-ascending, the same order the
+generator uses. A new post goes into both. `sitemap.xml` is generated too.
+
 `assets/glint-ui.js` holds the page behaviour for the static pages. Each
 page-specific block is guarded on its element, so one missing element cannot
 throw and take every later feature down. The Webflow build does not load it.
@@ -85,6 +93,14 @@ build. "Get a quote" links go to `/contact?service=<slug>`; the parameter is
 kept for the chatbot to read. The contact page carries the studio's details and
 ContactPage schema. When the chatbot launches, the privacy policy must cover
 what it collects and that AI processes it.
+
+## The assistant and the gateway
+
+The chatbot that will take enquiries, and the AI gateway it runs through (also
+offered to clients and billed per use), are specified in
+`docs/glint-assistant.md`. They are built from scratch: the user designed a
+similar system at their day job, and none of that employer's code, prompts,
+names or configuration may come into this repo.
 
 ## Proof and claims
 
@@ -142,6 +158,21 @@ Learned the hard way; each one cost a failed call.
   ones, each with a property that matches `glint.css`.
 - **A bare boolean attribute is dropped on publish.** `<details open>` shows
   `open: ""` in the Designer but publishes without it; write `open="open"`.
+- **Never remove a Collection List's empty state.** Deleting the
+  `DynamoEmpty` child deletes the whole list.
+- CMS binding keys: `text` on Heading, Paragraph and Text Block (not on a
+  whtml `<span>`; use a Text Block), `richText` on Rich Text, `link` on links.
+  Collection List config is `source` = `{"collectionId"}` and `sort` =
+  `[{"fieldSlug","direction":"descending"}]`.
+- **A list row cannot link to "Current item" through the API**: `page` and
+  `collectionPage` modes publish a fixed href. The Journal row binds a stopgap
+  `post-link` field instead; switch it to "Current Journal" in the Designer and
+  delete the field.
+- Template SEO and JSON-LD take field tokens:
+  `{{wf {&quot;path&quot;:&quot;seo-title&quot;,&quot;type&quot;:&quot;PlainText&quot;\} }}`
+  (inside JSON-LD the backslash itself must be escaped).
+- A static page may share its slug with a collection (`/journal` page and
+  `/journal/<slug>` items coexist).
 - Page folders (`/services/...`) need the Designer bridge: `create_page_folder`
   only works while the Webflow MCP app is open in the Designer. Until then the
   service pages sit at the root (`/ai-integration`); their schema already uses

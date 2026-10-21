@@ -110,6 +110,15 @@ def read_source(path):
 WPM = 220  # reading speed behind the "N MIN" read times
 
 
+def human(date):
+    """2026-10-21 -> October 21, 2026: what a Webflow date binding prints, so
+    the journal reads the same in both builds. The ISO date stays in
+    <time datetime> and the schema."""
+    import datetime
+    d = datetime.date.fromisoformat(date)
+    return f"{d:%B} {d.day}, {d.year}"
+
+
 def prose_words(main):
     body = re.search(r'<div class="prose">(.*?)</div>\s*</div>\s*</section>', main, re.S)
     return len(re.sub(r"<[^>]+>", " ", body.group(1) if body else main).split())
@@ -117,7 +126,7 @@ def prose_words(main):
 
 def byline(meta):
     a = meta["article"]
-    return (f'<p class="byline lbl"><time datetime="{a["date"]}">{a["date"]}</time>'
+    return (f'<p class="byline lbl"><time datetime="{a["date"]}">{human(a["date"])}</time>'
             f'<span aria-hidden="true">&#183;</span><span>{a["minutes"]} MIN READ</span>'
             f'<span aria-hidden="true">&#183;</span><span>BY GRID AND GLINT</span></p>')
 
@@ -131,7 +140,7 @@ def post_list(posts):
     by_title = sorted(posts, key=lambda m: m["article"]["headline"])
     for m in sorted(by_title, key=lambda m: m["article"]["date"], reverse=True):
         a = m["article"]
-        rows.append(f'        <a href="/{m["path"]}"><span class="data">{a["date"]}</span>'
+        rows.append(f'        <a href="/{m["path"]}"><time class="data" datetime="{a["date"]}">{human(a["date"])}</time>'
                     f'<span class="tt"><h2 class="tth">{esc(a["headline"])}</h2><span class="ex">{esc(a["summary"])}</span></span>'
                     f'<span class="lbl r">BY GRID AND GLINT &#183; {a["minutes"]} MIN</span></a>')
     return '<div class="posts">\n' + "\n".join(rows) + "\n      </div>"
@@ -142,12 +151,12 @@ def check_home(posts):
     by = {"/" + m["path"]: m for m in posts}
     t = HOME.read_text()
     for href, date, title, mins in re.findall(
-            r'<a href="(/journal/[^"]+)"><span class="data">([^<]+)</span><span class="tt"><h3 class="tth">(.*?)</h3>.*?(\d+) MIN</span></a>', t):
+            r'<a href="(/journal/[^"]+)"><time class="data" datetime="[^"]+">([^<]+)</time><span class="tt"><h3 class="tth">(.*?)</h3>.*?(\d+) MIN</span></a>', t):
         m = by.get(href)
         if not m:
             fail(f"index.html links {href}, which has no post source")
         a = m["article"]
-        want = (a["date"], html.escape(a["headline"], quote=False), str(a["minutes"]))
+        want = (human(a["date"]), html.escape(a["headline"], quote=False), str(a["minutes"]))
         if (date, title, mins) != want:
             fail(f"index.html journal entry {href} says {(date, title, mins)}, post says {want}")
 
