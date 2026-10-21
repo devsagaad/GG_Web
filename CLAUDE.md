@@ -50,6 +50,39 @@ It does rely on one thing from each page: **the top of the page must carry
 reference page that is `<main id="top">`; in Webflow it is the hero section.
 Any new page needs it or the link silently does nothing.
 
+## Pages in the static build
+
+`index.html` is hand-edited and is the **one source for everything shared**: the
+head's fonts and stylesheet, the logo `<defs>`, header, menu, footer, cursor,
+Ask Glint panel, and the brief form. Every other page is generated:
+
+```
+grid-and-glint-website/src/pages/<name>.html   ->  <path>/index.html
+python3 tools/build-pages.py                     # write
+python3 tools/build-pages.py --check             # exit 1 if anything is stale
+```
+
+- **Never edit a generated `<path>/index.html`.** Its banner says so; the next
+  build overwrites it. Edit the source, or `index.html` for shared chrome.
+- After changing anything shared in `index.html`, rebuild and run `--check`
+  before committing.
+- Page structured data is derived: the FAQPage schema is read out of the page's
+  own visible FAQ, so the two cannot disagree. Don't hand-write it.
+- A source with `"draft": true` is rendered `noindex` with a DRAFT comment. The
+  privacy and terms pages are drafts until a lawyer has read them.
+
+`assets/glint-ui.js` holds the page behaviour for the static pages. Each
+page-specific block is guarded on its element, so one missing element cannot
+throw and take every later feature down. The Webflow build does not load it.
+
+## Proof and claims
+
+**Real work only.** The site runs ads, and Google Ads' misrepresentation policy
+covers invented clients and case studies. Three fictional case studies were
+removed for that reason. Real projects: Umbrella Dental Clinic (website) and
+Lunamoury (brand identity, website and AI integration). Nothing goes in the
+work section, a testimonial or a result line without the user confirming it.
+
 ## Webflow API gotchas
 
 Learned the hard way; each one cost a failed call.
