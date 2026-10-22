@@ -26,7 +26,7 @@
   /* ---- in-page links: a short eased scroll ----
      The same curve webflow.js uses for its anchor links, at the 0.3 multiplier
      the Webflow pages set with data-scroll-time="0.3" on <body>, so a click on
-     "AI" moves the same way in both builds: about 0.4 s for a short hop, 0.7 s
+     "Systems" moves the same way in both builds: about 0.4 s for a short hop, 0.7 s
      for the length of the homepage. CSS scroll-behavior: smooth stays off: in
      Webflow it stacks on webflow.js's own animation and doubled the wait. */
   var SCROLL_TIME = 0.3;
@@ -159,10 +159,10 @@
   /* ---- Ask Glint: scripted demo ---- */
   var panel = document.getElementById('panel'), launch = document.getElementById('launch'), log = document.getElementById('log');
   var A = {
-    'Can you build us a chatbot?': 'Yes. We build assistants like this one, connected to your content and your CRM, in your brand voice, with a person reviewing what matters. Most take 3 to 8 weeks.',
+    'Can you build us a chatbot?': 'Yes. We build assistants like this one, connected to your content and your CRM, in your brand voice, with a person reviewing what matters. Each build is scoped on a short call, and your Product Spec sets the timeline.',
     'How long does a website take?': 'Most sites take 6 to 10 weeks: two for the system, the rest for design and build. Identity plus website runs about 12.',
     'Do you build in Webflow?': 'Yes. We set up your design tokens as Webflow variables and build a CMS your team can edit without us.',
-    'What does it cost?': 'It depends on scope. Email info@gridandglint.com with what you need and we will reply with a range within two working days.'
+    'What does it cost?': 'Every project is scoped on a short call so you only pay for what you need. You get a written proposal after the call.'
   };
   function setOpen(o) { panel.hidden = !o; launch.setAttribute('aria-expanded', String(o)); if (!o) launch.focus(); }
   launch.addEventListener('click', function () { setOpen(panel.hidden); });

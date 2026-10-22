@@ -43,7 +43,7 @@ Page source format (src/pages/<name>.html):
      "people": ["<author slug>"],
      "work": {"client": "...", "year": "2025", "summary": "...", "tag": "BRAND + WEB",
               "tile": "/assets/work/<slug>-tile.svg", "featured": true,
-              "services": ["brand-identity", "webflow-websites", "ai-integration"]}}
+              "services": ["brand-identity", "webflow-websites", "systems"]}}
 
 "microdata": true marks a page that mirrors a Webflow page carrying microdata
 (its markup has the itemscope attributes) and so gets no JSON-LD.
@@ -297,7 +297,7 @@ def author_page(a):
     return meta, main
 
 
-SERVICES = ("brand-identity", "webflow-websites", "ai-integration")
+SERVICES = ("brand-identity", "webflow-websites", "systems")
 
 
 def work_tile(m):
