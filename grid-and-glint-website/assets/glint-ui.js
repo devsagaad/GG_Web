@@ -159,10 +159,10 @@
   /* ---- Ask Glint: scripted demo ---- */
   var panel = document.getElementById('panel'), launch = document.getElementById('launch'), log = document.getElementById('log');
   var A = {
-    'Can you build us a chatbot?': 'Yes. We build assistants like this one, connected to your content and your CRM, in your brand voice, with a person reviewing what matters. Each build is scoped on a short call, and your Product Spec sets the timeline.',
+    'Can you build us a chatbot?': 'Yes. We build assistants like this one, connected to your content and your CRM, in your brand voice, with a person reviewing what matters. Each build is scoped before it starts, and your Product Spec sets the timeline.',
     'How long does a website take?': 'Most sites take 6 to 10 weeks: two for the system, the rest for design and build. Identity plus website runs about 12.',
     'Do you build in Webflow?': 'Yes. We set up your design tokens as Webflow variables and build a CMS your team can edit without us.',
-    'What does it cost?': 'Every project is scoped on a short call so you only pay for what you need. You get a written proposal after the call.'
+    'What does it cost?': 'Every project is scoped to what you need, so there is no price list. Our assistant asks a few questions about your project and finds a time that works; then you meet the team, and a written proposal follows.'
   };
   function setOpen(o) { panel.hidden = !o; launch.setAttribute('aria-expanded', String(o)); if (!o) launch.focus(); }
   launch.addEventListener('click', function () { setOpen(panel.hidden); });

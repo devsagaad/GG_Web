@@ -132,8 +132,11 @@ guide. What runs through every page:
 - One six-stage process for every service: Onboarding, Strategy, Development,
   Review, Handover, Support. No week numbers in it; timelines live on each
   service page (brand 4 to 6 weeks, website 6 to 10, Systems scoped per build).
-- No prices anywhere. Every CTA is "Book a discovery call"; a written proposal
-  follows the call.
+- No prices anywhere, and no booking link. Every CTA is "Start a project".
+  Enquiries go through the chatbot, which filters the lead and schedules the
+  human meeting; a written proposal follows the meeting. Copy describes it that
+  way ("Our assistant asks a few questions ... then you meet the team"), even
+  before the chatbot is on the site, at the user's request.
 - Clients get a portal (progress, files, chat, support), brand guidelines live
   in a Brand Hub in it, and Systems run on AI the studio manages by default, or
   the client's own account. **The site presents these as available now, at the
