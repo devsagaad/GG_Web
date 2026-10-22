@@ -38,7 +38,7 @@ numbers: that would turn an E-E-A-T gap into a misrepresentation problem.
 
 ### 1. Trust: placeholders are visible on the homepage (highest)
 
-The homepage shows 20 placeholder labels: "FOUNDER NAME", "ADD A REAL CLIENT
+The homepage shows 19 placeholder labels: "NAME", "ADD A REAL CLIENT
 QUOTE", "LUNAMOURY LOGO" and others. The footer says "Some names, quotes and
 details on this site are placeholders". That disclaimer is honest, but to a
 visitor or a Google reviewer it reads as an unfinished site.
@@ -48,13 +48,17 @@ each placeholder with something real, or hide the section until it can be:
 testimonials and the team grid can each come off the homepage in one step.
 The footer line goes once no placeholders remain.
 
-### 2. Expertise: there are no named people
+### 2. Expertise: one named person so far
 
-No page names a person: the team grid is placeholders, the About page
-describes the studio but no one in it, and journal posts are by "Grid and
-Glint". Expertise is judged on people.
+The founder, Mark Sagaad, is now named on the homepage team grid and on the
+About page, with his LinkedIn profile, and marked up as `Person` (the
+organisation's `founder`, with `sameAs` pointing at LinkedIn). Still missing:
+his photo and an experience line, the other two team cards (placeholders), and
+a named author on journal posts, which are by "Grid and Glint". Expertise is
+judged on people.
 
-Needed from the studio, for each person who works on client projects:
+Needed from the studio, for Mark and for each other person who works on
+client projects:
 
 - name and role;
 - a real photo;
@@ -129,7 +133,8 @@ the Work section already shows the project without linking out.
 
 | Item | For |
 |---|---|
-| Names, roles, photos, short bios and LinkedIn links of the people who work on projects | Expertise (gap 2) |
+| Mark's photo and experience line; whether he is the author of the journal posts | Expertise (gap 2) |
+| Names, roles, photos, short bios and LinkedIn links of the other people who work on projects | Expertise (gap 2) |
 | Per project: brief, what was built, images, a result, with the client's OK | Experience (gap 3) |
 | Real client quotes, with name, role and company, and written permission | Trust (gap 1) |
 | Lunamoury's logo, and permission to show it | Trust (gap 1) |
