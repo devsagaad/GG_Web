@@ -40,10 +40,20 @@ Page source format (src/pages/<name>.html):
      "article": {"date": "2026-10-21", "headline": "...", "summary": "...", "author": "<slug>"},
      "unpublished": true,
      "microdata": true,
-     "people": ["<author slug>"]}
+     "people": ["<author slug>"],
+     "work": {"client": "...", "year": "2025", "summary": "...", "tag": "BRAND + WEB",
+              "tile": "/assets/work/<slug>-tile.svg", "featured": true,
+              "services": ["brand-identity", "webflow-websites", "ai-integration"]}}
 
 "microdata": true marks a page that mirrors a Webflow page carrying microdata
 (its markup has the itemscope attributes) and so gets no JSON-LD.
+
+A "work" block makes the page a case study, the twin of an item in the Webflow
+Work collection. "services" records what the studio delivered, one switch per
+service there. Tiles are listed through <!--@work--> (every project) and
+<!--@work:<service>--> (projects that included it), in the Work Collection
+Lists' order: year descending, then client. The homepage's hand-written work
+section is checked against the featured projects.
     -->
     <main id="top"> ... </main>
 """
@@ -287,9 +297,51 @@ def author_page(a):
     return meta, main
 
 
+SERVICES = ("brand-identity", "webflow-websites", "ai-integration")
+
+
+def work_tile(m):
+    w, esc, href = m["work"], (lambda s: html.escape(s, quote=False)), "/" + m["path"]
+    return (f'<article class="tile rv"><a class="plate media" href="{href}" tabindex="-1" aria-hidden="true">'
+            f'<img class="plate-img" src="{w["tile"]}" width="800" height="600" alt="" loading="lazy"></a>'
+            f'<div class="meta"><h3 class="name"><a href="{href}">{esc(w["client"])}</a></h3>'
+            f'<div class="data">{w["year"]}</div><div class="lbl">{esc(w["summary"])}</div>'
+            f'<div class="tag">{esc(w["tag"])}</div></div></article>')
+
+
+def work_list(works, keep=lambda w: True):
+    """Tiles for the projects `keep` selects, ordered like the Webflow Work
+    Collection Lists: year descending, then client."""
+    sel = sorted((m for m in works if keep(m["work"])), key=lambda m: m["work"]["client"])
+    rows = [work_tile(m) for m in sorted(sel, key=lambda m: m["work"]["year"], reverse=True)]
+    return '<div class="work">\n        ' + "\n        ".join(rows) + "\n      </div>"
+
+
+def check_work(m):
+    w = m.get("work")
+    for k in ("client", "year", "summary", "tag", "tile", "services"):
+        if k not in w:
+            fail(f"{m['_src']}: work block needs {k!r}")
+    for s in w["services"]:
+        if s not in SERVICES:
+            fail(f"{m['_src']}: unknown service {s!r}; use one of {', '.join(SERVICES)}")
+    if not (ROOT / w["tile"].lstrip("/")).exists():
+        fail(f"{m['_src']}: tile {w['tile']} does not exist")
+
+
+def check_home_work(works):
+    """The homepage's work tiles must be exactly the featured projects."""
+    want = work_list(works, lambda w: w.get("featured"))
+    if want not in HOME.read_text():
+        fail("index.html's work section does not match the featured projects. It should read:\n      " + want)
+
+
 def render(meta, main, c, authors):
     for name in ("mailbox", "posts"):
         main = main.replace(f"<!--@{name}-->", c[name])
+    main = main.replace("<!--@work-->", work_list(c["works"]))
+    main = re.sub(r"<!--@work:([a-z-]+)-->", lambda g: work_list(c["works"], lambda w: g.group(1) in w["services"])
+                  if g.group(1) in SERVICES else fail(f"{meta['_src']}: unknown service {g.group(1)!r}"), main)
     if "article" in meta:
         main = main.replace("<!--@byline-->", byline(meta, authors))
         main = article_microdata(meta, main)
@@ -389,6 +441,10 @@ def main():
     posts = [m for _, m, _ in pages if "article" in m]
     c["posts"] = post_list(posts, authors)
     check_home(posts, authors)
+    c["works"] = [m for _, m, _ in pages if "work" in m]
+    for m in c["works"]:
+        check_work(m)
+    check_home_work(c["works"])
     built = [(meta, render(meta, body, c, authors)) for _, meta, body in pages]
     for a in authors.values():
         meta, body = author_page(a)

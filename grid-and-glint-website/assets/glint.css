@@ -331,6 +331,17 @@ main, header, footer { position: relative; z-index: 1; }
 .tile { position: relative; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
 .tile:nth-child(1) { grid-column: 1 / 8; } .tile:nth-child(2) { grid-column: 8 / 13; margin-top: 96px; }
 .tile:nth-child(3) { grid-column: 1 / 6; } .tile:nth-child(4) { grid-column: 6 / 13; margin-top: -48px; }
+/* Webflow lists work from the CMS: each tile sits alone in a .w-dyn-item, two
+   wrappers deep. Make the wrappers vanish from the grid and key the rhythm off
+   the item instead, as the static build keys it off the tile. */
+.work > .w-dyn-list, .work .w-dyn-items, .work .w-dyn-item { display: contents; }
+.work .w-dyn-empty { display: none; }
+.work .w-dyn-item:nth-child(1) > .tile { grid-column: 1 / 8; margin-top: 0; }
+.work .w-dyn-item:nth-child(2) > .tile { grid-column: 8 / 13; margin-top: 96px; }
+.work .w-dyn-item:nth-child(3) > .tile { grid-column: 1 / 6; margin-top: 0; }
+.work .w-dyn-item:nth-child(4) > .tile { grid-column: 6 / 13; margin-top: -48px; }
+/* One project alone takes the wide column, without a drop. */
+.work > .tile:only-child, .work .w-dyn-item:only-child > .tile { grid-column: 1 / 8; margin-top: 0; }
 .plate { position: relative; overflow: hidden; border-radius: var(--r-md); aspect-ratio: 4 / 3; max-width: 100%; display: grid; place-items: center; }
 .plate svg.art { width: 46%; height: auto; transition: transform 700ms var(--ease); }
 .tile:hover .plate svg.art { transform: rotate(45deg) scale(1.06); }
@@ -341,11 +352,10 @@ main, header, footer { position: relative; z-index: 1; }
 .p-forest { background: var(--forest); color: var(--mint); } .p-forest svg { fill: var(--mint); }
 .p-coral { background: var(--coral); color: var(--ink); } .p-coral svg { fill: var(--ink); }
 .p-lime { background: var(--lime); color: var(--ink); } .p-lime svg { fill: var(--forest); }
-/* A client's plate takes the client's own colour and logo: Umbrella Blue
-   with the white lockup, the pairing its guidelines allow on blue. */
-.p-umbrella { background: #0F7AB5; color: #fff; }
-.plate-logo { width: 40%; height: auto; transition: transform 700ms var(--ease); }
-.tile:hover .plate-logo { transform: scale(1.05); }
+/* A client's plate is an image from the CMS: the client's colour and logo,
+   composed at 4:3. */
+.plate-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 700ms var(--ease); }
+.tile:hover .plate-img { transform: scale(1.04); }
 .tile .name a { color: inherit; }
 /* A case study's brand artwork, full width under the hero. */
 .case-cover { padding-block: 0; }
@@ -356,7 +366,7 @@ main, header, footer { position: relative; z-index: 1; }
 .tile:hover .name { color: var(--accent-text); }
 .tag { display: inline-block; font-size: 10px; line-height: 14px; font-weight: 700; letter-spacing: 0.12em; padding: 2px 8px; border-radius: var(--r-xs); background: var(--lime); color: var(--ink); }
 .tag.hot { background: var(--coral); }
-@media (max-width: 760px) { .work { grid-template-columns: 1fr; } .tile:nth-child(n) { grid-column: 1 / -1; margin-top: 0; } }
+@media (max-width: 760px) { .work { grid-template-columns: 1fr; } .tile:nth-child(n), .work > .tile:only-child, .work .w-dyn-item:nth-child(n) > .tile { grid-column: 1 / -1; margin-top: 0; } }
 
 /* process: a real sequence, so it is numbered */
 .proc { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
@@ -539,7 +549,6 @@ main, header, footer { position: relative; z-index: 1; }
 .deliv div { padding: 22px 0; border-bottom: 1px solid var(--rule); }
 .deliv h3 { font-size: 18px; line-height: 26px; }
 .deliv p { margin-top: 6px; color: var(--fg-2); font-size: 15px; line-height: 24px; max-width: 46ch; }
-.work.solo .tile:nth-child(n) { grid-column: 1 / 8; margin-top: 0; }
 .prose { margin-left: 25%; max-width: 68ch; }
 .prose h2, .prose h3 { font-size: 22px; line-height: 30px; margin: 44px 0 12px; }
 /* Figures in the prose. Webflow's Rich Text wraps the image in a div and
@@ -568,7 +577,6 @@ main, header, footer { position: relative; z-index: 1; }
 @media (max-width: 760px) {
   .page-hero .facts { grid-template-columns: 1fr; gap: 16px; }
   .deliv { grid-template-columns: 1fr; margin-left: 0; }
-  .work.solo .tile:nth-child(n) { grid-column: 1 / -1; }
   .prose { margin-left: 0; }
 }
 
