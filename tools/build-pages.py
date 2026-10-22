@@ -39,7 +39,11 @@ Page source format (src/pages/<name>.html):
      "service": {"name": "...", "serviceType": "...", "description": "..."},
      "article": {"date": "2026-10-21", "headline": "...", "summary": "...", "author": "<slug>"},
      "unpublished": true,
+     "microdata": true,
      "people": ["<author slug>"]}
+
+"microdata": true marks a page that mirrors a Webflow page carrying microdata
+(its markup has the itemscope attributes) and so gets no JSON-LD.
     -->
     <main id="top"> ... </main>
 """
@@ -114,7 +118,7 @@ def read_source(path):
     for k in ("path", "title", "description", "crumb"):
         if k not in meta:
             fail(f"{path.name}: front matter needs {k!r}")
-    if not main.startswith('<main id="top">'):
+    if not re.match(r'<main id="top"[ >]', main):
         fail(f'{path.name}: body must open with <main id="top"> (the footer\'s back-to-top targets it)')
     if len(meta["title"]) > 60:
         fail(f"{path.name}: title is {len(meta['title'])} chars; Google truncates past ~60")

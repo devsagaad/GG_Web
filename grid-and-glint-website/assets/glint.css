@@ -341,6 +341,15 @@ main, header, footer { position: relative; z-index: 1; }
 .p-forest { background: var(--forest); color: var(--mint); } .p-forest svg { fill: var(--mint); }
 .p-coral { background: var(--coral); color: var(--ink); } .p-coral svg { fill: var(--ink); }
 .p-lime { background: var(--lime); color: var(--ink); } .p-lime svg { fill: var(--forest); }
+/* A client's plate takes the client's own colour and logo: Umbrella Blue
+   with the white lockup, the pairing its guidelines allow on blue. */
+.p-umbrella { background: #0F7AB5; color: #fff; }
+.plate-logo { width: 40%; height: auto; transition: transform 700ms var(--ease); }
+.tile:hover .plate-logo { transform: scale(1.05); }
+.tile .name a { color: inherit; }
+/* A case study's brand artwork, full width under the hero. */
+.case-cover { padding-block: 0; }
+.case-cover img { display: block; width: 100%; height: auto; border-radius: var(--r-md); }
 .p-ink { background: var(--ink-deep); color: var(--mint); border: 1px solid var(--rule); } .p-ink svg { fill: var(--mint); }
 .tile .meta { display: grid; grid-template-columns: 1fr auto; gap: 4px 16px; align-items: baseline; }
 .tile .name { margin: 0; font-family: var(--f-display); font-weight: 900; font-size: 36px; line-height: 1; text-transform: uppercase; transition: color 160ms var(--ease); }
@@ -532,7 +541,13 @@ main, header, footer { position: relative; z-index: 1; }
 .deliv p { margin-top: 6px; color: var(--fg-2); font-size: 15px; line-height: 24px; max-width: 46ch; }
 .work.solo .tile:nth-child(n) { grid-column: 1 / 8; margin-top: 0; }
 .prose { margin-left: 25%; max-width: 68ch; }
-.prose h2 { font-size: 22px; line-height: 30px; margin: 44px 0 12px; }
+.prose h2, .prose h3 { font-size: 22px; line-height: 30px; margin: 44px 0 12px; }
+/* Figures in the prose. Webflow's Rich Text wraps the image in a div and
+   centres a narrow figure; both builds get a full-width image. */
+.prose figure { margin: 28px 0 0; width: 100%; max-width: 100%; }
+.prose figure > div { display: block; }
+.prose figure img { display: block; width: 100%; height: auto; border: 1px solid var(--rule); border-radius: var(--r-md); }
+.prose figcaption { margin-top: 10px; font-size: 13px; line-height: 20px; color: var(--fg-3); text-align: left; }
 .prose > :first-child { margin-top: 0; }
 .prose p, .prose li { color: var(--fg-2); font-size: 16px; line-height: 27px; }
 .prose p + p { margin-top: 12px; }
