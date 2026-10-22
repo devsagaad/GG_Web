@@ -122,6 +122,27 @@ offered to clients and billed per use), are specified in
 similar system at their day job, and none of that employer's code, prompts,
 names or configuration may come into this repo.
 
+## The offer
+
+Three services: **brand identity**, **Webflow websites** and **Systems**
+(`/services/systems`). AI is part of Systems, not a service of its own; the old
+"AI integration" page became Systems in October 2026, from the user's edit
+guide. What runs through every page:
+
+- One six-stage process for every service: Onboarding, Strategy, Development,
+  Review, Handover, Support. No week numbers in it; timelines live on each
+  service page (brand 4 to 6 weeks, website 6 to 10, Systems scoped per build).
+- No prices anywhere. Every CTA is "Book a discovery call"; a written proposal
+  follows the call.
+- Clients get a portal (progress, files, chat, support), brand guidelines live
+  in a Brand Hub in it, and Systems run on AI the studio manages by default, or
+  the client's own account. **The site presents these as available now, at the
+  user's request, though `docs/glint-assistant.md` says the gateway is not
+  built yet.** Keep the two in step: if the spec or the build changes, the copy
+  on the homepage, `/services/systems`, the brand page and `/ai-policy` changes
+  with it. The AI policy's data-handling paragraph is a legal statement; it
+  goes to the lawyer with the privacy policy and terms.
+
 ## Proof and claims
 
 **Real work only.** The site runs ads, and Google Ads' misrepresentation policy
@@ -145,15 +166,15 @@ services it delivered and whether it is featured, and the lists follow:
 
 - Static: the source's `"work"` block (`client`, `year`, `summary`, `tag`,
   `tile`, `featured`, `services` from `brand-identity`, `webflow-websites`,
-  `ai-integration`). `<!--@work-->` renders every project, `<!--@work:<service>-->`
+  `systems`). `<!--@work-->` renders every project, `<!--@work:<service>-->`
   only that service's. The homepage list is pasted, not included, and the build
   fails if it is not exactly the featured projects.
 - Webflow: Switch fields `brand-identity`, `webflow-website` (singular),
-  `ai-integration` and `featured` on the Work item. Collection Lists on `/`
+  `ai-integration` (labelled "Systems"; the API cannot rename a slug) and
+  `featured` on the Work item. Collection Lists on `/`
   (filter `featured`), `/work` (none) and each service page (its switch), all
   sorted year-descending then name-ascending, like the generator.
-- A service with no projects has no work section: `ai-integration` has none
-  today. Add the section back on both builds with its first project.
+- A service with no projects has no work section: Systems has none today. Add the section back on both builds with its first project.
 - Tile images are 800x600, `assets/work/<slug>-tile.svg` statically and the
   `tile` Image field in Webflow. The tile links by the `case-link` stopgap; see
   the gotchas.
@@ -257,6 +278,19 @@ Learned the hard way; each one cost a failed call.
   as an empty `w-dyn-bind-empty` element.
 - **A Block's text cannot be set** ("doesn't support text"): remove the Block
   and insert a new one with the text.
+- **`set_text` on a link replaces all its children**, so a button whose label
+  is a text node beside `<span class="arr">` loses the arrow span. Insert the
+  new button with whtml next to it, then remove the old one.
+- **`set_attributes` with `id` fails** ("internal error") on an element whose
+  id is a custom attribute; `set_dom_id` on the same element works.
+- **Page JSON-LD on static pages is a copy of the static build's.** After a
+  rebuild, read the `ld+json` block out of each built page and write it with
+  `bulk_update_pages_schema_markup`; never retype it.
+- **Check every changed page after a publish, with a cache-busting query.**
+  One publish served a page's previous version while the Designer held the
+  new one; a second publish fixed it.
+- **301 redirects are not in the API.** Old paths (`/ai-integration` →
+  `/systems`) go in Site settings → Publishing → 301 redirects, by hand.
 - A static page may share its slug with a collection (`/journal` page and
   `/journal/<slug>` items coexist).
 - **Link pages by reference, not by path.** `set_link` with `linkType: "page"`
@@ -264,7 +298,7 @@ Learned the hard way; each one cost a failed call.
   moves. Remove the `href` attribute whtml left behind, or it wins.
 - Page folders (`/services/...`) need the Designer bridge: `create_page_folder`
   only works while the Webflow MCP app is open in the Designer. Until then the
-  service pages sit at the root (`/ai-integration`), and every Webflow link to
+  service pages sit at the root (`/systems`), and every Webflow link to
   them is a page reference, so moving them into a folder carries the links
   along. The static build and the schema already use the `/services/...` URLs.
 

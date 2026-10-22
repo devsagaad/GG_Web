@@ -1,7 +1,7 @@
 # E-E-A-T review: gridandglint.com
 
-Reviewed 22 October 2026, across all 15 pages of the reference build and the
-Webflow staging site. E-E-A-T is how Google's quality guidelines judge whether
+Reviewed 22 October 2026, and updated the same day for the Systems rename,
+across all 15 pages of the reference build and the Webflow staging site. E-E-A-T is how Google's quality guidelines judge whether
 a page deserves trust: **Experience**, **Expertise**, **Authoritativeness**
 and **Trust**, with Trust the most important. It matters more here than for
 most studios: the site will run ads, and Google Ads also checks that the
@@ -117,13 +117,31 @@ plain quotes, with permission.
 - **The domain is still parked.** Nothing on gridandglint.com is live yet,
   and the structured data and canonical URLs already point there.
 
-### 6. Trust: the clinic's live site (resolved for now)
+### 6. Trust: services described ahead of the build
+
+Since the AI integration page became Systems, the site describes a client
+portal (progress, files, chat, support), a Brand Hub for guidelines, and
+managed AI: one AI connection, automatic failover between providers, a monthly
+cap with alerts, and usage recorded without conversation content. It presents
+these as available today, at the studio's request. The specification in
+`docs/glint-assistant.md` says the gateway behind managed AI is not built yet.
+
+A visitor, a client or a Google Ads reviewer will take those lines at their
+word. Each one needs to be true by the time a client signs, or reworded until
+it is. The AI policy's data-handling paragraph (usage records only, a data
+processing agreement with every client) is a legal commitment and belongs in
+the lawyer's review with the privacy policy and terms.
+
+The old `/ai-integration` address also needs a 301 redirect to `/systems` in
+Webflow's site settings; until then it returns a 404.
+
+### 7. Trust: the clinic's live site (resolved for now)
 
 The "Trusted by" logo used to link to the clinic's live site, which is months
 behind the site we built and credits another agency. It now links to our case
 study. Link out again once the clinic's new site is live.
 
-### 7. Smaller items
+### 8. Smaller items
 
 - **The journal is empty for now.** The three posts are unpublished at the
   studio's request, and `/journal` says the first posts are on their way. An
@@ -137,10 +155,12 @@ study. Link out again once the clinic's new site is live.
 | Item | For |
 |---|---|
 | Mark's photo and experience line | Expertise (gap 2) |
-| A first journal post Mark stands behind | Expertise (gap 7) |
+| A first journal post Mark stands behind | Expertise (gap 8) |
 | Per project: brief, what was built, images, a result, with the client's OK | Experience (gap 3) |
 | Real client quotes, with name, role and company, and written permission | Trust (gap 1) |
 | LinkedIn company page, social profiles, Google Business Profile | Authoritativeness (gap 4) |
 | DTI registration number | Trust (gap 5) |
 | Lawyer-reviewed privacy policy and terms | Trust (gap 5) |
+| The portal, Brand Hub and managed AI live, or the copy reworded; the AI policy's data paragraph reviewed | Trust (gap 6) |
+| A 301 redirect from `/ai-integration` to `/systems` | Trust (gap 6) |
 | Umbrella's launch date, and a result or quote once the site is live | Experience (gap 3) |
