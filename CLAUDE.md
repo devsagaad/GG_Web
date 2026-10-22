@@ -73,12 +73,32 @@ python3 tools/build-pages.py --check             # exit 1 if anything is stale
   privacy and terms pages are drafts until a lawyer has read them.
 
 **The journal lives in two places.** Static: one `src/pages/journal-<slug>.html`
-per post with an `"article"` block; the build counts the read time, writes
-BlogPosting schema, lists posts on `/journal` and fails if the homepage's
-journal list disagrees. Webflow: the **Journal** CMS collection (fields mirror
-the front matter), a template page bound to it, and a Collection List on
-`/journal` sorted published-descending then name-ascending, the same order the
-generator uses. A new post goes into both. `sitemap.xml` is generated too.
+per post with an `"article"` block naming its `"author"`; the build counts the
+read time, lists posts on `/journal` and fails if the homepage's journal list
+disagrees. Webflow: the **Journal** CMS collection (fields mirror the front
+matter, `author` references Authors), a template page bound to it, and a
+Collection List on `/journal` sorted published-descending then name-ascending,
+the same order the generator uses. A new post goes into both. `sitemap.xml` is
+generated too.
+
+- **Unpublished posts.** `"unpublished": true` keeps a source but builds,
+  lists and maps nothing, the twin of a draft CMS item. The three current posts
+  are unpublished at the user's request; they are credited to Mark Sagaad.
+  While none is published, `/journal` shows its empty state and the homepage
+  journal section is off (removed in `index.html`, visibility off in Webflow).
+  Republishing: drop the flag, flip the CMS items to published, put the
+  homepage section back in `index.html` and make it visible in Webflow. The
+  drafts' bodies and `related-service-link` still say `/services/...`; check
+  them against where the service pages live by then.
+- **Authors.** `src/authors.json` is the twin of the Webflow **Authors**
+  collection; each author has a page at `/authors/<slug>`. The Person `@id` is
+  `https://gridandglint.com/authors/<slug>#person` everywhere it appears.
+- **Post and author pages carry microdata, not JSON-LD**, in both builds,
+  because Webflow cannot fill CMS fields into JSON-LD (see the gotchas).
+
+**The team.** The studio has a team, but only the founder, Mark Sagaad, is named
+on the site, by the user's choice. Do not add team cards or placeholders for
+the others.
 
 `assets/glint-ui.js` holds the page behaviour for the static pages. Each
 page-specific block is guarded on its element, so one missing element cannot
@@ -176,16 +196,41 @@ Learned the hard way; each one cost a failed call.
 - **A list row cannot link to "Current item" through the API**: `page` and
   `collectionPage` modes publish a fixed href. The Journal row binds a stopgap
   `post-link` field instead; switch it to "Current Journal" in the Designer and
-  delete the field.
-- Template SEO and JSON-LD take field tokens:
-  `{{wf {&quot;path&quot;:&quot;seo-title&quot;,&quot;type&quot;:&quot;PlainText&quot;\} }}`
-  (inside JSON-LD the backslash itself must be escaped).
+  delete the field. The post byline likewise binds the Authors `profile-link`
+  stopgap; link it to the Author in the Designer and delete that field.
+- **Reference fields bind like their own**: field id
+  `"<referenceFieldId>:::<fieldIdInTheOtherCollection>"`, e.g. the post's
+  author name.
+- Template **SEO title and description** take field tokens:
+  `{{wf {&quot;path&quot;:&quot;seo-title&quot;,&quot;type&quot;:&quot;PlainText&quot;\} }}`.
+- **CMS field tokens do not resolve in JSON-LD on a collection template.**
+  Tested October 2026: the page-level JSON-LD setting published every token
+  empty, in both the `&quot;` and plain-quote forms; tokens written into an
+  HTML Embed's code through the API publish as literal text. So template pages
+  use **schema.org microdata**: `itemscope`/`itemtype`/`itemprop` attributes on
+  the visible elements (write `itemscope="itemscope"`, see the boolean rule),
+  plus hidden `<link>`/`<meta>` DOM elements whose `href`/`content` attribute
+  is bound to a field with `set_settings` `attributes` + `value_binding`.
+  Create those DOM elements with `data_element_builder` first, with no
+  settings; inserting `<meta>`/`<link>` through whtml timed out.
+- **A Date field bound to an attribute publishes as "October 21, 2026"**, not
+  ISO 8601, so it cannot fill `datePublished`. The Webflow post microdata has
+  no date; the static build's does.
+- **Conditional visibility cannot be set through the API on a template page**
+  ("not inside a CMS context"). An empty Rich Text binding is still published,
+  as an empty `w-dyn-bind-empty` element.
+- **A Block's text cannot be set** ("doesn't support text"): remove the Block
+  and insert a new one with the text.
 - A static page may share its slug with a collection (`/journal` page and
   `/journal/<slug>` items coexist).
+- **Link pages by reference, not by path.** `set_link` with `linkType: "page"`
+  and the page id publishes the page's current URL and follows it if the page
+  moves. Remove the `href` attribute whtml left behind, or it wins.
 - Page folders (`/services/...`) need the Designer bridge: `create_page_folder`
   only works while the Webflow MCP app is open in the Designer. Until then the
-  service pages sit at the root (`/ai-integration`); their schema already uses
-  the `/services/...` URLs they will move to.
+  service pages sit at the root (`/ai-integration`), and every Webflow link to
+  them is a page reference, so moving them into a folder carries the links
+  along. The static build and the schema already use the `/services/...` URLs.
 
 ## Repository
 

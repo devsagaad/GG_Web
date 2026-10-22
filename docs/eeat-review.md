@@ -25,8 +25,8 @@ numbers: that would turn an E-E-A-T gap into a misrepresentation problem.
   results.
 - **Content answers real questions.** Each service page has a visible FAQ,
   and its FAQPage structured data is generated from that FAQ, so the two
-  cannot disagree. Journal posts are practical guides, dated, with read
-  times and BlogPosting structured data.
+  cannot disagree. Journal posts, when published, are dated, carry read
+  times and a named author, and are marked up as BlogPosting.
 - **Fixed in this pass:**
   - The organisation logo in the structured data pointed at a path that
     will not exist on Webflow. It now uses a hosted 512px logo, legible on
@@ -38,8 +38,9 @@ numbers: that would turn an E-E-A-T gap into a misrepresentation problem.
 
 ### 1. Trust: placeholders are visible on the homepage (highest)
 
-The homepage shows 19 placeholder labels: "NAME", "ADD A REAL CLIENT
-QUOTE", "LUNAMOURY LOGO" and others. The footer says "Some names, quotes and
+The homepage shows 13 placeholder labels, most of them in the testimonials
+("ADD A REAL CLIENT QUOTE", "NAME", "ROLE, COMPANY"), plus "LUNAMOURY LOGO",
+the founder's experience line and his photo. The footer says "Some names, quotes and
 details on this site are placeholders". That disclaimer is honest, but to a
 visitor or a Google reviewer it reads as an unfinished site.
 
@@ -48,17 +49,18 @@ each placeholder with something real, or hide the section until it can be:
 testimonials and the team grid can each come off the homepage in one step.
 The footer line goes once no placeholders remain.
 
-### 2. Expertise: one named person so far
+### 2. Expertise: one named person
 
-The founder, Mark Sagaad, is now named on the homepage team grid and on the
-About page, with his LinkedIn profile, and marked up as `Person` (the
-organisation's `founder`, with `sameAs` pointing at LinkedIn). Still missing:
-his photo and an experience line, the other two team cards (placeholders), and
-a named author on journal posts, which are by "Grid and Glint". Expertise is
-judged on people.
+The founder, Mark Sagaad, is named on the homepage and the About page and has
+an author page at `/authors/mark-sagaad`, all with his LinkedIn profile, and is
+one `Person` in the structured data across the site (the organisation's
+`founder`, with `sameAs` pointing at LinkedIn). The team grid shows him alone:
+the rest of the team stays unnamed by choice. Journal posts are credited to
+him, and an Authors collection is ready for other writers. Still missing: his
+photo and an experience line. Expertise is judged on people, so those two are
+worth sending soon.
 
-Needed from the studio, for Mark and for each other person who works on
-client projects:
+Needed from the studio, for Mark and for anyone added as an author later:
 
 - name and role;
 - a real photo;
@@ -66,9 +68,8 @@ client projects:
   notable clients, certifications;
 - a LinkedIn profile.
 
-With that, the build adds the people to the About page and the homepage team
-grid, marks them up as `Person` in the structured data (with `sameAs`
-pointing at LinkedIn), and credits journal posts to their real author.
+An author is one entry in `src/authors.json` and one item in the Webflow
+Authors collection; the bio field appears on their page once it is filled.
 
 ### 3. Experience: the work has no detail
 
@@ -124,8 +125,10 @@ the Work section already shows the project without linking out.
 
 ### 7. Smaller items
 
-- **Named authors on journal posts** (see 2): "By Grid and Glint" is
-  accurate, but a named author with a bio and LinkedIn is stronger.
+- **The journal is empty for now.** The three posts are unpublished at the
+  studio's request, and `/journal` says the first posts are on their way. An
+  empty journal in the menu is a weak signal; publish a first post Mark stands
+  behind, or take Journal out of the menu until then.
 - **"Last updated" on service pages:** not required, but service pages
   change, and a visible date helps. The policy pages already show one.
 
@@ -133,8 +136,8 @@ the Work section already shows the project without linking out.
 
 | Item | For |
 |---|---|
-| Mark's photo and experience line; whether he is the author of the journal posts | Expertise (gap 2) |
-| Names, roles, photos, short bios and LinkedIn links of the other people who work on projects | Expertise (gap 2) |
+| Mark's photo and experience line | Expertise (gap 2) |
+| A first journal post Mark stands behind | Expertise (gap 7) |
 | Per project: brief, what was built, images, a result, with the client's OK | Experience (gap 3) |
 | Real client quotes, with name, role and company, and written permission | Trust (gap 1) |
 | Lunamoury's logo, and permission to show it | Trust (gap 1) |

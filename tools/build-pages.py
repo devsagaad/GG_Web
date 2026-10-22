@@ -264,8 +264,10 @@ def author_page(a):
     esc = lambda s: html.escape(s, quote=False)
     meta = {"path": f"authors/{a['slug']}", "title": f"{a['name']}, {a['jobTitle']} | Grid and Glint",
             "description": a["seoDescription"], "crumb": a["name"], "_src": "authors.json", "microdata": True}
-    # Webflow hides an empty Rich Text binding, so the bio appears only once written.
-    bio = f'\n      <div class="prose" itemprop="description">{a["bio"]}</div>' if a["bio"] else ""
+    # Webflow hides an empty Rich Text binding, so the bio appears only once
+    # written. No itemprop: Webflow still publishes the empty element, and an
+    # empty description is worse than none.
+    bio = f'\n      <div class="prose">{a["bio"]}</div>' if a["bio"] else ""
     main = f"""<main id="top" itemscope itemtype="https://schema.org/ProfilePage">
   <section class="page-hero wrap" aria-labelledby="h1">
     <div class="xs"><span class="x"></span><span class="x"></span><span class="x"></span></div>
