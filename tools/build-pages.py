@@ -27,7 +27,8 @@ Page source format (src/pages/<name>.html):
      "crumb": "Brand identity", "parent": ["Services", "/#services"],
      "type": "WebPage" | "ContactPage" | "AboutPage" | "CollectionPage",
      "service": {"name": "...", "serviceType": "...", "description": "..."},
-     "article": {"date": "2026-10-21", "headline": "...", "summary": "..."}}
+     "article": {"date": "2026-10-21", "headline": "...", "summary": "..."},
+     "people": [{"id": "anchor-on-page", "name": "...", "jobTitle": "...", "sameAs": ["..."]}]}
     -->
     <main id="top"> ... </main>
 """
@@ -197,6 +198,9 @@ def schema(meta, main):
          "breadcrumb": {"@id": f"{url}#crumbs"}, "inLanguage": "en"},
         {"@type": "BreadcrumbList", "@id": f"{url}#crumbs", "itemListElement": crumbs},
     ]
+    for p in meta.get("people", []):
+        graph.append({"@type": "Person", "@id": f"{url}#{p['id']}", "name": p["name"], "jobTitle": p["jobTitle"],
+                      "worksFor": {"@id": f"{ORIGIN}/#org"}, "sameAs": p.get("sameAs", [])})
     if "service" in meta:
         s = meta["service"]
         graph.append({"@type": "Service", "@id": f"{url}#service", "name": s["name"], "serviceType": s["serviceType"],
