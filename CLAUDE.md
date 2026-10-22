@@ -140,6 +140,24 @@ the studio's Figma (file `42b7iYEm9BViV7ZFlSW4Yg`, page "BRAND GUIDELINES").
 That file also holds the proposal, contract and invoice; never publish from
 those pages, and use no photos of people from it.
 
+**The record of what we did drives every work list.** Each project says which
+services it delivered and whether it is featured, and the lists follow:
+
+- Static: the source's `"work"` block (`client`, `year`, `summary`, `tag`,
+  `tile`, `featured`, `services` from `brand-identity`, `webflow-websites`,
+  `ai-integration`). `<!--@work-->` renders every project, `<!--@work:<service>-->`
+  only that service's. The homepage list is pasted, not included, and the build
+  fails if it is not exactly the featured projects.
+- Webflow: Switch fields `brand-identity`, `webflow-website` (singular),
+  `ai-integration` and `featured` on the Work item. Collection Lists on `/`
+  (filter `featured`), `/work` (none) and each service page (its switch), all
+  sorted year-descending then name-ascending, like the generator.
+- A service with no projects has no work section: `ai-integration` has none
+  today. Add the section back on both builds with its first project.
+- Tile images are 800x600, `assets/work/<slug>-tile.svg` statically and the
+  `tile` Image field in Webflow. The tile links by the `case-link` stopgap; see
+  the gotchas.
+
 ## Webflow API gotchas
 
 Learned the hard way; each one cost a failed call.
@@ -203,11 +221,19 @@ Learned the hard way; each one cost a failed call.
   whtml `<span>`; use a Text Block), `richText` on Rich Text, `link` on links.
   Collection List config is `source` = `{"collectionId"}` and `sort` =
   `[{"fieldSlug","direction":"descending"}]`.
+- **Collection List filters**: `filters` = `[{"fieldSlug":"featured",
+  "operator":"isOn"}]` for a Switch (`equals` is refused). It fails with an
+  MPS "Conflict" while the list's item is empty, so build the row first. **Read
+  `filters` back after setting it**: a filter set during the build was later
+  found empty on all three lists, and nothing failed. Prove a filter by
+  switching a field off, publishing and checking the page.
 - **A list row cannot link to "Current item" through the API**: `page` and
   `collectionPage` modes publish a fixed href. The Journal row binds a stopgap
   `post-link` field instead; switch it to "Current Journal" in the Designer and
   delete the field. The post byline likewise binds the Authors `profile-link`
-  stopgap; link it to the Author in the Designer and delete that field.
+  stopgap; link it to the Author in the Designer and delete that field. Work
+  tiles bind the Work `case-link` stopgap the same way; link them to "Current
+  Work" and delete it.
 - **Reference fields bind like their own**: field id
   `"<referenceFieldId>:::<fieldIdInTheOtherCollection>"`, e.g. the post's
   author name.
