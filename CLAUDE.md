@@ -126,9 +126,19 @@ names or configuration may come into this repo.
 
 **Real work only.** The site runs ads, and Google Ads' misrepresentation policy
 covers invented clients and case studies. Three fictional case studies were
-removed for that reason. Real projects: Umbrella Dental Clinic (website) and
-Lunamoury (brand identity, website and AI integration). Nothing goes in the
-work section, a testimonial or a result line without the user confirming it.
+removed for that reason. The one project on the site is Umbrella Dental Clinic
+(brand identity and Webflow website). Lunamoury is a real client but comes off
+the site until there is finished work to show. Nothing goes in the work
+section, a testimonial or a result line without the user confirming it.
+
+**Case studies live in two places**, like the journal. Static: a source per
+project, `src/pages/work-<slug>.html` (`"microdata": true`), images in
+`assets/work/`. Webflow: the **Work** CMS collection, whose template serves
+`/work/<slug>`; the body is Rich Text, an H3 per decision with full-width
+figures. The Umbrella case study is drawn from the clinic's brand guidelines in
+the studio's Figma (file `42b7iYEm9BViV7ZFlSW4Yg`, page "BRAND GUIDELINES").
+That file also holds the proposal, contract and invoice; never publish from
+those pages, and use no photos of people from it.
 
 ## Webflow API gotchas
 

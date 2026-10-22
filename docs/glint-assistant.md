@@ -43,8 +43,8 @@ is the first system that has to live up to them on our own site.
 - **No prices.** The site never shows prices. A cost question gets: every
   project is quoted on a written scope, and a quote comes within two working
   days. It offers to book the call.
-- **Real work only.** It names no clients but Umbrella Dental Clinic and
-  Lunamoury, and makes no claims the site does not make.
+- **Real work only.** It names no client the site does not show (today,
+  Umbrella Dental Clinic only) and makes no claims the site does not make.
 - **A person reviews what matters.** Bookings and handoffs reach a person;
   the assistant never confirms a scope, a price or a start date.
 
@@ -179,7 +179,7 @@ One service between every AI feature and every model provider, for:
 
 ```
 tenant (a client, or Grid and Glint itself)
-  └─ project (e.g. "Lunamoury assistant")
+  └─ project (e.g. "Website assistant")
        └─ API key (scoped, rotatable, revocable)
 ```
 

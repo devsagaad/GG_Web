@@ -20,8 +20,8 @@ numbers: that would turn an E-E-A-T gap into a misrepresentation problem.
   Act, with a link to the National Privacy Commission), terms, and a public
   AI policy that states the rules every AI build follows.
 - **Claims are real and limited.** The fictional case studies are gone. The
-  only work shown is Umbrella Dental Clinic and Lunamoury, and the copy
-  claims only the services each project included. No prices, no invented
+  only work shown is Umbrella Dental Clinic, with a case study of its brand
+  identity and website, and the copy claims only what that project included. No prices, no invented
   results.
 - **Content answers real questions.** Each service page has a visible FAQ,
   and its FAQPage structured data is generated from that FAQ, so the two
@@ -38,8 +38,8 @@ numbers: that would turn an E-E-A-T gap into a misrepresentation problem.
 
 ### 1. Trust: placeholders are visible on the homepage (highest)
 
-The homepage shows 13 placeholder labels, most of them in the testimonials
-("ADD A REAL CLIENT QUOTE", "NAME", "ROLE, COMPANY"), plus "LUNAMOURY LOGO",
+The homepage shows 12 placeholder labels, most of them in the testimonials
+("ADD A REAL CLIENT QUOTE", "NAME", "ROLE, COMPANY"), plus "MORE CLIENT LOGOS",
 the founder's experience line and his photo. The footer says "Some names, quotes and
 details on this site are placeholders". That disclaimer is honest, but to a
 visitor or a Google reviewer it reads as an unfinished site.
@@ -71,12 +71,14 @@ Needed from the studio, for Mark and for anyone added as an author later:
 An author is one entry in `src/authors.json` and one item in the Webflow
 Authors collection; the bio field appears on their page once it is filled.
 
-### 3. Experience: the work has no detail
+### 3. Experience: one case study
 
-The two projects are tiles with a name and a service list. Experience is shown
-by evidence of having done the work.
+Umbrella Dental Clinic now has a case study, `/work/umbrella-dental-clinic`:
+the design decisions behind its logo, type, colour, layout and photography,
+with artwork from its brand guidelines. It has no result yet, such as the
+launch date or enquiries once the site is live, and no client quote.
 
-Per project, with the client's permission:
+For each further project, with the client's permission:
 
 - what the client needed;
 - what was built;
@@ -115,13 +117,11 @@ plain quotes, with permission.
 - **The domain is still parked.** Nothing on gridandglint.com is live yet,
   and the structured data and canonical URLs already point there.
 
-### 6. Trust: one outbound link contradicts the site
+### 6. Trust: the clinic's live site (resolved for now)
 
-The "Trusted by" strip links the Umbrella Dental Clinic logo to the clinic's
-live site. That site is months behind its unfinished staging site, and its
-footer credits another agency. A visitor who clicks sees someone else
-credited for the work. Remove the link until the clinic's new site is live;
-the Work section already shows the project without linking out.
+The "Trusted by" logo used to link to the clinic's live site, which is months
+behind the site we built and credits another agency. It now links to our case
+study. Link out again once the clinic's new site is live.
 
 ### 7. Smaller items
 
@@ -140,8 +140,7 @@ the Work section already shows the project without linking out.
 | A first journal post Mark stands behind | Expertise (gap 7) |
 | Per project: brief, what was built, images, a result, with the client's OK | Experience (gap 3) |
 | Real client quotes, with name, role and company, and written permission | Trust (gap 1) |
-| Lunamoury's logo, and permission to show it | Trust (gap 1) |
 | LinkedIn company page, social profiles, Google Business Profile | Authoritativeness (gap 4) |
 | DTI registration number | Trust (gap 5) |
 | Lawyer-reviewed privacy policy and terms | Trust (gap 5) |
-| Decision: unlink the Umbrella logo until their site is live? | Trust (gap 6) |
+| Umbrella's launch date, and a result or quote once the site is live | Experience (gap 3) |
