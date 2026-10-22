@@ -15,7 +15,17 @@ the page's own visible FAQ, so the two cannot disagree.
 Journal posts are pages with an "article" block. Their read time is counted
 from the words in the post, the journal index lists them through <!--@posts-->,
 and the homepage's hand-written journal list is checked against them, so a
-post's title, date or read time cannot drift between the three.
+post's title, date or read time cannot drift between the three. A post with
+"unpublished": true is kept as a source but not built, listed or mapped: the
+static twin of a draft item in the Webflow Journal collection.
+
+Authors live in src/authors.json, the twin of the Webflow Authors collection.
+Each post names one by slug; each author gets a page at /authors/<slug>.
+
+Post and author pages mirror Webflow collection templates, where the page-level
+JSON-LD setting leaves CMS field tokens empty. Webflow marks those pages up with
+schema.org microdata on the visible elements instead, so these pages do the
+same and carry no JSON-LD.
 
     python3 tools/build-pages.py           write the pages
     python3 tools/build-pages.py --check   exit 1 if any page on disk is stale
@@ -27,8 +37,9 @@ Page source format (src/pages/<name>.html):
      "crumb": "Brand identity", "parent": ["Services", "/#services"],
      "type": "WebPage" | "ContactPage" | "AboutPage" | "CollectionPage",
      "service": {"name": "...", "serviceType": "...", "description": "..."},
-     "article": {"date": "2026-10-21", "headline": "...", "summary": "..."},
-     "people": [{"id": "anchor-on-page", "name": "...", "jobTitle": "...", "sameAs": ["..."]}]}
+     "article": {"date": "2026-10-21", "headline": "...", "summary": "...", "author": "<slug>"},
+     "unpublished": true,
+     "people": ["<author slug>"]}
     -->
     <main id="top"> ... </main>
 """
@@ -40,6 +51,7 @@ import sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent / "grid-and-glint-website"
 SRC = ROOT / "src" / "pages"
+AUTHORS = ROOT / "src" / "authors.json"
 HOME = ROOT / "index.html"
 ORIGIN = "https://gridandglint.com"
 # Hosted on Webflow, so the same file serves both builds: structured data and
@@ -128,16 +140,29 @@ def prose_words(main):
     return len(re.sub(r"<[^>]+>", " ", body.group(1) if body else main).split())
 
 
-def byline(meta):
+def byline(meta, authors):
     a = meta["article"]
-    return (f'<p class="byline lbl"><time datetime="{a["date"]}">{human(a["date"])}</time>'
+    who = authors[a["author"]]
+    # The author link is a schema.org Person inside the page's BlogPosting,
+    # as on the Webflow post template.
+    return (f'<p class="byline lbl"><time datetime="{a["date"]}" itemprop="datePublished">{human(a["date"])}</time>'
             f'<span aria-hidden="true">&#183;</span><span>{a["minutes"]} MIN READ</span>'
-            f'<span aria-hidden="true">&#183;</span><span>BY GRID AND GLINT</span></p>')
+            f'<span aria-hidden="true">&#183;</span><span>BY</span>'
+            f'<a href="/authors/{who["slug"]}" itemprop="author" itemscope itemtype="https://schema.org/Person">'
+            f'<span itemprop="name">{html.escape(who["name"], quote=False)}</span>'
+            f'<meta itemprop="url" content="/authors/{who["slug"]}"></a></p>'
+            f'\n      <link itemprop="publisher" href="{ORIGIN}/#org">')
 
 
-def post_list(posts):
+EMPTY = "The first posts are on their way."
+
+
+def post_list(posts, authors):
     """The journal index's list: the homepage's .posts markup, newest first."""
     esc = lambda s: html.escape(s, quote=False)
+    if not posts:
+        # The Webflow Collection List's empty state carries the same line.
+        return f'<div class="posts">\n        <p class="empty">{EMPTY}</p>\n      </div>'
     rows = []
     # Newest first, then by title: the same order as the Webflow Collection List
     # (sort: published descending, name ascending), so both builds list alike.
@@ -146,30 +171,33 @@ def post_list(posts):
         a = m["article"]
         rows.append(f'        <a href="/{m["path"]}"><time class="data" datetime="{a["date"]}">{human(a["date"])}</time>'
                     f'<span class="tt"><h2 class="tth">{esc(a["headline"])}</h2><span class="ex">{esc(a["summary"])}</span></span>'
-                    f'<span class="lbl r">BY GRID AND GLINT &#183; {a["minutes"]} MIN</span></a>')
+                    f'<span class="lbl r">BY {esc(authors[a["author"]]["name"])} &#183; {a["minutes"]} MIN</span></a>')
     return '<div class="posts">\n' + "\n".join(rows) + "\n      </div>"
 
 
-def check_home(posts):
-    """Every journal link on the homepage must match a post: title, date, minutes."""
+def check_home(posts, authors):
+    """Every journal link on the homepage must match a published post: title,
+    date, author, minutes."""
     by = {"/" + m["path"]: m for m in posts}
     t = HOME.read_text()
-    for href, date, title, mins in re.findall(
-            r'<a href="(/journal/[^"]+)"><time class="data" datetime="[^"]+">([^<]+)</time><span class="tt"><h3 class="tth">(.*?)</h3>.*?(\d+) MIN</span></a>', t):
-        m = by.get(href)
-        if not m:
-            fail(f"index.html links {href}, which has no post source")
-        a = m["article"]
-        want = (human(a["date"]), html.escape(a["headline"], quote=False), str(a["minutes"]))
-        if (date, title, mins) != want:
-            fail(f"index.html journal entry {href} says {(date, title, mins)}, post says {want}")
+    for href in re.findall(r'href="(/journal/[^"#?]+)"', t):
+        if href not in by:
+            fail(f"index.html links {href}, which is not a published post")
+    for href, date, title, who, mins in re.findall(
+            r'<a href="(/journal/[^"]+)"><time class="data" datetime="[^"]+">([^<]+)</time><span class="tt"><h3 class="tth">(.*?)</h3>.*?BY (.*?) (?:&#183;|·) (\d+) MIN</span></a>', t):
+        a = by[href]["article"]
+        want = (human(a["date"]), html.escape(a["headline"], quote=False),
+                html.escape(authors[a["author"]]["name"], quote=False), str(a["minutes"]))
+        if (date, title, who, mins) != want:
+            fail(f"index.html journal entry {href} says {(date, title, who, mins)}, post says {want}")
 
 
-def sitemap(pages):
-    """Every indexable page: the homepage and each non-draft source. Drafts are
-    noindex, so listing them would only send Google mixed signals."""
-    urls = [("", None)] + sorted((m["path"], m.get("article", {}).get("date"))
-                                 for _, m, _ in pages if not m.get("draft"))
+def sitemap(pages, authors):
+    """Every indexable page: the homepage, each non-draft source and each author.
+    Drafts are noindex, so listing them would only send Google mixed signals."""
+    urls = [("", None)] + sorted([(m["path"], m.get("article", {}).get("date"))
+                                  for _, m, _ in pages if not m.get("draft")]
+                                 + [(f"authors/{s}", None) for s in authors])
     rows = []
     for path, date in urls:
         lastmod = f"\n    <lastmod>{date}</lastmod>" if date else ""
@@ -186,7 +214,14 @@ def faq_from(main):
              "acceptedAnswer": {"@type": "Answer", "text": clean(a)}} for q, a in pairs]
 
 
-def schema(meta, main):
+def person(a):
+    """An author as a schema.org Person: one @id for them across the site."""
+    url = f"{ORIGIN}/authors/{a['slug']}"
+    return {"@type": "Person", "@id": f"{url}#person", "name": a["name"], "jobTitle": a["jobTitle"], "url": url,
+            "worksFor": {"@id": f"{ORIGIN}/#org"}, "sameAs": [a["linkedin"]]}
+
+
+def schema(meta, main, authors):
     url = f"{ORIGIN}/{meta['path']}"
     crumbs = [{"@type": "ListItem", "position": 1, "name": "Home", "item": f"{ORIGIN}/"}]
     if "parent" in meta:
@@ -198,33 +233,61 @@ def schema(meta, main):
          "breadcrumb": {"@id": f"{url}#crumbs"}, "inLanguage": "en"},
         {"@type": "BreadcrumbList", "@id": f"{url}#crumbs", "itemListElement": crumbs},
     ]
-    for p in meta.get("people", []):
-        graph.append({"@type": "Person", "@id": f"{url}#{p['id']}", "name": p["name"], "jobTitle": p["jobTitle"],
-                      "worksFor": {"@id": f"{ORIGIN}/#org"}, "sameAs": p.get("sameAs", [])})
+    for slug in meta.get("people", []):
+        graph.append(person(authors[slug]))
     if "service" in meta:
         s = meta["service"]
         graph.append({"@type": "Service", "@id": f"{url}#service", "name": s["name"], "serviceType": s["serviceType"],
                       "description": s["description"], "url": url, "provider": ORG,
                       "areaServed": [{"@type": "Country", "name": "Philippines"}, "Worldwide"]})
-    if "article" in meta:
-        a = meta["article"]
-        graph.append({"@type": "BlogPosting", "@id": f"{url}#article", "headline": a["headline"],
-                      "description": a["summary"], "datePublished": a["date"], "dateModified": a.get("modified", a["date"]),
-                      "wordCount": a["words"], "timeRequired": f"PT{a['minutes']}M", "inLanguage": "en",
-                      "mainEntityOfPage": {"@id": f"{url}#page"}, "author": ORG, "publisher": ORG,
-                      "isPartOf": {"@type": "Blog", "@id": f"{ORIGIN}/journal#blog", "name": "Grid and Glint Journal",
-                                   "url": f"{ORIGIN}/journal"}})
     qs = faq_from(main)
     if qs:
         graph.append({"@type": "FAQPage", "@id": f"{url}#faq", "mainEntity": qs})
     return json.dumps({"@context": "https://schema.org", "@graph": graph}, indent=2, ensure_ascii=False)
 
 
-def render(meta, main, c):
+def article_microdata(meta, main):
+    """Mark a post up as a schema.org BlogPosting, attribute for attribute as the
+    Webflow post template does (the byline adds the date, author and publisher)."""
+    for old, new in (('<main id="top">', '<main id="top" itemscope itemtype="https://schema.org/BlogPosting">'),
+                     ('<h1 class="disp" id="h1">', '<h1 class="disp" id="h1" itemprop="headline">'),
+                     ('<p class="lede">', '<p class="lede" itemprop="description">'),
+                     ('<div class="prose">', '<div class="prose" itemprop="articleBody">')):
+        if main.count(old) != 1:
+            fail(f"{meta['_src']}: needs exactly one {old} for the post's microdata")
+        main = main.replace(old, new)
+    return main
+
+
+def author_page(a):
+    """An author's page, the twin of the Webflow Authors template."""
+    esc = lambda s: html.escape(s, quote=False)
+    meta = {"path": f"authors/{a['slug']}", "title": f"{a['name']}, {a['jobTitle']} | Grid and Glint",
+            "description": a["seoDescription"], "crumb": a["name"], "_src": "authors.json", "microdata": True}
+    # Webflow hides an empty Rich Text binding, so the bio appears only once written.
+    bio = f'\n      <div class="prose" itemprop="description">{a["bio"]}</div>' if a["bio"] else ""
+    main = f"""<main id="top" itemscope itemtype="https://schema.org/ProfilePage">
+  <section class="page-hero wrap" aria-labelledby="h1">
+    <div class="xs"><span class="x"></span><span class="x"></span><span class="x"></span></div>
+    <div class="inner" itemprop="mainEntity" itemscope itemtype="https://schema.org/Person">
+      <nav class="crumbs lbl" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><a href="/journal">Journal</a><span aria-hidden="true">/</span><span aria-current="page">{esc(a['name'])}</span></nav>
+      <h1 class="disp" id="h1" itemprop="name">{esc(a['name'])}</h1>
+      <p class="lede" itemprop="jobTitle">{esc(a['role'])}</p>{bio}
+      <div class="actions page-cta"><a class="btn mag" href="{a['linkedin']}" rel="noopener" itemprop="sameAs">LinkedIn <span class="arr">&#8599;</span></a><a class="btn ghost" href="/about">About the studio</a></div>
+      <link itemprop="url" href="/authors/{a['slug']}"><link itemprop="worksFor" href="{ORIGIN}/#org">
+    </div>
+  </section>
+</main>"""
+    return meta, main
+
+
+def render(meta, main, c, authors):
     for name in ("mailbox", "posts"):
         main = main.replace(f"<!--@{name}-->", c[name])
     if "article" in meta:
-        main = main.replace("<!--@byline-->", byline(meta))
+        main = main.replace("<!--@byline-->", byline(meta, authors))
+        main = article_microdata(meta, main)
+        meta["microdata"] = True
     if "<!--@" in main:
         fail(f"{meta['_src']}: unknown include {re.search(r'<!--@[^>]*-->', main).group(0)}")
     esc = lambda s: html.escape(s, quote=True)
@@ -234,6 +297,8 @@ def render(meta, main, c):
     robots = meta.get("robots", "noindex, follow" if meta.get("draft") else "index, follow")
     draft = ("<!-- DRAFT: not reviewed by a lawyer. Have it checked before this page goes live. -->\n"
              if meta.get("draft") else "")
+    ld = ("" if meta.get("microdata") else
+          f'<script type="application/ld+json">\n{schema(meta, main, authors)}\n</script>\n')
     return f"""<!doctype html>
 <html lang="en">
 <!-- GENERATED by tools/build-pages.py from src/pages/{meta['_src']}. Edit that file, or
@@ -256,10 +321,7 @@ def render(meta, main, c):
 <meta property="og:image" content="{LOGO}">
 <meta property="og:image:alt" content="Grid and Glint logomark">
 <meta name="twitter:card" content="summary">
-<script type="application/ld+json">
-{schema(meta, main)}
-</script>
-{c['fonts']}
+{ld}{c['fonts']}
 <link rel="stylesheet" href="/assets/glint.css">
 </head>
 <body>
@@ -284,45 +346,77 @@ def render(meta, main, c):
 """
 
 
+def read_authors():
+    authors = {}
+    for a in json.loads(AUTHORS.read_text()):
+        for k in ("slug", "name", "jobTitle", "role", "linkedin", "seoDescription", "bio"):
+            if k not in a:
+                fail(f"authors.json: {a.get('slug', '?')} needs {k!r}")
+        if not 110 <= len(a["seoDescription"]) <= 160:
+            fail(f"authors.json: {a['slug']} seoDescription is {len(a['seoDescription'])} chars; keep it 110-160")
+        authors[a["slug"]] = a
+    return authors
+
+
 def main():
     check = "--check" in sys.argv
     c = chrome()
+    authors = read_authors()
     stale = []
     sources = sorted(SRC.glob("*.html"))
     if not sources:
         fail(f"no page sources in {SRC}")
-    pages = []
+    pages, unpublished = [], []
     for src in sources:
         meta, body = read_source(src)
         meta["_src"] = src.name
+        for slug in meta.get("people", []) + ([meta["article"].get("author")] if "article" in meta else []):
+            if slug not in authors:
+                fail(f"{src.name}: author {slug!r} is not in authors.json")
+        if meta.get("unpublished"):
+            unpublished.append(ROOT / meta["path"] / "index.html")
+            continue
         if "article" in meta:
             words = prose_words(body)
             meta["article"].update(words=words, minutes=max(1, round(words / WPM)))
         pages.append((src, meta, body))
     posts = [m for _, m, _ in pages if "article" in m]
-    c["posts"] = post_list(posts)
-    check_home(posts)
-    for src, meta, body in pages:
+    c["posts"] = post_list(posts, authors)
+    check_home(posts, authors)
+    built = [(meta, render(meta, body, c, authors)) for _, meta, body in pages]
+    for a in authors.values():
+        meta, body = author_page(a)
+        built.append((meta, render(meta, body, c, authors)))
+    for meta, page in built:
         out = ROOT / meta["path"] / "index.html"
-        page = render(meta, body, c)
         if check:
             if not out.exists() or out.read_text() != page:
                 stale.append(str(out.relative_to(ROOT)))
             continue
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(page)
-        print(f"  /{meta['path']:<34} {len(page):>7,} bytes   {len(faq_from(body))} FAQ")
+        print(f"  /{meta['path']:<34} {len(page):>7,} bytes")
+    # An unpublished post must not linger on disk from an earlier build.
+    for out in unpublished:
+        if out.exists():
+            if check:
+                stale.append(f"{out.relative_to(ROOT)} (unpublished; delete it)")
+            else:
+                out.unlink()
+                if not any(out.parent.iterdir()):
+                    out.parent.rmdir()
+                print(f"  removed /{out.parent.relative_to(ROOT)} (unpublished)")
     sm = ROOT / "sitemap.xml"
     if check:
-        if sm.read_text() != sitemap(pages):
+        if sm.read_text() != sitemap(pages, authors):
             stale.append("sitemap.xml")
     else:
-        sm.write_text(sitemap(pages))
+        sm.write_text(sitemap(pages, authors))
     if check:
         if stale:
             print("stale — run tools/build-pages.py:\n  " + "\n  ".join(stale))
             sys.exit(1)
-        print(f"all {len(sources)} pages current")
+        print(f"all {len(built)} pages current ({len(unpublished)} unpublished)")
 
 
 if __name__ == "__main__":

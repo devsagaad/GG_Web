@@ -453,6 +453,9 @@ main, header, footer { position: relative; z-index: 1; }
    off the item instead. */
 .posts .w-dyn-item a:last-child { border-bottom: 0; }
 .posts .w-dyn-item:last-child a { border-bottom: 1px solid var(--rule); }
+/* No posts yet. Webflow's base CSS pads its empty state and paints it grey. */
+.posts .w-dyn-empty { padding: 0; background: none; }
+.posts .empty { margin: 0; padding: 22px 0; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); color: var(--fg-2); font-size: 16px; line-height: 27px; }
 @media (max-width: 760px) { .posts a { grid-template-columns: 1fr; gap: 4px; } .posts .r { text-align: left; justify-content: flex-start; } }
 
 /* contact */
@@ -542,6 +545,9 @@ main, header, footer { position: relative; z-index: 1; }
    and the date / read time / author line under the lede. */
 .page-hero.post h1 { font-size: clamp(36px, 5.2vw, 76px); max-width: 18ch; }
 .byline { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+.byline a:hover { color: var(--accent-text); }
+/* An author's bio sits in the hero, under the role line, not indented like a post. */
+.page-hero .prose { margin: 20px 0 0; }
 .page-cta { justify-content: flex-start; margin-top: 48px; }
 .svc h3 a:hover, .deliv h3 a:hover { color: var(--accent-text); }
 @media (max-width: 760px) {
