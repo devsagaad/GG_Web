@@ -41,6 +41,9 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent / "grid-and-glint-website"
 SRC = ROOT / "src" / "pages"
 HOME = ROOT / "index.html"
 ORIGIN = "https://gridandglint.com"
+# Hosted on Webflow, so the same file serves both builds: structured data and
+# link previews. A 512px PNG of the mark on forest green, legible on white.
+LOGO = "https://cdn.prod.website-files.com/6acfa22f20186e84030ebfb9/6ad9420df49388480a5cb8f1_grid-and-glint-logo-512.png"
 ORG = {"@type": "ProfessionalService", "@id": f"{ORIGIN}/#org", "name": "Grid and Glint", "url": f"{ORIGIN}/"}
 
 
@@ -246,6 +249,8 @@ def render(meta, main, c):
 <meta property="og:title" content="{esc(meta['title'])}">
 <meta property="og:description" content="{esc(meta['description'])}">
 <meta property="og:url" content="{url}">
+<meta property="og:image" content="{LOGO}">
+<meta property="og:image:alt" content="Grid and Glint logomark">
 <meta name="twitter:card" content="summary">
 <script type="application/ld+json">
 {schema(meta, main)}
