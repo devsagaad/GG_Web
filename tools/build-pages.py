@@ -302,7 +302,7 @@ SERVICES = ("brand-identity", "webflow-websites", "ai-integration")
 
 def work_tile(m):
     w, esc, href = m["work"], (lambda s: html.escape(s, quote=False)), "/" + m["path"]
-    return (f'<article class="tile rv"><a class="plate media" href="{href}" tabindex="-1" aria-hidden="true">'
+    return (f'<article class="tile rv"><a class="plate" href="{href}" tabindex="-1" aria-hidden="true">'
             f'<img class="plate-img" src="{w["tile"]}" width="800" height="600" alt="" loading="lazy"></a>'
             f'<div class="meta"><h3 class="name"><a href="{href}">{esc(w["client"])}</a></h3>'
             f'<div class="data">{w["year"]}</div><div class="lbl">{esc(w["summary"])}</div>'
