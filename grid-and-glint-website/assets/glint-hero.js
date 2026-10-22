@@ -1,5 +1,6 @@
 /*!
- * Glint Hero - the Grid and Glint logomark in mint glass.
+ * Glint Hero - the Grid and Glint logomark in clear glass, with a rain of
+ * client logos as die-cut stickers falling behind it and bent through it.
  *
  * Lifted out of index.html so one renderer serves both the static reference page
  * and a Webflow HTML Embed. Self-contained: no dependencies, mesh compiled in,
@@ -47,18 +48,55 @@
      ====================================================================== */
   var M = { ior: 1.45, thick: 0.42, disp: 0.035, rough: 0.08, fres: 3.0, dither: 2, levels: 32, grain: 0.04 };
   var MARK = ["M71.7949 105.699C78.0365 99.4576 88.1562 99.4576 94.3978 105.699L108.977 120.278L96.3103 125.472C95.8912 125.627 95.515 125.868 95.2039 126.172C94.6373 126.727 94.2866 127.494 94.2866 128.341V128.343L94.2866 128.345C94.2868 129.186 94.6332 129.95 95.1937 130.503C95.5068 130.813 95.8867 131.057 96.3103 131.213L108.916 136.387L94.3978 150.905C88.1562 157.147 78.0365 157.147 71.7949 150.905L49.1921 128.302L71.7949 105.699Z", "M184.809 150.905C178.568 157.147 168.448 157.147 162.206 150.905L147.628 136.326L160.294 131.132C160.713 130.977 161.089 130.737 161.4 130.432C161.967 129.877 162.317 129.111 162.317 128.263V128.261L162.317 128.26C162.317 127.418 161.971 126.655 161.41 126.101C161.097 125.792 160.717 125.547 160.294 125.391L147.688 120.217L162.206 105.699C168.448 99.4576 178.568 99.4576 184.809 105.699L207.412 128.302L184.809 150.905Z", "M105.699 71.7949C99.4576 78.0365 99.4576 88.1562 105.699 94.3978L120.278 108.977L125.472 96.3103C125.627 95.8912 125.868 95.515 126.172 95.2039C126.727 94.6373 127.494 94.2866 128.341 94.2866H128.343L128.345 94.2866C129.186 94.2868 129.95 94.6332 130.503 95.1937C130.813 95.5068 131.057 95.8867 131.213 96.3103L136.387 108.916L150.905 94.3978C157.147 88.1562 157.147 78.0365 150.905 71.7949L128.302 49.1921L105.699 71.7949Z", "M150.905 184.809C157.147 178.568 157.147 168.448 150.905 162.206L136.326 147.627L131.132 160.294C130.977 160.713 130.737 161.089 130.432 161.4C129.877 161.967 129.111 162.317 128.263 162.317H128.261L128.26 162.317C127.418 162.317 126.655 161.971 126.101 161.41C125.792 161.097 125.547 160.717 125.391 160.294L120.217 147.688L105.699 162.206C99.4576 168.448 99.4576 178.568 105.699 184.809L128.302 207.412L150.905 184.809Z"];
+  // Umbrella Dental Clinic's logo, from assets/umbrella-dental-clinic.svg with
+  // coordinates rounded to whole units (sub-pixel at sticker size). Path 0 is
+  // its white die-cut outline. [fill, path] pairs in the 449 x 405 viewBox.
+  var UMBRELLA = [["#fff","M403 399C394 408 379 402 368 404C355 399 365 399 352 404C335 403 311 404 294 404C285 399 281 404 271 404C260 406 249 394 240 401C234 406 209 403 202 403C202 403 201 403 201 403C199 404 197 404 195 404C193 404 191 404 189 403C187 403 186 402 184 401C184 400 183 400 182 399C182 399 182 398 182 398C181 398 181 397 181 397C180 397 180 397 180 397C180 397 179 397 179 397C179 397 179 397 178 397C178 397 178 397 178 398C178 398 178 398 178 398C178 399 177 399 177 399C177 400 176 400 175 401C174 402 172 403 171 403C169 404 167 404 165 404C163 404 162 404 160 404C159 403 158 403 157 403C157 403 156 403 156 403C156 402 156 402 155 402C155 402 155 402 155 402C152 404 145 403 141 404C129 401 137 401 124 404C119 404 112 404 108 402C106 401 104 401 103 402C92 407 65 402 54 404C51 404 49 403 47 401C45 400 43 400 41 401C33 404 20 404 11 404C5 404 1 399 1 393C3 384-7 342 11 343C11 343 10 342 10 342C10 340 9 338 9 337C8 334 8 332 7 330C7 327 7 325 6 322C6 319 6 317 6 314C5 311 5 308 5 305C5 303 5 300 5 297C5 295 5 292 5 290C5 287 4 285 4 283C4 282 4 282 4 281C4 280 4 278 3 276C3 276 3 276 3 276C3 275 3 275 3 274C2 274 2 274 2 273C2 273 3 272 3 272C3 271 3 271 3 271C4 269 5 267 5 265C7 261 8 257 8 253C9 249 10 245 10 241C10 237 11 233 11 229C11 225 10 221 10 217C10 213 9 209 9 205C8 201 7 197 7 193C6 189 5 185 4 181C3 179 3 177 2 175C2 174 2 173 2 172C1 172 1 171 1 171C1 171 1 170 1 170C1 170 1 170 1 170C11 84 85 18 175 5C291-19 434 46 448 170C428 210 429 310 447 341C448 355 440 348 447 366C452 393 428 415 403 399H403Z"],["#0f7ab5","M67 271C67 271 67 271 67 272V272C65 274 63 284 63 318C63 339 52 347 41 347C26 347 16 339 16 318C16 283 13 273 12 271H40C40 271 33 294 33 309C33 318 36 327 43 327C51 327 53 318 53 309C53 294 46 271 46 271H67H67Z"],["#0f7ab5","M117 345C127 323 121 303 121 303C118 306 111 315 115 330H98C102 315 95 306 92 303C92 303 86 323 96 345H71C71 345 76 304 72 271H96C96 281 99 291 106 298C113 291 117 281 117 271H141C137 304 142 345 142 345H117H117Z"],["#0f7ab5","M198 322C198 335 186 345 167 345H147C149 341 150 319 150 314V302C150 297 149 275 147 271H170C187 271 194 279 194 289C194 295 187 303 181 303C188 303 198 310 198 322L198 322ZM168 300C168 300 177 296 177 288C177 280 168 280 168 280V300ZM180 319C180 307 168 307 168 307V336C172 336 180 330 180 319Z"],["#0f7ab5","M245 299C245 312 241 320 232 324C235 326 240 327 245 325V345C233 345 225 339 221 332C222 338 222 343 223 345H202C204 341 205 319 205 314V302C205 297 204 275 202 271H221C238 271 245 281 245 299ZM221 317C222 317 229 315 229 299C229 282 222 281 221 281V317Z"],["#0f7ab5","M272 286V303H274C278 303 282 302 286 300V316C282 314 278 313 274 313H272V331C275 331 286 330 292 325V345H251C253 341 254 319 254 314V302C254 297 253 275 251 271H292V291C286 286 275 286 272 286V286Z"],["#0f7ab5","M339 325V345H297C299 341 300 319 300 314V302C300 297 299 275 297 271H322C320 275 319 297 319 302V331C322 331 333 330 339 325Z"],["#0f7ab5","M382 325V345H341C343 341 344 319 344 314V302C344 297 343 275 341 271H365C363 275 363 297 363 302V331C366 331 377 330 382 325H382Z"],["#0f7ab5","M412 345C412 345 421 318 410 318C399 318 409 345 409 345H383C383 345 398 304 398 271H422C422 303 437 345 437 345H412H412ZM410 288C401 304 408 306 410 306C412 306 419 304 410 288Z"],["#7ddf49","M25 393H11V353H25C32 353 37 355 41 358C45 362 47 367 47 373C47 380 45 385 41 388C37 392 32 393 25 393ZM19 360V386H25C29 386 33 385 35 383C37 381 38 377 38 373C38 369 37 366 35 363C33 361 29 360 25 360H19Z"],["#7ddf49","M84 353V360H62V369H82V376H62V386H84V393H53V353H84V353Z"],["#7ddf49","M116 382V353H124V393H114L98 365V393H89V353H99L116 382Z"],["#7ddf49","M162 353V360H149V393H141V360H129V353H162Z"],["#7ddf49","M199 393H191L188 384H172L169 393H160L173 353H186L199 393ZM179 358L174 377H186L180 358H179Z"],["#7ddf49","M213 353V386H233V393H205V353H213Z"],["#7ddf49","M256 389C253 385 251 380 251 373C251 367 253 361 256 358C260 354 264 352 270 352C275 352 279 353 282 356C285 359 287 362 288 367H280C279 365 278 363 277 361C275 360 273 359 270 359C267 359 265 360 263 362C261 365 260 368 260 372V374C260 378 261 381 263 384C265 386 267 387 270 387C273 387 275 387 277 385C278 384 279 382 280 379H288C287 384 285 387 282 390C279 393 275 394 270 394C264 394 260 392 256 389Z"],["#7ddf49","M302 353V386H322V393H294V353H302Z"],["#7ddf49","M327 393V353H336V393H327Z"],["#7ddf49","M370 382V353H378V393H368L352 365V393H343V353H353L370 382Z"],["#7ddf49","M385 393V353H394V393H385Z"],["#7ddf49","M406 389C402 385 401 380 401 373C401 367 402 361 406 358C409 354 414 352 420 352C425 352 429 353 432 356C435 359 437 362 437 367H429C429 365 428 363 426 361C424 360 422 359 420 359C417 359 414 360 412 362C410 365 409 368 409 372V374C409 378 410 381 412 384C414 386 417 387 420 387C422 387 424 387 426 385C428 384 429 382 429 379H437C437 384 435 387 432 390C429 393 425 394 420 394C414 394 409 392 406 389Z"],["#0f7ab5","M313 166V230C313 230 313 230 313 230C313 230 313 230 313 230C313 230 313 230 313 230C309 219 308 208 305 197C305 197 305 197 305 197C302 187 297 178 287 171C273 162 260 164 251 171C243 177 238 186 234 196C229 211 227 228 225 244C225 247 225 251 225 254C224 254 224 254 224 254C224 254 224 254 223 254C223 251 223 247 223 244C221 228 219 211 214 196C210 186 205 177 198 171C188 164 175 162 161 171C151 178 146 187 143 197C143 197 143 197 143 197C140 208 139 219 135 230C135 230 135 230 135 230C135 231 135 230 134 230C134 229 133 228 133 227C133 226 133 226 132 226C132 225 132 225 132 224C132 224 132 223 131 223C131 221 130 220 129 219C129 217 128 216 127 214C126 211 124 208 123 205C121 202 119 199 118 196C118 196 118 195 118 195C111 186 103 177 95 174C93 174 91 173 90 173C85 173 82 175 80 177C78 181 76 186 75 191C75 192 74 193 74 193C73 197 72 202 71 206C71 206 71 206 71 206C71 207 71 209 71 210C70 212 70 213 70 215C70 215 70 215 70 216C70 216 70 216 70 217C70 217 70 217 70 217C69 218 69 218 69 218C69 219 69 219 69 219C68 219 68 219 68 219C68 219 68 219 68 219C68 219 68 218 68 218C68 218 67 217 67 217C67 216 67 216 66 216C66 215 66 214 66 214C65 213 65 212 65 212C65 211 64 210 64 210C64 209 63 208 63 208C63 207 62 206 62 205C62 205 61 204 61 203C61 202 61 202 60 201C60 200 60 200 59 199C59 199 59 198 59 197C59 197 58 196 58 196C58 196 58 195 58 195C58 195 58 195 58 195C52 183 43 166 34 157C31 155 29 154 26 154C15 152 15 161 13 169C13 169 13 169 13 170C13 170 13 170 13 170C12 170 12 170 12 170C12 171 12 171 12 171C12 171 12 171 12 171C12 171 12 171 12 171C12 171 11 171 11 171C11 171 11 171 11 171C11 171 11 171 11 171C11 170 11 170 11 170C11 170 11 170 11 170C11 170 11 169 11 169C11 168 11 167 11 166C11 166 11 166 11 165C12 151 18 136 25 123C54 61 110 25 176 15C177 15 177 15 177 15C177 15 177 14 178 14C178 14 178 14 178 14C178 14 179 14 179 14C179 14 179 14 179 14C180 14 180 14 180 14C180 14 180 14 181 14C181 14 181 14 181 14C181 14 182 14 182 14C182 14 182 14 182 14C183 14 183 14 183 14C183 14 183 14 183 14C184 14 184 14 184 14C184 13 184 13 185 13C185 13 185 13 185 13C185 13 186 13 186 13C186 13 186 13 186 13C187 13 187 13 187 13C187 13 187 13 188 13C188 13 188 13 188 13C188 13 189 13 189 13C189 13 189 13 189 13C190 13 190 13 190 13C190 13 190 13 191 13C191 13 191 13 191 13C191 13 192 13 192 13C192 13 192 13 192 12C193 12 193 12 193 12C193 12 193 12 194 12C194 12 194 12 194 12C194 12 195 12 195 12C195 12 195 12 195 12C196 12 196 12 196 12C196 12 196 12 197 12C197 12 197 12 197 12C197 12 198 12 198 12C198 12 198 12 198 12C199 12 199 12 199 12C199 12 199 12 200 12C200 12 200 12 200 12C200 12 200 12 201 12C201 12 201 12 201 12C201 12 202 12 202 12C202 12 202 12 202 12C203 12 203 12 203 12C203 11 203 11 204 11C204 11 204 11 204 11C204 11 205 11 205 11C205 11 205 11 205 11C206 11 206 11 206 11C206 11 206 11 207 11C207 11 207 11 207 11C207 11 208 11 208 11C208 11 208 11 208 11C209 11 209 11 209 11C209 11 209 11 210 11C210 11 210 11 210 11C210 11 211 11 211 11C211 11 211 11 211 11C212 11 212 11 212 11C212 11 212 11 213 11C213 11 213 11 213 11C213 11 214 11 214 11C214 11 214 11 214 11C215 11 215 11 215 11C215 11 215 11 216 11C216 11 216 11 216 11C216 11 216 11 217 11C217 11 217 11 217 11C217 11 218 11 218 11C218 11 218 11 218 11C219 11 219 11 219 11C219 11 219 11 220 11C220 11 220 11 220 11C220 11 221 11 221 11C221 11 221 11 221 11C222 11 222 11 222 11C222 11 222 11 223 11C223 11 223 11 223 11C223 11 224 11 224 11C224 11 224 11 224 11C224 11 224 11 224 11C224 11 224 11 224 11C224 11 224 11 224 11C224 11 224 11 224 11C224 11 224 11 224 11C224 11 224 11 225 11C225 11 225 11 225 11C225 11 225 11 225 11C225 11 226 12 226 12C226 12 226 12 226 12C226 12 226 12 226 12C227 12 227 12 227 12C227 12 227 12 227 12C227 13 227 13 228 13C228 13 228 13 228 13C228 13 228 13 228 13C228 13 229 13 229 13C229 13 229 14 229 14C229 14 229 14 229 14C230 14 230 14 230 14C230 14 230 14 230 14C230 14 230 14 231 15C231 15 231 15 231 15C231 15 231 15 231 15C231 15 231 15 232 15C232 15 232 15 232 16C232 16 232 16 232 16C232 16 233 16 233 16C233 16 233 16 233 16C233 16 233 16 233 16C234 17 234 17 234 17C234 17 234 17 234 17C234 17 234 17 235 17C235 17 235 17 235 17C235 18 235 18 235 18C235 18 235 18 236 18C236 18 236 18 236 18C236 18 236 18 236 18C236 19 237 19 237 19C237 19 237 19 237 19C237 19 237 19 237 19C237 19 238 19 238 19C238 20 238 20 238 20C238 20 238 20 238 20C239 20 239 20 239 20C239 20 239 20 239 20C239 21 239 21 239 21C240 21 240 21 240 21C240 21 240 21 240 21C240 21 240 21 241 21C241 22 241 22 241 22C241 22 241 22 241 22C241 22 241 22 242 22C242 22 242 22 242 23C242 23 242 23 242 23C242 23 243 23 243 23C243 23 243 23 243 23C243 23 243 24 243 24C243 24 244 24 244 24C244 24 244 24 244 24C244 24 244 24 244 24C244 24 245 25 245 25C245 25 245 25 245 25C245 25 245 25 245 25C245 25 246 25 246 25C246 26 246 26 246 26C246 26 246 26 246 26C247 26 247 26 247 26C247 26 247 26 247 27C247 27 247 27 247 27C248 27 248 27 248 27C248 27 248 27 248 27C248 27 248 28 248 28C249 28 249 28 249 28C249 28 249 28 249 28C249 28 249 28 249 29C250 29 250 29 250 29C250 29 250 29 250 29C250 29 250 29 250 29C251 29 251 30 251 30C251 30 251 30 251 30C251 30 251 30 251 30C252 30 252 30 252 30C252 31 252 31 252 31C252 31 252 31 252 31C252 31 253 31 253 31C253 31 253 32 253 32C253 32 253 32 253 32C253 32 254 32 254 32C254 32 254 32 254 33C254 33 254 33 254 33C254 33 255 33 255 33C255 33 255 33 255 33C255 33 255 34 255 34C255 34 256 34 256 34C256 34 256 34 256 34C256 34 256 34 256 35C256 35 256 35 257 35C257 35 257 35 257 35C257 35 257 35 257 35C257 36 257 36 257 36C258 36 258 36 258 36C258 36 258 36 258 36C258 36 258 37 258 37C259 37 259 37 259 37C259 37 259 37 259 37C259 37 259 37 259 38C260 38 260 38 260 38C260 38 260 38 260 38C260 38 260 38 260 38C260 39 261 39 261 39C261 39 261 39 261 39C261 39 261 39 261 39C261 39 261 40 262 40C262 40 262 40 262 40C262 40 262 40 262 40C262 40 262 41 262 41C263 41 263 41 263 41C263 41 263 41 263 41C263 41 263 41 263 42C263 42 264 42 264 42C264 42 264 42 264 42C264 42 264 42 264 43C264 43 264 43 265 43C265 43 265 43 265 43C265 43 265 43 265 43C265 44 265 44 265 44C266 44 266 44 266 44C266 44 266 44 266 44C266 45 266 45 266 45C266 45 267 45 267 45C267 45 267 45 267 45C267 45 267 46 267 46C267 46 267 46 267 46C268 46 268 46 268 46C268 46 268 47 268 47C268 47 268 47 268 47C268 47 269 47 269 47C269 47 269 48 269 48C269 48 269 48 269 48C269 48 269 48 270 48C270 48 270 49 270 49C270 49 270 49 270 49C270 49 270 49 270 49C270 49 271 50 271 50C271 50 271 50 271 50C271 50 271 50 271 50C271 50 271 51 271 51C272 51 272 51 272 51C272 51 272 51 272 51C272 51 272 52 272 52C272 52 273 52 273 52C273 52 273 52 273 52C273 52 273 53 273 53C273 53 273 53 273 53C274 53 274 53 274 53C274 53 274 54 274 54C274 54 274 54 274 54C274 54 274 54 275 54C275 54 275 55 275 55C275 55 275 55 275 55C275 55 275 55 275 55C275 55 275 56 276 56C276 56 276 56 276 56C276 56 276 56 276 56C276 57 276 57 276 57C276 57 277 57 277 57C277 57 277 57 277 57C277 58 277 58 277 58C277 58 277 58 277 58C278 58 278 58 278 58C278 59 278 59 278 59C278 59 278 59 278 59C278 59 278 59 278 60C279 60 279 60 279 60C279 60 279 60 279 60C279 60 279 60 279 61C279 61 279 61 280 61C280 61 280 61 280 61C280 61 280 62 280 62C280 62 280 62 280 62C280 62 280 62 281 62C281 62 281 63 281 63C281 63 281 63 281 63C281 63 281 63 281 63C281 64 281 64 282 64C282 64 282 64 282 64C282 64 282 64 282 64C282 65 282 65 282 65C282 65 282 65 283 65C283 65 283 65 283 66C283 66 283 66 283 66C283 66 283 66 283 66C283 66 283 67 283 67C284 67 284 67 284 67C284 67 284 67 284 67C284 68 284 68 284 68C284 68 284 68 284 68C285 68 285 68 285 69C285 69 285 69 285 69C285 69 285 69 285 69C285 69 285 69 285 70C285 70 286 70 286 70C286 70 286 70 286 70C286 70 286 71 286 71C286 71 286 71 286 71C286 71 286 71 287 71C287 72 287 72 287 72C287 72 287 72 287 72C287 72 287 72 287 73C287 73 287 73 287 73C288 73 288 73 288 73C288 73 288 74 288 74C288 74 288 74 288 74C288 74 288 74 288 74C288 75 289 75 289 75C289 75 289 75 289 75C289 75 289 75 289 76C289 76 289 76 289 76C289 76 289 76 289 76C290 76 290 77 290 77C290 77 290 77 290 77C290 77 290 77 290 77C290 78 290 78 290 78C290 78 290 78 291 78C291 78 291 78 291 79C291 79 291 79 291 79C291 79 291 79 291 79C291 79 291 80 291 80C291 80 292 80 292 80C292 80 292 80 292 81C292 81 292 81 292 81C292 81 292 81 292 81C292 81 292 82 292 82C293 82 293 82 293 82C293 82 293 82 293 82C293 83 293 83 293 83C293 83 293 83 293 83C293 83 293 84 293 84C294 84 294 84 294 84C294 84 294 84 294 84C294 85 294 85 294 85C294 85 294 85 294 85C294 85 294 85 294 86C295 86 295 86 295 86C295 86 295 86 295 86C295 87 295 87 295 87C295 87 295 87 295 87C295 87 295 87 295 88C296 88 296 88 296 88C296 88 296 88 296 88C296 88 296 89 296 89C296 89 296 89 296 89C296 89 296 89 296 90C296 90 297 90 297 90C297 90 297 90 297 90C297 90 297 91 297 91C297 91 297 91 297 91C297 91 297 91 297 92C297 92 297 92 298 92C298 92 298 92 298 92C298 92 298 93 298 93C298 93 298 93 298 93C298 93 298 93 298 94C298 94 298 94 298 94C298 94 299 94 299 94C299 95 299 95 299 95C299 95 299 95 299 95C299 95 299 95 299 96C299 96 299 96 299 96C299 96 299 96 299 96C300 97 300 97 300 97C300 97 300 97 300 97C300 97 300 97 300 98C300 98 300 98 300 98C300 98 300 98 300 98C300 99 300 99 300 99C301 99 301 99 301 99C301 99 301 100 301 100C301 100 301 100 301 100C301 100 301 100 301 100C301 101 301 101 301 101C301 101 301 101 301 101C302 101 302 102 302 102C302 102 302 102 302 102C302 102 302 102 302 103C302 103 302 103 302 103C302 103 302 103 302 103C302 104 302 104 302 104C302 104 302 104 303 104C303 104 303 105 303 105C303 105 303 105 303 105C303 105 303 105 303 105C303 106 303 106 303 106C303 106 303 106 303 106C303 106 303 107 303 107C303 107 304 107 304 107C304 107 304 107 304 108C304 108 304 108 304 108C304 108 304 108 304 108C304 109 304 109 304 109C304 109 304 109 304 109C304 109 304 110 304 110C304 110 305 110 305 110C305 110 305 110 305 110C305 111 305 111 305 111C305 111 305 111 305 111C305 112 305 112 305 112C305 112 305 112 305 112C305 112 305 112 305 113C305 113 306 113 306 113C306 113 306 113 306 114C306 114 306 114 306 114C306 114 306 114 306 114C306 114 306 115 306 115C306 115 306 115 306 115C306 115 306 116 306 116C306 116 306 116 306 116C306 116 307 116 307 117C307 117 307 117 307 117C307 117 307 117 307 117C307 118 307 118 307 118C307 118 307 118 307 118C307 118 307 119 307 119C307 119 307 119 307 119C307 119 307 119 307 120C307 120 307 120 307 120C308 120 308 120 308 120C308 121 308 121 308 121C308 121 308 121 308 121C308 121 308 122 308 122C308 122 308 122 308 122C308 122 308 122 308 123C308 123 308 123 308 123C308 123 308 123 308 123C308 124 308 124 308 124C309 124 309 124 309 124C309 124 309 125 309 125C309 125 309 125 309 125C309 125 309 125 309 126C309 126 309 126 309 126C309 126 309 126 309 127C309 127 309 127 309 127C309 127 309 127 309 127C309 128 309 128 309 128C309 128 309 128 310 128C310 128 310 129 310 129C310 129 310 129 310 129C310 129 310 129 310 130C310 130 310 130 310 130C310 130 310 130 310 130C310 131 310 131 310 131C310 131 310 131 310 131C310 132 310 132 310 132C310 132 310 132 310 132C310 132 310 133 310 133C310 133 310 133 310 133C311 133 311 133 311 134C311 134 311 134 311 134C311 134 311 134 311 134C311 135 311 135 311 135C311 135 311 135 311 135C311 135 311 136 311 136C311 136 311 136 311 136C311 136 311 137 311 137C311 137 311 137 311 137C311 137 311 137 311 138C311 138 311 138 311 138C311 138 311 138 311 139C311 139 311 139 311 139C311 139 312 139 312 139C312 140 312 140 312 140C312 140 312 140 312 140C312 140 312 141 312 141C312 141 312 141 312 141C312 141 312 142 312 142C312 142 312 142 312 142C312 142 312 142 312 143C312 143 312 143 312 143C312 143 312 143 312 144C312 144 312 144 312 144C312 144 312 144 312 144C312 145 312 145 312 145C312 145 312 145 312 145C312 145 312 146 312 146C312 146 312 146 312 146C312 146 312 147 312 147C312 147 312 147 313 147C313 147 313 147 313 148C313 148 313 148 313 148C313 148 313 148 313 149C313 149 313 149 313 149C313 149 313 149 313 149C313 150 313 150 313 150C313 150 313 150 313 150C313 150 313 151 313 151C313 151 313 151 313 151C313 151 313 152 313 152C313 152 313 152 313 152C313 152 313 152 313 153C313 153 313 153 313 153C313 153 313 153 313 154C313 154 313 154 313 154C313 154 313 154 313 155C313 155 313 155 313 155C313 155 313 155 313 155C313 156 313 156 313 156C313 156 313 156 313 156C313 157 313 157 313 157C313 157 313 157 313 157C313 157 313 158 313 158C313 158 313 158 313 158C313 158 313 159 313 159C313 159 313 159 313 159C313 159 313 159 313 160C313 160 313 160 313 160C313 160 313 160 313 161C313 161 313 161 313 161C313 161 313 161 313 162C313 162 313 162 313 162C313 162 313 162 313 162C313 163 313 163 313 163C313 163 313 163 313 163C313 164 313 165 313 166L313 166Z"],["#0f7ab5","M437 169V170C437 170 437 170 437 170C437 170 437 171 437 171C437 171 437 171 437 171C437 171 437 171 437 171C437 171 437 171 436 171C436 171 436 171 436 171C436 171 436 171 436 171C436 171 436 171 436 170C436 170 436 170 436 170C436 170 436 170 436 170C436 169 435 169 435 169C433 161 433 152 422 154C420 154 417 155 415 157C405 166 396 183 391 195C390 195 390 195 390 195C390 195 390 196 390 196C390 196 390 197 389 197C389 198 389 199 389 199C388 200 388 200 388 201C388 202 387 202 387 203C387 204 386 205 386 205C386 206 385 207 385 208C385 208 384 209 384 210C384 210 384 211 383 212C383 213 383 213 382 214C382 214 382 215 382 216C381 216 381 217 381 217C381 217 381 218 380 218C380 218 380 219 380 219C380 219 380 219 380 219C380 219 380 219 380 219C380 219 380 219 380 219V172C380 169 380 166 380 163C378 80 311 13 228 11C228 11 229 11 229 11C229 11 229 11 229 11C243 11 258 12 272 15C338 25 394 61 423 123C430 136 436 151 437 165C437 166 437 166 437 166C437 167 437 168 437 169L437 169Z"],["#e7a41a","M379 172V219C379 219 379 219 379 218C379 218 379 218 379 217C378 217 378 217 378 217C378 216 378 216 378 216C378 216 378 215 378 215C378 213 378 212 377 210C377 209 377 207 377 206C377 206 377 206 377 206C376 202 375 197 374 193C374 193 374 192 373 191C372 186 370 181 368 177C366 175 363 173 359 173C359 173 359 173 359 173C358 173 358 173 357 173V166C357 88 300 22 224 11C225 11 225 11 226 11C227 11 227 11 228 11C311 13 378 80 380 163C380 166 380 169 379 172L379 172Z"],["#66cae5","M335 166V189C334 191 332 193 330 195C330 195 330 196 330 196C329 199 327 202 325 205C324 208 322 211 321 214C320 216 320 217 319 219C318 220 317 221 317 223C317 223 316 224 316 224C316 225 316 225 316 226C316 226 315 226 315 227C315 228 314 229 314 230C314 230 313 230 313 230V166C313 165 313 164 313 163C312 98 276 41 224 11H224C289 33 335 94 335 166L335 166Z"],["#e56555","M357 166V173C356 174 354 174 353 174C347 176 341 181 336 188C336 188 336 188 335 189V166C335 94 289 33 224 11H224C300 22 357 87 357 166Z"]];
+  // The rain. Each logo is a die-cut sticker: its own colours on a thick white
+  // outline, the way Umbrella's file is drawn. Real clients only, with their
+  // permission (CLAUDE.md, "Proof and claims"); add one by adding an entry.
+  //   box     the artwork's viewBox [x, y, w, h]
+  //   paths   [fill, path] pairs, painted in order
+  //   outline white border to stroke around the artwork, in viewBox units,
+  //           for logos that do not carry their own (0 when they do)
+  //   rule    the SVG's fill-rule
+  var STICKERS = [
+    { box: [48.3, 48.3, 160, 160], outline: 20, rule: 'evenodd', paths: MARK.map(function (d) { return ['#0f3f33', d]; }) },
+    { box: [0, 0, 449, 405], outline: 0, rule: 'nonzero', paths: UMBRELLA }
+  ];
+  // Every sticker drawn once into a strip of square cells, with a soft shadow so
+  // the white edge still reads on the light theme's near-white page.
+  function stickerAtlas(cell) {
+    var c = document.createElement('canvas'), g = c.getContext('2d'), pad = cell * 0.08, out = [];
+    var t = document.createElement('canvas'), tg = t.getContext('2d');
+    c.width = cell * STICKERS.length; c.height = t.width = t.height = cell;
+    function shadow(on) { g.shadowColor = on ? 'rgba(0,0,0,0.3)' : 'transparent'; g.shadowBlur = cell * 0.03; g.shadowOffsetY = cell * 0.012; }
+    STICKERS.forEach(function (s, i) {
+      var o = s.outline, w = s.box[2] + o * 2, h = s.box[3] + o * 2, k = (cell - pad * 2) / Math.max(w, h);
+      var dw = w * k, dh = h * k, x0 = i * cell + (cell - dw) / 2, y0 = (cell - dh) / 2;
+      function place(ctx, x) { ctx.setTransform(k, 0, 0, k, x + (o - s.box[0]) * k, y0 + (o - s.box[1]) * k); }
+      // A stroked outline is drawn whole off-canvas first, then shadowed once:
+      // shadowing each path would smudge grey across the white already laid.
+      if (o) {
+        tg.setTransform(1, 0, 0, 1, 0, 0); tg.clearRect(0, 0, cell, cell); place(tg, (cell - dw) / 2);
+        tg.strokeStyle = tg.fillStyle = '#fff'; tg.lineWidth = o * 2; tg.lineJoin = 'round';
+        s.paths.forEach(function (p) { var q = new Path2D(p[1]); tg.stroke(q); tg.fill(q); });
+        g.save(); shadow(true); g.drawImage(t, i * cell, 0); g.restore();
+      }
+      g.save(); place(g, x0);
+      s.paths.forEach(function (p, j) { shadow(!o && j === 0); g.fillStyle = p[0]; g.fill(new Path2D(p[1]), s.rule); });
+      g.restore();
+      // Texture coordinates of the drawn bounds, and their aspect for the quad.
+      out.push({ u0: (x0 - 1) / c.width, u1: (x0 + dw + 1) / c.width, v0: (y0 - 1) / cell, v1: (y0 + dh + 1) / cell, aspect: dw / dh });
+    });
+    return { canvas: c, cells: out };
+  }
   function compile(gl, type, src) { var s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(s)); return s; }
   function link(gl, vs, fs) { var p = gl.createProgram(); gl.attachShader(p, compile(gl, gl.VERTEX_SHADER, vs)); gl.attachShader(p, compile(gl, gl.FRAGMENT_SHADER, fs)); gl.linkProgram(p); if (!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error('link'); return p; }
   function newTex(gl) { var t = gl.createTexture(); gl.bindTexture(gl.TEXTURE_2D, t); [gl.TEXTURE_MIN_FILTER, gl.TEXTURE_MAG_FILTER].forEach(function (k) { gl.texParameteri(gl.TEXTURE_2D, k, gl.LINEAR); }); [gl.TEXTURE_WRAP_S, gl.TEXTURE_WRAP_T].forEach(function (k) { gl.texParameteri(gl.TEXTURE_2D, k, gl.CLAMP_TO_EDGE); }); return t; }
-  var DITHER = 'float B2(vec2 a){ a = floor(a); return fract(a.x * 0.5 + a.y * a.y * 0.75); } float B4(vec2 a){ return B2(a * 0.5) * 0.25 + B2(a); }';
-  // The scene the glass refracts. It is never drawn to screen — only sampled
-  // through the mark — so whatever goes here is visible nowhere else on the
-  // page. It used to carry a 32px mesh, which read as a second grid that did
-  // not line up with the page's own; the page draws the grid now.
-  function paintGrid(g, W, H, cx, cy, bg, grid) {
-    g.fillStyle = bg; g.fillRect(0, 0, W, H);
-  }
-  function block(g, col, x, y, w, h) { g.fillStyle = col; g.beginPath(); if (g.roundRect) g.roundRect(x, y, w, h, 12); else g.rect(x, y, w, h); g.fill(); }
+  // The glass refracts the rain: it samples the sticker layer the frame just
+  // drew, laid over the page background, so a sticker passing behind the mark
+  // is bent through it. Nothing else is behind the glass.
   function visible(el, cb) { if (!('IntersectionObserver' in window)) { cb(true); return null; } var o = new IntersectionObserver(function (es) { cb(es[0].isIntersecting); }); o.observe(el); return o; }
 
 
@@ -97,7 +135,6 @@
         return themeMode === 'dark' ? PALETTE.dark : themeMode === 'light' ? PALETTE.light : null;
     }
     function themeBg() { var p = activePalette(); return p ? p.bg : css('--bg', '#1a1a1a'); }
-    function themeGrid() { var p = activePalette(); return p ? p.grid : css('--rule-grid', '#262626'); }
     function isDark() {
         var p = activePalette();
         return p ? p === PALETTE.dark : dot3(hex(css('--bg', '#1a1a1a'), [0.1, 0.1, 0.1])) < 0.5;
@@ -112,10 +149,10 @@
       "precision highp float;",
       "varying vec3 vN, vW, vMP, vMN;",
       "uniform sampler2D uS, uD; uniform vec2 uR; uniform mat4 uM;",
-      "uniform vec3 uE, uL, uBody, uShade, uSpec, uWarm, uCool;",
+      "uniform vec3 uE, uL, uBg, uShade, uSpec, uWarm, uCool;",
       "uniform float uIor, uTh, uDp, uRo, uFr, uDi, uLv, uGr, uDpr, uDark;",
       "float B2(vec2 a){ a = floor(a); return fract(a.x * 0.5 + a.y * a.y * 0.75); } float B4(vec2 a){ return B2(a * 0.5) * 0.25 + B2(a); }",
-      "vec3 sc(vec2 f){ return texture2D(uS, clamp(vec2(f.x, uR.y - f.y) / uR, 0.0, 1.0)).rgb; }",
+      "vec3 sc(vec2 f){ vec4 s = texture2D(uS, clamp(f / uR, 0.0, 1.0)); return s.rgb + uBg * (1.0 - s.a); }",
       "vec3 fr(vec2 p, float r){ return sc(p) * 0.28 + (sc(p + vec2(r, 0.0)) + sc(p - vec2(r, 0.0)) + sc(p + vec2(0.0, r)) + sc(p - vec2(0.0, r))) * 0.18; }",
       "float dt(vec2 m){ return texture2D(uD, vec2(m.x * 0.5 + 0.5, 0.5 - m.y * 0.5)).r; }",
       "void main(){",
@@ -134,51 +171,109 @@
       "  vec2 off = -n.xy * (uIor - 1.0) * uTh * 0.16 * uR.y;",
       "  float r = mix(0.6, 7.0, uRo) * uDpr;",
       "  vec3 c = vec3(fr(f + off * (1.0 + uDp * 9.0), r).r, fr(f + off, r).g, fr(f + off * (1.0 - uDp * 9.0), r).b);",
-      "  vec3 tint = mix(uCool * 0.86, uBody, DARKV);",
-      "  c = c * mix(vec3(1.0), tint, mix(0.62, 0.38, DARKV)) + uBody * (0.05 + 0.16 * DARKV);",
+      // Clear glass: no body colour. What reads is the bend, the unlit side
+      // going a shade darker, the rims and the highlight.
       "  c = mix(c, c * 0.6 + uShade * 0.3, (1.0 - lam) * mix(0.6, 0.3, DARKV) * (1.0 - cap * 0.6));",
       "  float fres = pow(1.0 - fa, uFr * 0.6);",
-      "  c = mix(mix(c, uShade, fres * 0.65), c + uCool * fres * 0.3, DARKV);",
+      "  c = mix(mix(c, uShade, fres * 0.55), c + uSpec * fres * 0.22, DARKV);",
       "  float hh = fract(dot(n.xy, vec2(0.62, 0.78)) * 1.3 + fres * 0.8);",
-      "  vec3 band = hh < 0.5 ? mix(uWarm, vec3(0.843, 1.0, 0.341), hh * 2.0) : mix(vec3(0.843, 1.0, 0.341), uCool, hh * 2.0 - 1.0);",
-      "  c += band * fres * uDp * 14.0;",
+      "  vec3 band = hh < 0.5 ? mix(uWarm, vec3(1.0, 0.93, 0.55), hh * 2.0) : mix(vec3(1.0, 0.93, 0.55), uCool, hh * 2.0 - 1.0);",
+      "  c += band * fres * uDp * 11.0;",
       "  c += uSpec * pow(max(dot(n, normalize(L + V)), 0.0), mix(380.0, 22.0, uRo)) * 1.4;",
       "  c = mix(c, mix(uShade, uSpec, DARKV), cap * (1.0 - smoothstep(0.0, 0.07, t)) * mix(0.7, 0.4, DARKV));",
       "  c += (fract(sin(dot(f, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) * uGr;",
       "  gl_FragColor = vec4(clamp(floor(c * uLv + B4(f / max(uDi * uDpr, 1.0))) / uLv, 0.0, 1.0), 1.0);",
       "}"
     ].join('\n');
-    var QF = ['precision highp float; uniform sampler2D uS; uniform vec2 uR; uniform float uDi, uLv, uGr, uDpr;', DITHER,
-      'void main(){ vec2 f = gl_FragCoord.xy; vec3 c = texture2D(uS, vec2(f.x, uR.y - f.y) / uR).rgb; c += (fract(sin(dot(f, vec2(12.9898, 78.233))) * 43758.5453) - 0.5) * uGr; gl_FragColor = vec4(floor(c * uLv + B4(f / max(uDi * uDpr, 1.0))) / uLv, 1.0); }'].join('\n');
-    var prog, qprog;
-    try { prog = link(gl, VS, FS); qprog = link(gl, 'attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }', QF); } catch (e) { canvas.remove(); return null; }
+    // The rain takes two more passes. Stickers are drawn as quads into an
+    // offscreen layer, premultiplied; the layer is then laid on screen behind
+    // the mark, and the glass samples the same layer to bend it.
+    var SV = 'attribute vec2 aQ, aT; attribute float aA; uniform vec2 uR; varying vec2 vT; varying float vA; void main(){ vT = aT; vA = aA; gl_Position = vec4(aQ.x / uR.x * 2.0 - 1.0, 1.0 - aQ.y / uR.y * 2.0, 0.0, 1.0); }';
+    var SF = 'precision mediump float; uniform sampler2D uA; varying vec2 vT; varying float vA; void main(){ gl_FragColor = texture2D(uA, vT) * vA; }';
+    // This canvas is not premultiplied, so the layer is divided back out.
+    var CF = 'precision highp float; uniform sampler2D uS; uniform vec2 uR; void main(){ vec4 s = texture2D(uS, gl_FragCoord.xy / uR); gl_FragColor = s.a > 0.0 ? vec4(s.rgb / s.a, s.a) : vec4(0.0); }';
+    var prog, sprog, cprog;
+    try { prog = link(gl, VS, FS); sprog = link(gl, SV, SF); cprog = link(gl, 'attribute vec2 p; void main(){ gl_Position = vec4(p, 0.0, 1.0); }', CF); } catch (e) { canvas.remove(); return null; }
 
-    var scene = document.createElement('canvas'), tex = newTex(gl), dpr = 1;
-    function paint() {
-      var W = canvas.width / dpr, H = canvas.height / dpr, g = scene.getContext('2d');
-      scene.width = canvas.width; scene.height = canvas.height; g.setTransform(dpr, 0, 0, dpr, 0, 0);
-      var cx = W / 2, cy = H / 2, u = 32;
-      paintGrid(g, W, H, cx, cy, themeBg(), themeGrid());
-      block(g, '#0f3f33', cx - u * 8, cy + u * 0.5, u * 6, u * 3);
-      block(g, '#ff6f61', cx + u * 0.5, cy - u * 4.6, u * 6, u * 2);
-      block(g, '#d7ff57', cx + u * 2.2, cy - u * 0.4, u * 2, u * 2);
-      gl.bindTexture(gl.TEXTURE_2D, tex); gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, scene);
-    }
+    // The layer: a canvas-sized texture behind a framebuffer, reallocated on resize.
+    var layer = newTex(gl), fbo = gl.createFramebuffer(), dpr = 1;
     function size() {
       dpr = Math.min(devicePixelRatio || 1, 2);
       var w = Math.max(1, Math.round(stage.clientWidth * dpr)), h = Math.max(1, Math.round(stage.clientHeight * dpr));
-      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; paint(); }
+      if (canvas.width !== w || canvas.height !== h) {
+        canvas.width = w; canvas.height = h;
+        gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, layer);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, w, h, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+        gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
+        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, layer, 0);
+        gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      }
       gl.viewport(0, 0, w, h);
     }
-    themeListeners.push(function () { paint(); setColours(); });
+    themeListeners.push(function () { setColours(); });
+
+    // The sticker atlas, on texture unit 2, mipmapped so small far stickers
+    // do not shimmer as they fall.
+    var atlas = stickerAtlas(512);
+    gl.activeTexture(gl.TEXTURE2); newTex(gl);
+    gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, true);
+    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, atlas.canvas);
+    gl.pixelStorei(gl.UNPACK_PREMULTIPLY_ALPHA_WEBGL, false);
+    gl.generateMipmap(gl.TEXTURE_2D); gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR_MIPMAP_LINEAR);
+    gl.activeTexture(gl.TEXTURE0);
+
+    // The drops. Position is kept as a fraction of the stage, so a resize only
+    // reflows them; depth z sets size, speed, opacity and parallax together,
+    // and they are drawn far to near.
+    var drops = [], verts = new Float32Array(0), rb = gl.createBuffer();
+    function rnd(a, b) { return a + Math.random() * (b - a); }
+    function seed(w, h) {
+      var n = Math.round(Math.min(30, Math.max(8, w * h / 46000)));
+      if (drops.length === n) return;
+      drops = [];
+      for (var i = 0; i < n; i++) drops.push({ k: i % STICKERS.length, z: rnd(0.3, 1), x: Math.random(), y: Math.random(), r: rnd(-0.6, 0.6), spin: rnd(-0.35, 0.35), sw: rnd(4, 14), sf: rnd(0.4, 1.1), ph: rnd(0, 6.28) });
+      drops.sort(function (a, b) { return a.z - b.z; });
+    }
+    function rain(s, fade, drift) {
+      var W = canvas.width, H = canvas.height, cw = W / dpr, ch = H / dpr;
+      seed(cw, ch);
+      var k = Math.min(1.25, Math.max(0.65, Math.min(cw, ch) / 800)) * dpr, big = 110 * k, span = H + big * 2, n = drops.length, o = 0;
+      if (verts.length !== n * 30) verts = new Float32Array(n * 30);
+      drops.forEach(function (d) {
+        var c = atlas.cells[d.k], L = (34 + 76 * d.z) * k;
+        var hw = (c.aspect >= 1 ? L : L * c.aspect) / 2, hh = (c.aspect >= 1 ? L / c.aspect : L) / 2;
+        var x = d.x * W + Math.sin(s * d.sf + d.ph) * d.sw * k + drift * d.z * 40 * k;
+        var y = ((d.y * span + s * (50 + 110 * d.z) * k) % span) - big;
+        var a = d.r + d.spin * s, ca = Math.cos(a), sa = Math.sin(a), al = (0.45 + 0.55 * d.z) * fade;
+        [[-1, -1, c.u0, c.v0], [1, -1, c.u1, c.v0], [1, 1, c.u1, c.v1], [-1, -1, c.u0, c.v0], [1, 1, c.u1, c.v1], [-1, 1, c.u0, c.v1]].forEach(function (q) {
+          var px = q[0] * hw, py = q[1] * hh;
+          verts[o++] = x + px * ca - py * sa; verts[o++] = y + px * sa + py * ca; verts[o++] = q[2]; verts[o++] = q[3]; verts[o++] = al;
+        });
+      });
+      gl.bindFramebuffer(gl.FRAMEBUFFER, fbo);
+      gl.activeTexture(gl.TEXTURE0); gl.bindTexture(gl.TEXTURE_2D, null);
+      gl.clearColor(0, 0, 0, 0); gl.clear(gl.COLOR_BUFFER_BIT);
+      gl.disable(gl.DEPTH_TEST); gl.disable(gl.CULL_FACE);
+      gl.enable(gl.BLEND); gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+      gl.useProgram(sprog); gl.uniform2f(U(sprog, 'uR'), W, H); gl.uniform1i(U(sprog, 'uA'), 2);
+      gl.bindBuffer(gl.ARRAY_BUFFER, rb); gl.bufferData(gl.ARRAY_BUFFER, verts, gl.DYNAMIC_DRAW);
+      var aQ = gl.getAttribLocation(sprog, 'aQ'), aT = gl.getAttribLocation(sprog, 'aT'), aA = gl.getAttribLocation(sprog, 'aA');
+      gl.enableVertexAttribArray(aQ); gl.vertexAttribPointer(aQ, 2, gl.FLOAT, false, 20, 0);
+      gl.enableVertexAttribArray(aT); gl.vertexAttribPointer(aT, 2, gl.FLOAT, false, 20, 8);
+      gl.enableVertexAttribArray(aA); gl.vertexAttribPointer(aA, 1, gl.FLOAT, false, 20, 16);
+      gl.drawArrays(gl.TRIANGLES, 0, n * 6);
+      gl.disableVertexAttribArray(aQ); gl.disableVertexAttribArray(aT); gl.disableVertexAttribArray(aA);
+      gl.disable(gl.BLEND);
+      gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+      gl.bindTexture(gl.TEXTURE_2D, layer);
+    }
 
     var qb = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, qb); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
     function U(p, n) { return gl.getUniformLocation(p, n); }
-    gl.useProgram(qprog); gl.uniform1f(U(qprog, 'uDi'), M.dither); gl.uniform1f(U(qprog, 'uLv'), M.levels); gl.uniform1f(U(qprog, 'uGr'), M.grain);
     gl.useProgram(prog);
     [['uIor', M.ior], ['uTh', M.thick], ['uDp', M.disp], ['uRo', M.rough], ['uFr', M.fres], ['uDi', M.dither], ['uLv', M.levels], ['uGr', M.grain]].forEach(function (a) { gl.uniform1f(U(prog, a[0]), a[1]); });
-    gl.uniform3fv(U(prog, 'uBody'), [0.659, 1, 0.831]); gl.uniform3fv(U(prog, 'uSpec'), [0.89, 1, 0.945]);
-    gl.uniform3fv(U(prog, 'uWarm'), [1, 0.435, 0.38]); gl.uniform3fv(U(prog, 'uCool'), [0.463, 0.937, 0.722]);
+    gl.uniform1i(U(prog, 'uS'), 0); gl.uniform3fv(U(prog, 'uSpec'), [0.96, 0.97, 0.98]);
+    gl.uniform3fv(U(prog, 'uWarm'), [1, 0.435, 0.38]); gl.uniform3fv(U(prog, 'uCool'), [0.5, 0.72, 1]);
     gl.uniform3fv(U(prog, 'uL'), [-0.56, 0.78, 0.62]);
     var EYE = [0, 0, 4.6]; gl.uniform3fv(U(prog, 'uE'), EYE);
     // The outline's distance field, in model space: what gives each petal the lens's rounded slab.
@@ -203,7 +298,9 @@
       gl.uniform1i(U(prog, 'uD'), 1);
     })();
 
-    function setColours() { gl.useProgram(prog); gl.uniform3fv(U(prog, 'uShade'), isDark() ? [0.039, 0.18, 0.145] : [0.059, 0.247, 0.2]); gl.uniform1f(U(prog, 'uDark'), isDark() ? 1 : 0); }
+    // Neutral shading, so the glass takes no colour of its own; uBg is what the
+    // glass shows where no sticker is behind it.
+    function setColours() { var dk = isDark(); gl.useProgram(prog); gl.uniform3fv(U(prog, 'uShade'), dk ? [0.05, 0.05, 0.05] : [0.16, 0.16, 0.16]); gl.uniform1f(U(prog, 'uDark'), dk ? 1 : 0); gl.uniform3fv(U(prog, 'uBg'), hex(themeBg(), dk ? [0.1, 0.1, 0.1] : [0.97, 0.97, 0.97])); }
     setColours();
 
     try { build(MESH); } catch (e) { canvas.remove(); return null; }
@@ -217,7 +314,7 @@
         for (var k = 0; k < 3; k++) { var o = idx[i + k] * 3; vp.push(pos[o], pos[o + 1], pos[o + 2]); vn.push(nx / l, ny / l, nz / l); }
       }
       function buf(d) { var b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(d), gl.STATIC_DRAW); return b; }
-      var bP = buf(vp), bN = buf(vn), lP = gl.getAttribLocation(prog, 'aP'), lN = gl.getAttribLocation(prog, 'aN'), lQ = gl.getAttribLocation(qprog, 'p');
+      var bP = buf(vp), bN = buf(vn), lP = gl.getAttribLocation(prog, 'aP'), lN = gl.getAttribLocation(prog, 'aN'), lQ = gl.getAttribLocation(cprog, 'p');
       fb.style.display = 'none';
       var target = 0, yaw = reduce ? 0.42 : 0, pitch = -0.2, t0 = performance.now(), on = true;
       onPointer = function (e) { var r = stage.getBoundingClientRect(); target = ((e.clientX - r.left) / r.width - 0.5) * 1.2; };
@@ -241,10 +338,14 @@
         var y = yaw + (1 - ease) * 1.5, model = mul(mul(ry(y), rx(pitch)), sc((0.55 + 0.45 * ease) * fit));
         var view = [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, -EYE[2], 1];
         var proj = persp(32 * Math.PI / 180, aspect);
-        // No background pass: clear to transparent and draw only the mark, so
-        // the page's grid reads straight through and the mark sits on it.
+        // The rain first, into its layer; then the layer onto the transparent
+        // canvas, so the page's grid reads between the stickers; then the mark.
+        rain(s, ease, yaw);
         gl.clearColor(0, 0, 0, 0);
         gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+        gl.useProgram(cprog); gl.uniform2f(U(cprog, 'uR'), canvas.width, canvas.height); gl.uniform1i(U(cprog, 'uS'), 0);
+        gl.bindBuffer(gl.ARRAY_BUFFER, qb); gl.enableVertexAttribArray(lQ); gl.vertexAttribPointer(lQ, 2, gl.FLOAT, false, 0, 0);
+        gl.drawArrays(gl.TRIANGLES, 0, 3); gl.disableVertexAttribArray(lQ);
         gl.enable(gl.DEPTH_TEST); gl.enable(gl.CULL_FACE);
         gl.useProgram(prog); gl.uniform2f(U(prog, 'uR'), canvas.width, canvas.height); gl.uniform1f(U(prog, 'uDpr'), dpr);
 
@@ -306,5 +407,5 @@
     return { setTheme: setTheme, destroy: destroy, stage: stage, canvas: canvas };
   }
 
-  global.GlintHero = { mount: mountHero, version: '1.0.0' };
+  global.GlintHero = { mount: mountHero, version: '1.1.0' };
 })(typeof window !== 'undefined' ? window : this);
