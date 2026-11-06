@@ -167,9 +167,17 @@ Prices and terms come from the user's approved Offer and Client Routes pages
   data-handling paragraph and the privacy policy's form paragraph go to the
   lawyer with the terms.
 - Lunamoury is not live: no referral to it on the site until it is.
-- Still open with the user: revision rounds (site says one, contract two), the
-  studio tagline ("brand, web and AI"), the audience (worldwide vs Quezon City)
-  and how prominent AI visibility is.
+- **Two rounds of revisions** per stage are included; each extra round is
+  ₱3,000.
+- The studio is a **"brand, web and AI studio"** everywhere, matching the hero
+  tag.
+- **Audience: Quezon City and Metro Manila, for now.** No overseas or worldwide
+  claims; `areaServed` is Quezon City (City) and Metro Manila
+  (AdministrativeArea), in `index.html` and `tools/build-pages.py`.
+- **The Journal is the blog**, where SEO and AEO content lives. Keep it in the
+  menu; publish posts as they are written (see "Unpublished posts" above).
+- Open, not urgent: Mark's photo and credentials, the DTI number, and how
+  prominent AI visibility is on the site.
 
 ## Proof and claims
 
