@@ -253,7 +253,7 @@ def schema(meta, main, authors):
         s = meta["service"]
         graph.append({"@type": "Service", "@id": f"{url}#service", "name": s["name"], "serviceType": s["serviceType"],
                       "description": s["description"], "url": url, "provider": ORG,
-                      "areaServed": [{"@type": "Country", "name": "Philippines"}, "Worldwide"]})
+                      "areaServed": [{"@type": "City", "name": "Quezon City"}, {"@type": "AdministrativeArea", "name": "Metro Manila"}]})
     qs = faq_from(main)
     if qs:
         graph.append({"@type": "FAQPage", "@id": f"{url}#faq", "mainEntity": qs})
