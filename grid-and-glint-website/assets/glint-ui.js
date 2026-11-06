@@ -154,9 +154,9 @@
      pointing at email; Webflow's native form is the one that sends. */
   var brief = document.getElementById('brief');
   if (brief) {
-    var need = document.getElementById('f-need');
     var pick = { 'brand-identity': 'Brand identity', 'webflow-websites': 'Webflow website', 'systems': 'Custom Systems' }[new URLSearchParams(location.search).get('service')];
-    if (need && pick) need.value = pick;
+    var chip = pick && brief.querySelector('input[name="need"][value="' + pick + '"]');
+    if (chip) chip.checked = true;
     brief.addEventListener('submit', function (e) {
       e.preventDefault();
       var fail = brief.parentNode.querySelector('.w-form-fail');
