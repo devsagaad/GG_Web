@@ -155,7 +155,7 @@
   var brief = document.getElementById('brief');
   if (brief) {
     var pick = { 'brand-identity': 'Brand identity', 'webflow-websites': 'Webflow website', 'systems': 'Custom Systems' }[new URLSearchParams(location.search).get('service')];
-    var chip = pick && brief.querySelector('input[name="need"][value="' + pick + '"]');
+    var chip = pick && brief.querySelector('input[name="' + pick + '"]');
     if (chip) chip.checked = true;
     brief.addEventListener('submit', function (e) {
       e.preventDefault();

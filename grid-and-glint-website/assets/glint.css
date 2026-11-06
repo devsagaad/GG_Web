@@ -496,9 +496,10 @@ form.brief { margin: 0; background: var(--bg-panel); border: 1px solid var(--rul
 .field textarea { min-height: 128px; resize: vertical; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--rule-strong); }
 form.brief .btn { align-self: flex-start; width: auto; }
-/* "What do you need?" is a row of radio chips: Webflow's API cannot fill a
-   select's options, and chips are quicker to tap than a dropdown. Webflow
-   wraps each radio in a .w-radio label; these rules override its defaults. */
+/* "What do you need?" is a row of checkbox chips: Webflow's API cannot fill a
+   select's options or give radios one shared name, and a client may want
+   more than one service. Webflow wraps each checkbox in a .w-checkbox label;
+   these rules override its defaults. */
 .chips { display: flex; flex-wrap: wrap; gap: 8px; }
 .chips .chip { position: relative; display: inline-flex; margin: 0; padding: 10px 14px; background: var(--bg-control); border: 1px solid var(--rule); border-radius: var(--r-sm); color: var(--fg); font-size: 12px; line-height: normal; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; cursor: pointer; }
 .chips .chip:hover { border-color: var(--rule-strong); }
