@@ -1,7 +1,7 @@
 <!--page
 {"path": "contact",
  "title": "Contact & Start a Project | Grid and Glint",
- "description": "Start a project with Grid and Glint: our assistant takes your brief and finds a time, then you meet the team. Brand identity, Webflow websites and systems.",
+ "description": "Start a project with Grid and Glint: send a short brief, or email or call us. We reply within two working days. Brand identity, Webflow and Custom Systems.",
  "crumb": "Contact",
  "type": "ContactPage"}
 -->
@@ -11,14 +11,29 @@
     <div class="inner">
       <nav class="crumbs lbl" aria-label="Breadcrumb"><a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Contact</span></nav>
       <h1 class="disp" id="h1">Start a project</h1>
-      <p class="lede">Our assistant asks a few questions about your project and finds a time that works. Then you meet the team, and a written proposal follows. One service or all three: brand identity, a Webflow website, systems.</p>
+      <p class="lede">Tell us what you need. We reply within two working days, set up a call, and send a written proposal within 48 hours of it.</p>
     </div>
   </section>
 
-  <section class="sec cta wrap" id="contact" aria-label="Contact details and brief">
+  <section class="sec cta wrap" id="contact" aria-label="Project form and contact details">
     <div class="xs"><span class="x"></span><span class="x"></span><span class="x"></span></div>
     <div class="inner">
       <div class="cta-grid">
+        <!-- Webflow takes the submissions: its native Form Block carries these
+             same fields and classes. The reference page sends nothing. -->
+        <div class="brief-wrap">
+          <form class="brief" id="brief" name="start-a-project" aria-label="Start a project" action="">
+            <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" maxlength="120" required></div>
+            <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" maxlength="200" required></div>
+            <div class="field"><label for="f-phone">Phone <span>(optional)</span></label><input id="f-phone" name="phone" type="tel" autocomplete="tel" maxlength="40"></div>
+            <div class="field"><label for="f-need">What do you need?</label><select id="f-need" name="need" required><option value="">Choose one</option><option value="Brand identity">Brand identity</option><option value="Webflow website">Webflow website</option><option value="Launch">Launch (brand + website)</option><option value="Custom Systems">Custom Systems</option><option value="Full Build">Full Build</option><option value="Monthly support">Monthly support</option><option value="Free Teardown">Free Teardown</option><option value="Not sure yet">Not sure yet</option></select></div>
+            <div class="field"><label for="f-site">Website <span>(optional)</span></label><input id="f-site" name="website" type="url" placeholder="https://" maxlength="300"></div>
+            <div class="field"><label for="f-msg">What are you launching, and when?</label><textarea id="f-msg" name="message" rows="5" maxlength="5000" required></textarea></div>
+            <input class="btn mag" type="submit" value="Send &#8594;">
+          </form>
+          <div class="w-form-done" hidden>Thanks. We will reply within two working days.</div>
+          <div class="w-form-fail" hidden>That did not send. Email us at info@gridandglint.com instead.</div>
+        </div>
         <!--@mailbox-->
       </div>
     </div>

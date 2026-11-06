@@ -103,7 +103,7 @@ def chrome():
         "fonts": between(t, '<link rel="preconnect" href="https://fonts.googleapis.com">', 'display=swap">', "fonts"),
         # Pulled into a page body with <!--@mailbox-->, so the contact page and
         # the homepage share one set of contact details instead of two that drift.
-        "mailbox": between(t, '<div class="mailbox">', '</address>', "mailbox") + "\n        </div>",
+        "mailbox": between(t, '<div class="mailbox">', '<!--/mailbox-->', "mailbox"),
     }
     # The header and menu point at homepage sections. Off the homepage, those
     # anchors must go home first; the logo goes home; contact has its own page.

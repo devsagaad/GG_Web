@@ -148,13 +148,21 @@
   }
   if (man || proc) { addEventListener('scroll', onScroll, { passive: true }); addEventListener('resize', onScroll); onScroll(); }
 
-  /* ---- copy the email ---- */
-  var copy = document.getElementById('copy'), mail = document.getElementById('mail');
-  if (copy && mail) copy.addEventListener('click', function () {
-    function sel() { var r = document.createRange(); r.selectNodeContents(mail); var s = getSelection(); s.removeAllRanges(); s.addRange(r); copy.textContent = 'SELECTED'; }
-    try { navigator.clipboard.writeText(mail.textContent).then(function () { copy.textContent = 'COPIED'; }, sel); } catch (e) { sel(); }
-    setTimeout(function () { copy.textContent = 'COPY'; }, 1800);
-  });
+  /* ---- project form ---- */
+  /* ?service=<slug> from a "Start a project" link picks the matching option.
+     The reference page has no backend, so a submit shows the fail message
+     pointing at email; Webflow's native form is the one that sends. */
+  var brief = document.getElementById('brief');
+  if (brief) {
+    var need = document.getElementById('f-need');
+    var pick = { 'brand-identity': 'Brand identity', 'webflow-websites': 'Webflow website', 'systems': 'Custom Systems' }[new URLSearchParams(location.search).get('service')];
+    if (need && pick) need.value = pick;
+    brief.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var fail = brief.parentNode.querySelector('.w-form-fail');
+      if (fail) fail.hidden = false;
+    });
+  }
 
   /* ---- Ask Glint: scripted demo ---- */
   var panel = document.getElementById('panel'), launch = document.getElementById('launch'), log = document.getElementById('log');
@@ -162,7 +170,7 @@
     'Can you build us a chatbot?': 'Yes. We build assistants like this one, connected to your content and your CRM, in your brand voice, with a person reviewing what matters. Each build is scoped before it starts, and your Product Spec sets the timeline.',
     'How long does a website take?': 'Most sites take 6 to 10 weeks: two for the system, the rest for design and build. Identity plus website runs about 12.',
     'Do you build in Webflow?': 'Yes. We set up your design tokens as Webflow variables and build a CMS your team can edit without us.',
-    'What does it cost?': 'Every project is scoped to what you need, so there is no price list. Our assistant asks a few questions about your project and finds a time that works; then you meet the team, and a written proposal follows.'
+    'What does it cost?': 'Brand identity starts at \u20b145,000, a Webflow website at \u20b165,000, and both together at \u20b195,000. Custom Systems start at \u20b1350,000 plus the server. Your exact price is in the written proposal we send within 48 hours of our first call.'
   };
   function setOpen(o) { panel.hidden = !o; launch.setAttribute('aria-expanded', String(o)); if (!o) launch.focus(); }
   launch.addEventListener('click', function () { setOpen(panel.hidden); });

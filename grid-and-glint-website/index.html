@@ -27,24 +27,117 @@
       "@id": "https://gridandglint.com/#org",
       "name": "Grid and Glint",
       "url": "https://gridandglint.com/",
-      "description": "Brand, web and AI studio. Brand identities with motion, Webflow websites, and systems with AI built in: booking, guest experiences, site assistants and lead triage.",
+      "description": "Brand, web and systems studio. Brand identities with motion, Webflow websites, and Custom Systems that run on the client's own premises: booking, staff records, site assistants and lead triage.",
       "logo": "https://cdn.prod.website-files.com/6acfa22f20186e84030ebfb9/6ad9420df49388480a5cb8f1_grid-and-glint-logo-512.png",
       "image": "https://cdn.prod.website-files.com/6acfa22f20186e84030ebfb9/6ad9420df49388480a5cb8f1_grid-and-glint-logo-512.png",
       "email": "info@gridandglint.com",
       "telephone": "+63 918 620 4713",
       "foundingDate": "2025",
-      "founder": {"@type": "Person", "@id": "https://gridandglint.com/authors/mark-sagaad#person", "name": "Mark Sagaad", "jobTitle": "Founder", "url": "https://gridandglint.com/authors/mark-sagaad", "worksFor": {"@id": "https://gridandglint.com/#org"}, "sameAs": ["https://www.linkedin.com/in/mark-sagaad"]},
-      "address": {"@type": "PostalAddress", "addressLocality": "Quezon City", "addressRegion": "Metro Manila", "addressCountry": "PH"},
-      "areaServed": [{"@type": "Country", "name": "Philippines"}, "Worldwide"],
+      "founder": {
+        "@type": "Person",
+        "@id": "https://gridandglint.com/authors/mark-sagaad#person",
+        "name": "Mark Sagaad",
+        "jobTitle": "Founder",
+        "url": "https://gridandglint.com/authors/mark-sagaad",
+        "worksFor": {
+          "@id": "https://gridandglint.com/#org"
+        },
+        "sameAs": [
+          "https://www.linkedin.com/in/mark-sagaad"
+        ]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Quezon City",
+        "addressRegion": "Metro Manila",
+        "addressCountry": "PH"
+      },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Philippines"
+        },
+        "Worldwide"
+      ],
       "slogan": "Brands, websites and systems that steal attention",
-      "knowsAbout": ["Brand identity design", "Webflow development", "Design systems", "WebGL and 3D for the web", "AI chatbots", "AI workflow automation", "Search engine optimisation"],
+      "knowsAbout": [
+        "Brand identity design",
+        "Webflow development",
+        "Design systems",
+        "WebGL and 3D for the web",
+        "AI chatbots",
+        "AI workflow automation",
+        "Search engine optimisation"
+      ],
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Services",
         "itemListElement": [
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Brand identity", "description": "Logomark, wordmark, type and colour system, motion and 3D for the mark, and guidelines with a Brand Hub in the client portal."}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Webflow websites", "description": "Website design and Webflow development with a CMS your team can edit."}},
-          {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Systems", "description": "Software and AI built into how a business runs: RSVP and shared galleries, booking and reminders, site assistants, and lead and inbox triage, with a person in the loop."}}
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Brand identity",
+              "description": "Logomark, wordmark, type and colour system, motion and 3D for the mark, and guidelines with a Brand Hub in the client portal."
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 45000,
+              "priceCurrency": "PHP"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Webflow websites",
+              "description": "Website design and Webflow development with a CMS your team can edit. Hosting is paid by the client to Webflow."
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 65000,
+              "priceCurrency": "PHP"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Launch",
+              "description": "Brand identity and Webflow website as one project."
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 95000,
+              "priceCurrency": "PHP"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Custom Systems",
+              "description": "Software built around how a business runs, owned by the client and running on its own server; the server is quoted separately."
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 350000,
+              "priceCurrency": "PHP"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@type": "Service",
+              "name": "Full Build",
+              "description": "Launch plus one Custom System; the server is quoted separately."
+            },
+            "priceSpecification": {
+              "@type": "PriceSpecification",
+              "minPrice": 445000,
+              "priceCurrency": "PHP"
+            }
+          }
         ]
       }
     },
@@ -53,20 +146,85 @@
       "@id": "https://gridandglint.com/#website",
       "url": "https://gridandglint.com/",
       "name": "Grid and Glint",
-      "publisher": {"@id": "https://gridandglint.com/#org"}
+      "publisher": {
+        "@id": "https://gridandglint.com/#org"
+      }
     },
     {
       "@type": "FAQPage",
       "mainEntity": [
-        {"@type": "Question", "name": "What does Grid and Glint do?", "acceptedAnswer": {"@type": "Answer", "text": "Grid and Glint is a brand, web and systems studio. We design brand identities, including the motion and 3D that bring a mark to life, design and build Webflow websites, and build software and AI into how businesses run: booking, guest experiences, site assistants and lead triage."}},
-        {"@type": "Question", "name": "How long does a website project take?", "acceptedAnswer": {"@type": "Answer", "text": "Most marketing websites take 6 to 10 weeks from kickoff to launch. A brand identity takes 4 to 6 weeks. A combined identity and website project usually runs about 12 weeks."}},
-        {"@type": "Question", "name": "How much does it cost?", "acceptedAnswer": {"@type": "Answer", "text": "Every project is scoped to what you need, so there is no price list. Our assistant asks a few questions about your project and finds a time that works; then you meet the team, and a written proposal follows."}},
-        {"@type": "Question", "name": "Why do you build websites in Webflow?", "acceptedAnswer": {"@type": "Answer", "text": "Webflow gives your team a visual CMS to update pages without a developer, produces fast, clean pages that search engines read well, and hosts securely. We also build custom code when a project needs it."}},
-        {"@type": "Question", "name": "Are your websites optimised for search and AI answers?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Every site launches with a clear heading structure, page titles and descriptions, structured data, fast load times, accessible markup and content written to answer real customer questions directly."}},
-        {"@type": "Question", "name": "What systems do you build?", "acceptedAnswer": {"@type": "Answer", "text": "Systems that take work off your plate: RSVP and shared galleries, booking and reminders, site assistants, lead and inbox triage, and custom builds we scope with you."}},
-        {"@type": "Question", "name": "Is the AI safe to put in front of my customers?", "acceptedAnswer": {"@type": "Answer", "text": "It always says it's an assistant, answers only from content you've approved, and hands hard questions to a person. Nothing goes to a customer or gets published without a person approving it. We test it before launch and keep testing it after."}},
-        {"@type": "Question", "name": "Do I need my own AI account?", "acceptedAnswer": {"@type": "Answer", "text": "No. By default your systems run on AI we manage for you: we choose the models, keep them up to date and switch providers if one goes down. If you'd rather use your own AI account, we can connect that instead."}},
-        {"@type": "Question", "name": "Do we own the work when the project ends?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. You own the design files, the Webflow site, your domain, your content, your data and the systems we build for you. When we manage the AI, we hold the provider accounts and you get your own key and usage dashboard. We hand over everything with documentation and training."}}
+        {
+          "@type": "Question",
+          "name": "What does Grid and Glint do?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Grid and Glint is a brand, web and systems studio. We design brand identities, including the motion and 3D that bring a mark to life, design and build Webflow websites, and build Custom Systems that run on your own premises: booking, staff records, site assistants and lead triage."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does a website project take?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Most marketing websites take 6 to 10 weeks from kickoff to launch. A brand identity takes 4 to 6 weeks. A combined identity and website project usually runs about 12 weeks."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does it cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Brand identity starts at ₱45,000, a Webflow website at ₱65,000, and both together (Launch) at ₱95,000. Custom Systems start at ₱350,000 plus the server, and Full Build at ₱445,000 plus the server. Your exact price is in the written proposal we send within 48 hours of our first call."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Why do you build websites in Webflow?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Webflow gives your team a visual CMS to update pages without a developer, produces fast, clean pages that search engines read well, and hosts securely. We also build custom code when a project needs it."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are your websites optimised for search and AI answers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Every site launches with a clear heading structure, page titles and descriptions, structured data, fast load times, accessible markup and content written to answer real customer questions directly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What are Custom Systems?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Custom Systems: one system built around how your business runs, owned by you and running on your own server. Examples are booking and reminders, staff records, a site assistant and lead triage. They start at ₱350,000 plus the server."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is the AI safe to put in front of my customers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "It always says it's an assistant, answers only from content you've approved, and hands hard questions to a person. Nothing goes to a customer or gets published without a person approving it. We test it before launch and keep testing it after."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do your systems need AI?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "No. AI is optional. If a system uses it, it calls an outside AI provider you approve; it never runs on your server, and we tell you exactly what leaves your premises. If you would rather nothing leaves, we build it without AI."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do we own the work when the project ends?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Once the final payment clears, you own the design files, the Webflow site, your content, your data and the systems we build for you, including the code. Your domain and your Webflow hosting stay in your name throughout. We hand over everything with documentation and training."
+          }
+        }
       ]
     }
   ]
@@ -171,33 +329,33 @@
           <h3>Brand identity</h3>
           <p>A logo, type and colour system your team can use without asking us, and the motion that brings the mark to life: choppy 3D, flat 2D, or a mix of both.</p>
           <ul><li><span>Logomark &amp; wordmark</span><span>✓</span></li><li><span>Type &amp; colour system</span><span>✓</span></li><li><span>Motion &amp; 3D for the mark</span><span>✓</span></li><li><span>Guidelines + Brand Hub in your client portal</span><span>✓</span></li></ul>
-          <div class="t"><span class="lbl"><span class="dot"></span>TAKING PROJECTS</span><span class="data">4–6 WEEKS</span></div>
+          <div class="t"><span class="lbl"><span class="dot"></span>TAKING PROJECTS</span><span class="data">FROM &#8369;45,000 · 4–6 WEEKS</span></div>
           <a class="more" href="/services/brand-identity">Brand identity service <span aria-hidden="true">→</span></a>
         </article>
         <article class="rv">
           <h3>Webflow websites</h3>
           <p>Websites designed and built in Webflow, fast, accessible and set up for search, with a CMS your team updates themselves.</p>
           <ul><li><span>Design &amp; Webflow build</span><span>✓</span></li><li><span>SEO &amp; schema setup</span><span>✓</span></li><li><span>CMS &amp; team training</span><span>✓</span></li></ul>
-          <div class="t"><span class="lbl"><span class="dot"></span>TAKING PROJECTS</span><span class="data">6–10 WEEKS</span></div>
+          <div class="t"><span class="lbl"><span class="dot"></span>TAKING PROJECTS</span><span class="data">FROM &#8369;65,000 · 6–10 WEEKS</span></div>
           <a class="more" href="/services/webflow-websites">Webflow websites service <span aria-hidden="true">→</span></a>
         </article>
         <article class="rv">
-          <h3>Systems</h3>
-          <p>Software and AI built into how your business runs: booking, guest experiences, enquiries and the work nobody wants to do by hand.</p>
-          <ul><li><span>RSVP + shared galleries</span><span>✓</span></li><li><span>Booking + reminders</span><span>✓</span></li><li><span>A site assistant in your brand's voice</span><span>✓</span></li><li><span>Lead and inbox triage</span><span>✓</span></li></ul>
-          <div class="t"><span class="lbl"><span class="dot"></span>TAKING PROJECTS</span><span class="data">SCOPED PER BUILD</span></div>
-          <a class="more" href="/services/systems">Systems service <span aria-hidden="true">→</span></a>
+          <h3>Custom Systems</h3>
+          <p>Software built around how your business runs, owned by you and running on your own server, with AI only where it helps.</p>
+          <ul><li><span>Booking + reminders</span><span>✓</span></li><li><span>Staff records + internal tools</span><span>✓</span></li><li><span>A site assistant in your brand's voice</span><span>✓</span></li><li><span>Works offline on your network</span><span>✓</span></li></ul>
+          <div class="t"><span class="lbl"><span class="dot"></span>TAKING PROJECTS</span><span class="data">FROM &#8369;350,000 + SERVER</span></div>
+          <a class="more" href="/services/systems">Custom Systems service <span aria-hidden="true">→</span></a>
         </article>
       </div>
       <div class="svc duo">
         <article class="rv">
           <h3>Launch</h3>
-          <p><b>Brand System + Website.</b> Look premium and get found. Your website is built straight from your brand strategy, so the two never drift apart.</p>
+          <p><b>Brand identity + Webflow website. From &#8369;95,000.</b> Look premium and get found. Your website is built straight from your brand strategy, so the two never drift apart. About 12 weeks.</p>
           <a class="btn mag" href="/contact">Start a project <span class="arr">→</span></a>
         </article>
         <article class="rv">
           <h3>Full Build</h3>
-          <p><b>Brand System + Website + one Systems build.</b> Look premium, get found, and run smoother. Your assistant is trained on the strategy we wrote for you.</p>
+          <p><b>Launch + one Custom System. From &#8369;445,000 plus the server.</b> Look premium, get found, and run smoother, all from one written scope.</p>
           <a class="btn mag" href="/contact">Start a project <span class="arr">→</span></a>
         </article>
       </div>
@@ -208,15 +366,15 @@
   <section class="sec wrap" id="systems" aria-labelledby="h-systems">
     <div class="xs"><span class="x"></span><span class="x"></span><span class="x"></span></div>
     <div class="inner">
-      <div class="sec-head"><span class="lbl a">SYSTEMS</span><h2 class="disp" id="h-systems">Systems that run the parts of your business you&#39;re tired of running</h2></div>
+      <div class="sec-head"><span class="lbl a">CUSTOM SYSTEMS</span><h2 class="disp" id="h-systems">Systems that run the parts of your business you&#39;re tired of running</h2></div>
       <div class="ai-top">
         <span class="lbl">WHAT WE BUILD</span>
-        <p>We build software and AI into the work itself. Each build is scoped around one result you can measure.</p>
+        <p>We build one system around how your business already runs. It runs on your own server, keeps working on your local network when the internet drops, and the code and data are yours.</p>
         <p>Every client gets a private portal: progress, files, chat and support in one place.</p>
       </div>
 
       <div class="uses">
-        <article class="rv"><span class="lbl a">EVENTS</span><h3>RSVP + shared gallery</h3><p>Guests RSVP and share their photos in one branded place, not five group chats.</p></article>
+        <article class="rv"><span class="lbl a">RECORDS</span><h3>Staff records + internal tools</h3><p>Records, schedules and approvals in one place your team actually uses.</p></article>
         <article class="rv"><span class="lbl a">BOOKING</span><h3>Booking + reminders</h3><p>Clients book and get reminded on your own site, under your own brand.</p></article>
         <article class="rv"><span class="lbl a">ASSISTANT</span><h3>Site assistant</h3><p>Answers visitors in your brand&#39;s voice at any hour, and hands over to a person when it should.</p></article>
         <article class="rv"><span class="lbl a">INTAKE</span><h3>Lead + inbox triage</h3><p>Sorts, tags and drafts replies to incoming enquiries, so your team starts with the ones that matter.</p></article>
@@ -265,7 +423,7 @@
           <li><div class="n">03</div><h3>Development</h3><p>We design and build. You can see progress in your portal at any time.</p></li>
           <li><div class="n">04</div><h3>Review</h3><p>We present the work live, you give one round of consolidated feedback, and we refine it.</p></li>
           <li><div class="n">05</div><h3>Handover</h3><p>You get the finished files and a handbook, all kept in your portal.</p></li>
-          <li><div class="n">06</div><h3>Support</h3><p>Optional monthly support, so it keeps working and keeps improving.</p></li>
+          <li><div class="n">06</div><h3>Support</h3><p>Optional monthly support: &#8369;8,000–15,000 a month, or from &#8369;15,000 for Custom Systems care.</p></li>
         </ol>
       </div>
     </div>
@@ -286,9 +444,9 @@
         <div><span class="lbl">REPLIES WITHIN</span><span>Two working days</span></div>
       </div>
       <div class="prin">
-        <div class="rv"><h3>You always know who&#39;s on it.</h3><p>You meet the founder on the first call, and your portal always shows who&#39;s working on your project.</p></div>
+        <div class="rv"><h3>You always know who&#39;s on it.</h3><p>Your portal always shows who&#39;s working on your project, and you hear from us within two working days.</p></div>
         <div class="rv"><h3>Scope in writing.</h3><p>A fixed scope, price and timeline before we start, and a change note for anything new.</p></div>
-        <div class="rv"><h3>You own the work.</h3><p>Files, Webflow site, domains, the systems we build and your data are yours from day one.</p></div>
+        <div class="rv"><h3>You own the work.</h3><p>Files, the Webflow site, the systems we build and your data are handed over once the final payment clears.</p></div>
         <div class="rv"><h3>People review AI.</h3><p>Anything an assistant sends to your customers or publishes is approved by a person.</p></div>
       </div>
     </div>
@@ -298,7 +456,7 @@
     <div class="xs"><span class="x"></span><span class="x"></span><span class="x"></span></div>
     <div class="inner">
       <div class="sec-head"><span class="lbl a">FAQ</span><h2 class="disp" id="h-faq">Questions clients ask</h2></div>
-      <div class="faq"><details open><summary><h3>What does Grid and Glint do?</h3></summary><p class="ans">Grid and Glint is a brand, web and systems studio. We design brand identities, including the motion and 3D that bring a mark to life, design and build Webflow websites, and build software and AI into how businesses run: booking, guest experiences, site assistants and lead triage.</p></details><details open><summary><h3>How long does a website project take?</h3></summary><p class="ans">Most marketing websites take 6 to 10 weeks from kickoff to launch. A brand identity takes 4 to 6 weeks. A combined identity and website project usually runs about 12 weeks.</p></details><details open><summary><h3>How much does it cost?</h3></summary><p class="ans">Every project is scoped to what you need, so there is no price list. Our assistant asks a few questions about your project and finds a time that works; then you meet the team, and a written proposal follows.</p></details><details open><summary><h3>Why do you build websites in Webflow?</h3></summary><p class="ans">Webflow gives your team a visual CMS to update pages without a developer, produces fast, clean pages that search engines read well, and hosts securely. We also build custom code when a project needs it.</p></details><details open><summary><h3>Are your websites optimised for search and AI answers?</h3></summary><p class="ans">Yes. Every site launches with a clear heading structure, page titles and descriptions, structured data, fast load times, accessible markup and content written to answer real customer questions directly.</p></details><details open><summary><h3>What systems do you build?</h3></summary><p class="ans">Systems that take work off your plate: RSVP and shared galleries, booking and reminders, site assistants, lead and inbox triage, and custom builds we scope with you.</p></details><details open><summary><h3>Is the AI safe to put in front of my customers?</h3></summary><p class="ans">It always says it&#39;s an assistant, answers only from content you&#39;ve approved, and hands hard questions to a person. Nothing goes to a customer or gets published without a person approving it. We test it before launch and keep testing it after.</p></details><details open><summary><h3>Do I need my own AI account?</h3></summary><p class="ans">No. By default your systems run on AI we manage for you: we choose the models, keep them up to date and switch providers if one goes down. If you&#39;d rather use your own AI account, we can connect that instead.</p></details><details open><summary><h3>Do we own the work when the project ends?</h3></summary><p class="ans">Yes. You own the design files, the Webflow site, your domain, your content, your data and the systems we build for you. When we manage the AI, we hold the provider accounts and you get your own key and usage dashboard. We hand over everything with documentation and training.</p></details></div>
+      <div class="faq"><details open><summary><h3>What does Grid and Glint do?</h3></summary><p class="ans">Grid and Glint is a brand, web and systems studio. We design brand identities, including the motion and 3D that bring a mark to life, design and build Webflow websites, and build Custom Systems that run on your own premises: booking, staff records, site assistants and lead triage.</p></details><details open><summary><h3>How long does a website project take?</h3></summary><p class="ans">Most marketing websites take 6 to 10 weeks from kickoff to launch. A brand identity takes 4 to 6 weeks. A combined identity and website project usually runs about 12 weeks.</p></details><details open><summary><h3>How much does it cost?</h3></summary><p class="ans">Brand identity starts at &#8369;45,000, a Webflow website at &#8369;65,000, and both together (Launch) at &#8369;95,000. Custom Systems start at &#8369;350,000 plus the server, and Full Build at &#8369;445,000 plus the server. Your exact price is in the written proposal we send within 48 hours of our first call.</p></details><details open><summary><h3>Why do you build websites in Webflow?</h3></summary><p class="ans">Webflow gives your team a visual CMS to update pages without a developer, produces fast, clean pages that search engines read well, and hosts securely. We also build custom code when a project needs it.</p></details><details open><summary><h3>Are your websites optimised for search and AI answers?</h3></summary><p class="ans">Yes. Every site launches with a clear heading structure, page titles and descriptions, structured data, fast load times, accessible markup and content written to answer real customer questions directly.</p></details><details open><summary><h3>What are Custom Systems?</h3></summary><p class="ans">Custom Systems: one system built around how your business runs, owned by you and running on your own server. Examples are booking and reminders, staff records, a site assistant and lead triage. They start at &#8369;350,000 plus the server.</p></details><details open><summary><h3>Is the AI safe to put in front of my customers?</h3></summary><p class="ans">It always says it&#39;s an assistant, answers only from content you&#39;ve approved, and hands hard questions to a person. Nothing goes to a customer or gets published without a person approving it. We test it before launch and keep testing it after.</p></details><details open><summary><h3>Do your systems need AI?</h3></summary><p class="ans">No. AI is optional. If a system uses it, it calls an outside AI provider you approve; it never runs on your server, and we tell you exactly what leaves your premises. If you would rather nothing leaves, we build it without AI.</p></details><details open><summary><h3>Do we own the work when the project ends?</h3></summary><p class="ans">Yes. Once the final payment clears, you own the design files, the Webflow site, your content, your data and the systems we build for you, including the code. Your domain and your Webflow hosting stay in your name throughout. We hand over everything with documentation and training.</p></details></div>
     </div>
   </section>
 
@@ -308,12 +466,21 @@
       <span class="lbl a">CONTACT</span>
       <h2 class="disp" id="h-cta">Let&#39;s build something that <em>steals attention</em></h2>
       <div class="cta-grid">
-        <div class="mailbox">
-          <span class="lbl">WRITE TO US</span>
-          <div class="mail"><code id="mail">info@gridandglint.com</code><button class="copy" type="button" id="copy">COPY</button></div>
-          <p class="mail-note">We reply within two working days. Tell us what you are launching and when, and we will tell you plainly whether we are the right studio.</p>
-          <address class="nap"><strong>Grid and Glint</strong><br>Quezon City, Metro Manila, Philippines<br>Phone: <a href="tel:+639186204713" class="u-tel">+63 918 620 4713</a><br>Email: info@gridandglint.com</address>
+        <div class="start">
+          <span class="lbl">START A PROJECT</span>
+          <p>Tell us what you need with a short form. We reply within two working days, set up a call, and send a written proposal within 48 hours of it.</p>
+          <a class="btn mag" href="/contact">Start a project <span class="arr">&#8594;</span></a>
         </div>
+        <div class="mailbox">
+          <span class="lbl">REACH US DIRECTLY</span>
+          <address class="nap direct">
+            <a class="row" href="mailto:info@gridandglint.com"><span class="lbl">EMAIL</span><strong>info@gridandglint.com</strong></a>
+            <a class="row" href="tel:+639186204713"><span class="lbl">CALL OR VIBER</span><strong>+63 918 620 4713</strong></a>
+            <span class="row"><span class="lbl">STUDIO</span><strong>Quezon City, Metro Manila</strong></span>
+          </address>
+          <p class="mail-note">We reply within two working days.</p>
+          <p class="teardown"><strong>Not ready to start?</strong> Ask for a free Teardown. Send your website link, and within three working days you get a short written review of your site and brand: what works, what is costing you enquiries, and the three fixes we would make first.</p>
+        </div><!--/mailbox-->
       </div>
     </div>
   </section>
@@ -334,7 +501,7 @@
       <address class="nap"><span>Quezon City, Metro Manila, Philippines</span><a href="mailto:info@gridandglint.com">info@gridandglint.com</a><a href="tel:+639186204713">+63 918 620 4713</a></address>
       <span class="lbl">DTI REG. NO. <span class="fill">TO BE ISSUED</span></span>
     </div>
-    <nav aria-label="Services"><span class="lbl">SERVICES</span><a href="/services/brand-identity">Brand identity</a><a href="/services/webflow-websites">Webflow websites</a><a href="/services/systems">Systems</a></nav>
+    <nav aria-label="Services"><span class="lbl">SERVICES</span><a href="/services/brand-identity">Brand identity</a><a href="/services/webflow-websites">Webflow websites</a><a href="/services/systems">Custom Systems</a></nav>
     <nav aria-label="Studio"><span class="lbl">STUDIO</span><a href="/work">Work</a><a href="/about">About</a><a href="/journal">Journal</a><a href="/contact">Contact</a></nav>
     <nav aria-label="Legal"><span class="lbl">LEGAL</span><a href="/privacy">Privacy policy</a><a href="/terms">Terms</a><a href="/ai-policy">How we use AI</a><a href="/imprint">Imprint</a></nav>
   </div></div>
