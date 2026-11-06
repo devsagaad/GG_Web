@@ -104,15 +104,21 @@ the others.
 page-specific block is guarded on its element, so one missing element cannot
 throw and take every later feature down. The Webflow build does not load it.
 
-## No forms: contact is the chatbot's job
+## One form until the chatbot launches
 
-The site is for marketing, search and answer engines. Enquiries are taken by a
-separate AI chatbot the user is building (requirements, a booked time, name and
-number), integrated later. So **build no contact or brief forms**, in either
-build. "Get a quote" links go to `/contact?service=<slug>`; the parameter is
-kept for the chatbot to read. The contact page carries the studio's details and
-ContactPage schema. When the chatbot launches, the privacy policy must cover
-what it collects and that AI processes it.
+The site is for marketing, search and answer engines. Enquiries will be taken
+by a separate AI chatbot the user is building, integrated later. Until it
+launches, the contact page carries **one native Webflow form** (name, email,
+phone, the services wanted, website, message) beside the studio's direct
+details, each shown once. Build no other forms. "Start a project" links go to
+`/contact?service=<slug>`; the static page uses the parameter to tick a service
+chip, and it stays for the chatbot to read. The privacy policy says what the
+form collects; when the chatbot launches it must also say what that collects
+and that AI processes it. Free Webflow plans cap form submissions, so check the
+form's notification address and the plan's limit.
+
+The static form is markup only (no backend; a submit shows the fail message);
+Webflow's is the one that sends.
 
 ## The assistant and the gateway
 
@@ -124,27 +130,46 @@ names or configuration may come into this repo.
 
 ## The offer
 
-Three services: **brand identity**, **Webflow websites** and **Systems**
-(`/services/systems`). AI is part of Systems, not a service of its own; the old
-"AI integration" page became Systems in October 2026, from the user's edit
-guide. What runs through every page:
+Prices and terms come from the user's approved Offer and Client Routes pages
+(5 November 2026). Three services and two bundles:
 
+| Offer | From | Timeline |
+|---|---|---|
+| Brand identity | ₱45,000 | 4 to 6 weeks |
+| Webflow website | ₱65,000, client pays Webflow hosting (about ₱2,600 a month) | 6 to 10 weeks |
+| Launch (brand + website) | ₱95,000 | about 12 weeks |
+| Custom Systems (`/services/systems`) | ₱350,000 + server | set in the Product Spec |
+| Full Build (Launch + one Custom System) | ₱445,000 + server | Launch + Product Spec |
+| Monthly support / Custom Systems care | ₱8,000–15,000 a month / from ₱15,000 a month | 3-month minimum |
+
+- **Custom Systems** is one service; booking, RSVP, staff records, a site
+  assistant and lead triage are examples only. Do not name HRIS or LMS until
+  the user has checked their employment contract. It runs on the client's own
+  server, works offline on the local network, and the site states the limits.
+- **AI is optional** and runs at an outside provider the client approves,
+  **never on the client's server**. The site never says the studio is "not
+  reliant on third parties" for AI.
 - One six-stage process for every service: Onboarding, Strategy, Development,
-  Review, Handover, Support. No week numbers in it; timelines live on each
-  service page (brand 4 to 6 weeks, website 6 to 10, Systems scoped per build).
-- No prices anywhere, and no booking link. Every CTA is "Start a project".
-  Enquiries go through the chatbot, which filters the lead and schedules the
-  human meeting; a written proposal follows the meeting. Copy describes it that
-  way ("Our assistant asks a few questions ... then you meet the team"), even
-  before the chatbot is on the site, at the user's request.
-- Clients get a portal (progress, files, chat, support), brand guidelines live
-  in a Brand Hub in it, and Systems run on AI the studio manages by default, or
-  the client's own account. **The site presents these as available now, at the
-  user's request, though `docs/glint-assistant.md` says the gateway is not
-  built yet.** Keep the two in step: if the spec or the build changes, the copy
-  on the homepage, `/services/systems`, the brand page and `/ai-policy` changes
-  with it. The AI policy's data-handling paragraph is a legal statement; it
-  goes to the lawyer with the privacy policy and terms.
+  Review, Handover, Support. Payment is 50% to start, 30% when review (or user
+  testing) starts, 20% before handover; files, code and access are released
+  once the final payment clears, never "from day one". Custom Systems servers
+  are paid in full before they are ordered.
+- Every CTA is "Start a project". Copy says: reply within two working days, a
+  call, a written proposal within 48 hours of it. No booking link.
+- The **free Teardown**: a short written review of a site and brand, with the
+  three fixes we would make first, within three working days. Offered on the
+  contact page and the homepage, and as a form option.
+- **Write as the company** ("Grid and Glint", "we"), never as a solo founder:
+  a co-developer sometimes works on projects. Mark is named on his profile card
+  and as the founder in the structured data only.
+- Clients get a portal (progress, files, chat, support) and a Brand Hub; the
+  site presents these as available now, at the user's request. The AI policy's
+  data-handling paragraph and the privacy policy's form paragraph go to the
+  lawyer with the terms.
+- Lunamoury is not live: no referral to it on the site until it is.
+- Still open with the user: revision rounds (site says one, contract two), the
+  studio tagline ("brand, web and AI"), the audience (worldwide vs Quezon City)
+  and how prominent AI visibility is.
 
 ## Proof and claims
 
@@ -239,6 +264,16 @@ Learned the hard way; each one cost a failed call.
   ones, each with a property that matches `glint.css`.
 - **A bare boolean attribute is dropped on publish.** `<details open>` shows
   `open: ""` in the Designer but publishes without it; write `open="open"`.
+- **Forms: the API builds a Form Block but cannot set a select's options, a
+  radio's shared `name`, or an input's placeholder.** `data_element_builder`
+  type `Form` makes the block; add `FormTextInput`, `FormTextarea` and
+  `FormCheckboxInput` children and set `name`, `type`, `required`, `domId` with
+  `set_settings` (`placeholder` and `rows` are refused, as attributes too). A
+  whtml `<select>` becomes a FormSelect but publishes with no options, and
+  radios publish as separate groups, so choices are checkbox chips. Every new
+  field shows "Example Text"; `glint.css` makes form placeholders transparent.
+  Labels take `for` through `attributes`. Pages loading a form also load
+  Cloudflare Turnstile, so headless checks must not wait for network idle.
 - **Never remove a Collection List's empty state.** Deleting the
   `DynamoEmpty` child deletes the whole list.
 - CMS binding keys: `text` on Heading, Paragraph and Text Block (not on a

@@ -36,7 +36,13 @@ numbers: that would turn an E-E-A-T gap into a misrepresentation problem.
 
 ## Gaps, in order of impact
 
-### 1. Trust: placeholders are visible on the homepage (highest)
+### 1. Trust: placeholders on the homepage (resolved 5 November 2026)
+
+The placeholder testimonials, logo tile, photo box and footer note are off
+the site; each comes back only as real content. What follows is the original
+finding.
+
+#### Original finding
 
 The homepage shows 12 placeholder labels, most of them in the testimonials
 ("ADD A REAL CLIENT QUOTE", "NAME", "ROLE, COMPANY"), plus "MORE CLIENT LOGOS",
@@ -118,6 +124,12 @@ plain quotes, with permission.
   and the structured data and canonical URLs already point there.
 
 ### 6. Trust: services described ahead of the build
+
+Updated 6 November 2026: prices are now on the site, Systems is Custom
+Systems, and AI is described as optional, at an outside provider and never
+on the client's server, so "managed AI" with automatic failover is no longer
+claimed. The portal and Brand Hub are still described as available now.
+
 
 Since the AI integration page became Systems, the site describes a client
 portal (progress, files, chat, support), a Brand Hub for guidelines, and
