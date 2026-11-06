@@ -494,6 +494,9 @@ form.brief { margin: 0; background: var(--bg-panel); border: 1px solid var(--rul
 .field label span { font-weight: 400; letter-spacing: 0; text-transform: none; }
 .field input, .field select, .field textarea { display: block; width: 100%; height: auto; margin: 0; padding: 12px 14px; font: inherit; font-size: 16px; line-height: 24px; color: var(--fg); background: var(--bg-control); border: 1px solid var(--rule); border-radius: var(--r-sm); box-shadow: none; }
 .field textarea { min-height: 128px; resize: vertical; }
+/* Webflow fills every new field with "Example Text" and its API cannot clear
+   it; the labels say what each field wants, so placeholders stay invisible. */
+.field input::placeholder, .field textarea::placeholder { color: transparent; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; border-color: var(--rule-strong); }
 form.brief .btn { align-self: flex-start; width: auto; }
 /* "What do you need?" is a row of checkbox chips: Webflow's API cannot fill a
