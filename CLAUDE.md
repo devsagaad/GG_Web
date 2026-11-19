@@ -39,6 +39,16 @@ build time by `tools/build-hero.py`; it is not fetched at runtime.
 `.hero` ancestor and no `.stage` rule — i.e. Webflow's conditions. Check changes
 to the hero against it.
 
+**The hero's main-thread budget (1.2.0, commit `f40f0b3`).** Lighthouse renders
+with a software GPU, where each animated frame of the hero cost about 370 ms;
+PageSpeed scored the home page 60 on mobile with 29 s of blocking time. Since
+1.2.0 a software GPU (or `motion: 'still'`) gets one still frame, frame times
+over 24 ms step the drawing buffer down (DPR 2, 1.5, 1, 0.75, then 30 fps), and
+setup waits for load plus an idle moment. The score went to 88 (blocking 250 ms).
+Keep those three when changing the hero, and re-run PageSpeed after.
+`tools/build-hero.py` is the one-time extraction record; `glint-hero.js` is the
+source and is edited directly.
+
 ## Page contract
 
 The footer is a Webflow Component ("Site footer") and the same markup in
@@ -88,13 +98,17 @@ generated too.
   journal section is off (removed in `index.html`, visibility off in Webflow).
   Republishing: drop the flag, flip the CMS items to published, put the
   homepage section back in `index.html` and make it visible in Webflow. The
-  drafts' bodies and `related-service-link` still say `/services/...`; check
-  them against where the service pages live by then.
+  static drafts link to the root service paths since 2026-11-19; the Webflow
+  Journal CMS items' bodies and `related-service-link` may still say
+  `/services/...`, so check them before publishing.
 - **Authors.** `src/authors.json` is the twin of the Webflow **Authors**
   collection; each author has a page at `/authors/<slug>`. The Person `@id` is
-  `https://gridandglint.com/authors/<slug>#person` everywhere it appears.
-- **Post and author pages carry microdata, not JSON-LD**, in both builds,
-  because Webflow cannot fill CMS fields into JSON-LD (see the gotchas).
+  `https://www.gridandglint.com/authors/<slug>#person` everywhere it appears.
+- **Post and author pages carry microdata** in both builds. Since 2026-11-19 the
+  Webflow **Work** and **Authors** templates also carry JSON-LD in their page
+  head custom code, filled from CMS fields (see the gotchas); the static build
+  does not emit those two blocks yet. The microdata has no `itemid`, so the two
+  never disagree about an `@id`.
 
 **The team.** The studio has a team, but only the founder, Mark Sagaad, is named
 on the site, by the user's choice. Do not add team cards or placeholders for
@@ -138,7 +152,7 @@ Prices and terms come from the user's approved Offer and Client Routes pages
 | Brand identity | ₱45,000 | 4 to 6 weeks |
 | Webflow website | ₱65,000, client pays Webflow hosting (about ₱2,600 a month) | 6 to 10 weeks |
 | Launch (brand + website) | ₱95,000 | about 12 weeks |
-| Custom Systems (`/services/systems`) | ₱350,000 + server | set in the Product Spec |
+| Custom Systems (`/systems`) | ₱350,000 + server | set in the Product Spec |
 | Full Build (Launch + one Custom System) | ₱445,000 + server | Launch + Product Spec |
 | Monthly support / Custom Systems care | ₱8,000–15,000 a month / from ₱15,000 a month | 3-month minimum |
 
@@ -169,8 +183,10 @@ Prices and terms come from the user's approved Offer and Client Routes pages
 - Lunamoury is not live: no referral to it on the site until it is.
 - **Two rounds of revisions** per stage are included; each extra round is
   ₱3,000.
-- The studio is a **"brand, web and AI studio"** everywhere, matching the hero
-  tag.
+- The studio is a **"brand, web and AI studio"** in running copy. The hero tag
+  reads "Brand, Webflow & AI studio in Quezon City" and the home title is
+  "Grid and Glint: Brand, Webflow & AI Studio in Quezon City" (SEO, approved
+  2026-11-19), so search sees the place and the platform.
 - **Audience: Quezon City and Metro Manila, for now.** No overseas or worldwide
   claims; `areaServed` is Quezon City (City) and Metro Manila
   (AdministrativeArea), in `index.html` and `tools/build-pages.py`.
@@ -306,11 +322,16 @@ Learned the hard way; each one cost a failed call.
   author name.
 - Template **SEO title and description** take field tokens:
   `{{wf {&quot;path&quot;:&quot;seo-title&quot;,&quot;type&quot;:&quot;PlainText&quot;\} }}`.
-- **CMS field tokens do not resolve in JSON-LD on a collection template.**
-  Tested October 2026: the page-level JSON-LD setting published every token
-  empty, in both the `&quot;` and plain-quote forms; tokens written into an
-  HTML Embed's code through the API publish as literal text. So template pages
-  use **schema.org microdata**: `itemscope`/`itemtype`/`itemprop` attributes on
+- **CMS field tokens in JSON-LD on a collection template: only through the
+  page's head custom code.** Tested October 2026: the page-level JSON-LD
+  setting published every token empty, and `bulk_update_pages_schema_markup`
+  now refuses them outright ("must be valid JSON"); tokens written into an HTML
+  Embed's code through the API publish as literal text. What works (2026-11-19):
+  `set_page_freeform_code` on the template page, location `head`, with a
+  `<script type="application/ld+json">` whose values are tokens in the
+  `&quot;` form above (Link fields use `"type":"Link"`). The Work and Authors
+  templates use this; check the published JSON parses. The older route, still
+  on the post and author pages, is **schema.org microdata**: `itemscope`/`itemtype`/`itemprop` attributes on
   the visible elements (write `itemscope="itemscope"`, see the boolean rule),
   plus hidden `<link>`/`<meta>` DOM elements whose `href`/`content` attribute
   is bound to a field with `set_settings` `attributes` + `value_binding`.
@@ -342,11 +363,15 @@ Learned the hard way; each one cost a failed call.
 - **Link pages by reference, not by path.** `set_link` with `linkType: "page"`
   and the page id publishes the page's current URL and follows it if the page
   moves. Remove the `href` attribute whtml left behind, or it wins.
-- Page folders (`/services/...`) need the Designer bridge: `create_page_folder`
-  only works while the Webflow MCP app is open in the Designer. Until then the
-  service pages sit at the root (`/systems`), and every Webflow link to
-  them is a page reference, so moving them into a folder carries the links
-  along. The static build and the schema already use the `/services/...` URLs.
+- **Service pages live at the root** (`/brand-identity`, `/webflow-websites`,
+  `/systems`), decided 2026-11-19 once Google had indexed them there. The
+  static build, links and schema all use the root paths and
+  `https://www.gridandglint.com` (the canonical). Until then the schema said
+  `/services/...` on the apex domain, which 404'd and fed Google broken
+  breadcrumbs. Moving them into a `/services/` folder later would need
+  `create_page_folder` (Designer bridge only) and 301s from the old URLs.
+- **Titles stay at 60 characters or fewer.** `build-pages.py` enforces it for
+  the static pages; Webflow does not, so set the same title in both.
 
 ## Repository
 

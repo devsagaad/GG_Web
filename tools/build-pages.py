@@ -24,8 +24,10 @@ Each post names one by slug; each author gets a page at /authors/<slug>.
 
 Post and author pages mirror Webflow collection templates, where the page-level
 JSON-LD setting leaves CMS field tokens empty. Webflow marks those pages up with
-schema.org microdata on the visible elements instead, so these pages do the
-same and carry no JSON-LD.
+schema.org microdata on the visible elements, so these pages do the same and
+carry no JSON-LD. (Since 2026-11-19 the Webflow Work and Authors templates also
+carry JSON-LD from their head custom code, where tokens do resolve; see the
+gotchas in CLAUDE.md. This build does not emit it yet.)
 
     python3 tools/build-pages.py           write the pages
     python3 tools/build-pages.py --check   exit 1 if any page on disk is stale
@@ -33,7 +35,7 @@ same and carry no JSON-LD.
 Page source format (src/pages/<name>.html):
 
     <!--page
-    {"path": "services/brand-identity", "title": "...", "description": "...",
+    {"path": "brand-identity", "title": "...", "description": "...",
      "crumb": "Brand identity", "parent": ["Services", "/#services"],
      "type": "WebPage" | "ContactPage" | "AboutPage" | "CollectionPage",
      "service": {"name": "...", "serviceType": "...", "description": "..."},
@@ -67,7 +69,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent / "grid-and-glint-website"
 SRC = ROOT / "src" / "pages"
 AUTHORS = ROOT / "src" / "authors.json"
 HOME = ROOT / "index.html"
-ORIGIN = "https://gridandglint.com"
+ORIGIN = "https://www.gridandglint.com"
 # Hosted on Webflow, so the same file serves both builds: structured data and
 # link previews. A 512px PNG of the mark on forest green, legible on white.
 LOGO = "https://cdn.prod.website-files.com/6acfa22f20186e84030ebfb9/6ad9420df49388480a5cb8f1_grid-and-glint-logo-512.png"
