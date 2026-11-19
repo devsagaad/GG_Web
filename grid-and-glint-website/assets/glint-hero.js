@@ -17,6 +17,19 @@
  *   pointerTarget  element or selector the pointer-follow listens on
  *   theme          'auto' reads the page's --bg / --rule-grid variables;
  *                  'dark' or 'light' uses the built-in palette instead
+ *   motion         'auto' animates unless the visitor prefers reduced motion
+ *                  or the GPU is a software one; 'still' draws one frame only
+ *
+ * Main-thread budget (1.2.0)
+ *   - Setup (sticker atlas, distance field, shaders) waits for the page's load
+ *     event and an idle moment, so it never competes with first paint. The
+ *     fallback stays up until the first frame lands.
+ *   - A software GPU (SwiftShader, llvmpipe, a "major performance caveat")
+ *     gets one still frame instead of the animation. That is what Lighthouse
+ *     and the weakest phones run, and animating there costs hundreds of ms a frame.
+ *   - Frame times are watched. If frames average over 24 ms the drawing buffer
+ *     steps down (device pixel ratio 2, 1.5, 1, 0.75); at the bottom it also
+ *     caps at 30 fps. The loop already stops while the stage is off screen.
  *
  * Returns null when WebGL is unavailable, leaving the fallback in place.
  */
@@ -142,8 +155,24 @@
     function emitThemeChange() { themeListeners.forEach(function (f) { f(); }); }
     // Transparent, so the page's own grid and background show through and the
     // mark occludes them, rather than the canvas painting its own backdrop.
-    var gl; try { gl = canvas.getContext('webgl', { antialias: true, alpha: true, premultipliedAlpha: false }); } catch (e) {}
+    // Ask first for a context that refuses a major performance caveat; a
+    // browser that only has a software rasteriser says no, and the hero then
+    // draws one still frame rather than animating.
+    var ctxOpts = { antialias: true, alpha: true, premultipliedAlpha: false };
+    var gl, slowGpu = false;
+    try { gl = canvas.getContext('webgl', Object.assign({ failIfMajorPerformanceCaveat: true }, ctxOpts)); } catch (e) {}
+    if (!gl) { try { gl = canvas.getContext('webgl', ctxOpts); slowGpu = !!gl; } catch (e) {} }
     if (!gl) { canvas.remove(); return null; }
+    try {
+      var dbg = gl.getExtension('WEBGL_debug_renderer_info');
+      var rname = dbg ? String(gl.getParameter(dbg.UNMASKED_RENDERER_WEBGL)) : '';
+      if (/swiftshader|llvmpipe|softpipe|software|basic render/i.test(rname)) slowGpu = true;
+    } catch (e) {}
+    // calm: draw a single frame and redraw only on resize or a theme change.
+    var calm = reduce || slowGpu || opts.motion === 'still';
+    var idleId = 0, idleIsTimer = false;
+    function setup() {
+      if (destroyed) return;
     var VS = 'attribute vec3 aP; attribute vec3 aN; uniform mat4 uMVP, uM; varying vec3 vN, vW, vMP, vMN; void main(){ vMP = aP; vMN = aN; vN = normalize(mat3(uM) * aN); vW = (uM * vec4(aP, 1.0)).xyz; gl_Position = uMVP * vec4(aP, 1.0); }';
     var FS = [
       "precision highp float;",
@@ -197,8 +226,10 @@
 
     // The layer: a canvas-sized texture behind a framebuffer, reallocated on resize.
     var layer = newTex(gl), fbo = gl.createFramebuffer(), dpr = 1;
+    // Quality steps for the drawing buffer; draw() moves down them when frames run long.
+    var LEVELS = [2, 1.5, 1, 0.75], level = 0;
     function size() {
-      dpr = Math.min(devicePixelRatio || 1, 2);
+      dpr = Math.min(devicePixelRatio || 1, LEVELS[level]);
       var w = Math.max(1, Math.round(stage.clientWidth * dpr)), h = Math.max(1, Math.round(stage.clientHeight * dpr));
       if (canvas.width !== w || canvas.height !== h) {
         canvas.width = w; canvas.height = h;
@@ -303,7 +334,7 @@
     function setColours() { var dk = isDark(); gl.useProgram(prog); gl.uniform3fv(U(prog, 'uShade'), dk ? [0.05, 0.05, 0.05] : [0.16, 0.16, 0.16]); gl.uniform1f(U(prog, 'uDark'), dk ? 1 : 0); gl.uniform3fv(U(prog, 'uBg'), hex(themeBg(), dk ? [0.1, 0.1, 0.1] : [0.97, 0.97, 0.97])); }
     setColours();
 
-    try { build(MESH); } catch (e) { canvas.remove(); return null; }
+    try { build(MESH); } catch (e) { canvas.remove(); return; }
 
     function build(m) {
       var pos = m.positions, idx = m.indices, vp = [], vn = [];
@@ -316,7 +347,9 @@
       function buf(d) { var b = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, b); gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(d), gl.STATIC_DRAW); return b; }
       var bP = buf(vp), bN = buf(vn), lP = gl.getAttribLocation(prog, 'aP'), lN = gl.getAttribLocation(prog, 'aN'), lQ = gl.getAttribLocation(cprog, 'p');
       fb.style.display = 'none';
-      var target = 0, yaw = reduce ? 0.42 : 0, pitch = -0.2, t0 = performance.now(), on = true;
+      var target = 0, yaw = calm ? 0.42 : 0, pitch = -0.2, t0 = performance.now(), on = true;
+      // Frame-time watch for the quality steps, and the 30 fps cap at the bottom step.
+      var lastDraw = 0, acc = 0, cnt = 0, minGap = 0;
       onPointer = function (e) { var r = stage.getBoundingClientRect(); target = ((e.clientX - r.left) / r.width - 0.5) * 1.2; };
       pointerTarget.addEventListener('pointermove', onPointer);
       function mul(a, b) { var o = []; for (var i = 0; i < 4; i++) for (var j = 0; j < 4; j++) o[i * 4 + j] = a[j] * b[i * 4] + a[4 + j] * b[i * 4 + 1] + a[8 + j] * b[i * 4 + 2] + a[12 + j] * b[i * 4 + 3]; return o; }
@@ -326,11 +359,21 @@
       function persp(f, a) { var t = 1 / Math.tan(f / 2), n = 0.1, fa = 60, nf = 1 / (n - fa); return [t / a, 0, 0, 0, 0, t, 0, 0, 0, 0, (fa + n) * nf, -1, 0, 0, 2 * fa * n * nf, 0]; }
       function draw(now) {
         if (destroyed) return;
+        if (!calm) {
+          if (minGap && lastDraw && now - lastDraw < minGap - 2) { if (on) raf = requestAnimationFrame(draw); return; }
+          // Gaps over 120 ms are a hidden tab or a resume, not a slow frame.
+          if (lastDraw && now - lastDraw < 120) { acc += now - lastDraw; cnt++; }
+          lastDraw = now;
+          if (cnt >= 40) {
+            if (acc / cnt > 24) { if (level < LEVELS.length - 1) level++; else minGap = 33; }
+            acc = cnt = 0;
+          }
+        }
         size();
         var s = (now - t0) / 1000;
         // intro: the mark turns in from edge-on over the first 1.4s, then sways and follows the pointer
-        var intro = reduce ? 1 : Math.min(1, s / 1.4), ease = 1 - Math.pow(1 - intro, 3);
-        if (!reduce) { yaw += ((target + Math.sin(s * 0.45) * 0.35) - yaw) * 0.05; pitch = -0.2 + Math.sin(s * 0.31) * 0.1; }
+        var intro = calm ? 1 : Math.min(1, s / 1.4), ease = 1 - Math.pow(1 - intro, 3);
+        if (!calm) { yaw += ((target + Math.sin(s * 0.45) * 0.35) - yaw) * 0.05; pitch = -0.2 + Math.sin(s * 0.31) * 0.1; }
         // The projection divides x by the aspect ratio, so on a portrait stage the
         // mark grows past both edges. Clamping by the aspect keeps it a constant
         // fraction of the shorter side; landscape is unaffected (multiplier is 1).
@@ -352,7 +395,7 @@
         // Dissolve on scroll: rather than fading opacity, the material itself
         // gives way — the dither coarsens and the colour posterises down to a
         // handful of levels, so the mark breaks up as it leaves.
-        if (!reduce) {
+        if (!calm) {
           var box = stage.getBoundingClientRect();
           var goneBy = Math.min(1, Math.max(0, -box.top / Math.max(1, box.height * 0.75)));
           var diss = goneBy * goneBy;
@@ -366,13 +409,22 @@
         gl.drawArrays(gl.TRIANGLES, 0, vp.length / 3);
         gl.disableVertexAttribArray(lP); gl.disableVertexAttribArray(lN);
         
-        if (!reduce && on) raf = requestAnimationFrame(draw);
+        if (!calm && on) raf = requestAnimationFrame(draw);
       }
-      io = visible(stage, function (v) { on = v; if (v && !reduce) { cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); } });
+      io = visible(stage, function (v) { on = v; if (v && !calm) { lastDraw = 0; cancelAnimationFrame(raf); raf = requestAnimationFrame(draw); } });
       raf = requestAnimationFrame(draw);
-      themeListeners.push(function () { if (reduce || !on) requestAnimationFrame(draw); });
-      if (window.ResizeObserver) { ro = new ResizeObserver(function () { if (reduce) requestAnimationFrame(draw); }); ro.observe(stage); }
+      themeListeners.push(function () { if (calm || !on) requestAnimationFrame(draw); });
+      if (window.ResizeObserver) { ro = new ResizeObserver(function () { if (calm) requestAnimationFrame(draw); }); ro.observe(stage); }
     }
+    }
+    // Setup waits for the load event and an idle moment (at most 1.5 s more).
+    function schedule() {
+      if (destroyed) return;
+      if ('requestIdleCallback' in window) idleId = requestIdleCallback(setup, { timeout: 1500 });
+      else { idleIsTimer = true; idleId = setTimeout(setup, 200); }
+    }
+    if (document.readyState === 'complete') schedule(); else window.addEventListener('load', schedule, { once: true });
+
     function setTheme(t) {
       themeMode = t || 'auto';
       emitThemeChange();
@@ -381,6 +433,7 @@
     function destroy() {
       if (destroyed) return;
       destroyed = true;
+      if (idleId) { idleIsTimer ? clearTimeout(idleId) : (window.cancelIdleCallback && cancelIdleCallback(idleId)); }
       cancelAnimationFrame(raf);
       if (io) io.disconnect();
       if (ro) ro.disconnect();
@@ -404,8 +457,8 @@
       mq.addEventListener ? mq.addEventListener('change', onScheme) : mq.addListener(onScheme);
     } catch (e) {}
 
-    return { setTheme: setTheme, destroy: destroy, stage: stage, canvas: canvas };
+    return { setTheme: setTheme, destroy: destroy, stage: stage, canvas: canvas, still: calm };
   }
 
-  global.GlintHero = { mount: mountHero, version: '1.1.0' };
+  global.GlintHero = { mount: mountHero, version: '1.2.0' };
 })(typeof window !== 'undefined' ? window : this);
