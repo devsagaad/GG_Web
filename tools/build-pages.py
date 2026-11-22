@@ -73,6 +73,12 @@ ORIGIN = "https://www.gridandglint.com"
 # Hosted on Webflow, so the same file serves both builds: structured data and
 # link previews. A 512px PNG of the mark on forest green, legible on white.
 LOGO = "https://cdn.prod.website-files.com/6acfa22f20186e84030ebfb9/6ad9420df49388480a5cb8f1_grid-and-glint-logo-512.png"
+# The site went live on www.gridandglint.com on this date. Every page's schema
+# carries it as datePublished; dateModified is the page's own "updated" field
+# (front matter), or UPDATED when the page has none. Bump "updated" when a
+# page's visible content changes, so search and AI engines see it is current.
+LAUNCHED = "2026-11-18"
+UPDATED = "2026-11-19"
 ORG = {"@type": "ProfessionalService", "@id": f"{ORIGIN}/#org", "name": "Grid and Glint", "url": f"{ORIGIN}/"}
 
 
@@ -246,7 +252,8 @@ def schema(meta, main, authors):
     graph = [
         {"@type": meta.get("type", "WebPage"), "@id": f"{url}#page", "url": url, "name": meta["title"],
          "description": meta["description"], "isPartOf": {"@id": f"{ORIGIN}/#website"},
-         "breadcrumb": {"@id": f"{url}#crumbs"}, "inLanguage": "en"},
+         "breadcrumb": {"@id": f"{url}#crumbs"}, "inLanguage": "en",
+         "datePublished": meta.get("published", LAUNCHED), "dateModified": meta.get("updated", UPDATED)},
         {"@type": "BreadcrumbList", "@id": f"{url}#crumbs", "itemListElement": crumbs},
     ]
     for slug in meta.get("people", []):
