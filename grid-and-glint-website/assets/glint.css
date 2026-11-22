@@ -5,8 +5,11 @@
  *
  *   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anonymous+Pro:ital,wght@0,400;0,700;1,400&family=Big+Shoulders+Display:wght@700;900&display=swap">
  *
- * Thunder, the brand display face, is not licensed for web use yet; headings
- * fall back to Big Shoulders Display until its font files are added.
+ * Thunder, the brand display face (Rajesh Rajput, freeware for personal and
+ * commercial use, files must not be modified), is uploaded to Webflow as a
+ * custom font: Black LC at 900 and Bold LC at 700. On the live site it comes
+ * from Webflow's stylesheet; here it falls back to Big Shoulders Display unless
+ * Thunder is installed locally. Licence: docs/brand/fonts/thunder/.
  */
 
 /* Layout: a visible four-track grid with + crosshairs; flat solid UI; depth only in the two WebGL moments (glass mark, glass lens). */

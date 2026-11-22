@@ -27,7 +27,7 @@ then open http://localhost:8000.
 
 ## Before going live
 
-- Fonts load from Google Fonts. Thunder (the brand display face) is not included; headings use Big Shoulders Display until Thunder's licensed web-font files are added.
+- Fonts load from Google Fonts. Thunder (the brand display face) is served by Webflow as an uploaded custom font (Black LC 900, Bold LC 700; freeware, commercial use allowed, files must not be modified). This static copy doesn't bundle it, so headings here use Big Shoulders Display unless Thunder is installed locally.
 - Dashed "fill in" slots still need real content: team names, photos and credentials, client quotes, measured results, more client logos.
 - Add a 1200×630 share image and reference it as `og:image` in `index.html`.
 - The Ask Glint chat and the brief form are demos: nothing is sent anywhere. Connect the form to your email or CRM before launch.
